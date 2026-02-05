@@ -226,9 +226,12 @@ async function initServer() {
       }
     });
 
-    // Serve static files from the React app
+    // Serve static files from the build directory
     const DIST_DIR = path.join(__dirname, 'dist');
+    const PUBLIC_DIR = path.join(__dirname, 'public');
     app.use(express.static(DIST_DIR));
+    app.use(express.static(PUBLIC_DIR));
+    app.use(express.static(__dirname)); // Fallback for root assets
 
     // Reset Fleet
     app.post('/api/fleet/reset', async (req, res) => {
