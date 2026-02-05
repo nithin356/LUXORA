@@ -226,6 +226,10 @@ async function initServer() {
       }
     });
 
+    // Serve static files from the React app
+    const DIST_DIR = path.join(__dirname, 'dist');
+    app.use(express.static(DIST_DIR));
+
     // Reset Fleet
     app.post('/api/fleet/reset', async (req, res) => {
         try {
@@ -234,6 +238,21 @@ async function initServer() {
         } catch (err) {
           res.status(500).send();
         }
+    });
+
+    // Catch-all route for SPA - MUST BE LAST
+    app.get('*', (req, res) => {
+      // If it's an API request that wasn't caught, return 404
+      if (req.path.startsWith('/api')) {
+        return res.status(404).json({ error: 'API route not found' });
+      }
+      // Otherwise serve index.html
+      const indexPath = path.join(DIST_DIR, 'index.html');
+      if (fs.existsSync(indexPath)) {
+        res.sendFile(indexPath);
+      } else {
+        res.status(404).send('Frontend not built. Please run npm run build.');
+      }
     });
 
     app.listen(PORT, () => {
