@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Luxora | Bengaluru's Premier Luxury Ecosystem</title>
+    <meta name="theme-color" content="#0A0A0A" />
+    <meta
+      name="description"
+      content="Bengaluru's elite gateway to luxury cars, private aviation, yachting, and majestic estates. Experience the gold standard of luxury services."
+    />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="icon" type="image/x-icon" href="/logo_Lg.png">
+    <link rel="shortcut icon" href="/logo_Lg.png">
+    <link rel="apple-touch-icon" href="/logo_Lg.png">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..72,400..900;1,6..72,400..900&family=Montserrat:wght@300;400;500;600&family=Syncopate:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              luxora: {
+                gold: "#D4AF37",
+                goldLight: "#F3E5AB",
+                dark: "#0A0A0A",
+                charcoal: "#1A1A1A",
+                bronze: "#CD7F32",
+              },
+            },
+            fontFamily: {
+              serif: ["Bodoni Moda", "serif"],
+              sans: ["Montserrat", "sans-serif"],
+              futuristic: ["Syncopate", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        background-color: #0a0a0a;
+        color: #ffffff;
+        scroll-behavior: smooth;
+        -webkit-tap-highlight-color: transparent;
+      }
+      .gold-gradient {
+        background: linear-gradient(
+          135deg,
+          #d4af37 0%,
+          #f3e5ab 50%,
+          #cd7f32 100%
+        );
+      }
+      .gold-text {
+        background: linear-gradient(
+          135deg,
+          #d4af37 0%,
+          #f3e5ab 50%,
+          #cd7f32 100%
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .custom-scrollbar::-webkit-scrollbar {
+        width: 6px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-track {
+        background: #0a0a0a;
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: #d4af37;
+        border-radius: 10px;
+      }
+    </style>
+    <script type="importmap">
+      {
+        "imports": {
+          "react/": "https://esm.sh/react@^19.2.3/",
+          "react": "https://esm.sh/react@^19.2.3",
+          "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+          "@google/genai": "https://esm.sh/@google/genai@^1.38.0"
+        }
+      }
+    </script>
+    <link rel="stylesheet" href="/index.css" />
+  </head>
+  <body class="font-sans antialiased custom-scrollbar">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>

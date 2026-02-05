@@ -1,0 +1,7 @@
+{
+  "name": "Luxora - Premier Luxury Car Rentals Bengaluru",
+  "description": "Luxora is Bengaluru’s premier luxury car rental service, offering an elite fleet of chauffeur-driven vehicles for weddings, corporate travel, and high-profile events.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}

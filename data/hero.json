@@ -1,0 +1,66 @@
+[
+  {
+    "image": "/images/fleet/cars/1.jpg",
+    "fallback": "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&q=80&w=2000",
+    "tag": "Bengaluru's Premier Car Service",
+    "title": "Where Every Journey Feels",
+    "highlight": "Exceptional",
+    "desc": "Experience the ultimate in sophistication with our curated fleet of elite, chauffeur-driven vehicles.",
+    "target": "fleet",
+    "button": "Explore Fleet"
+  },
+  {
+    "image": "/images/fleet/jets/1.jpg",
+    "tag": "Private Aviation",
+    "title": "Unparalleled Comfort Above",
+    "highlight": "the Clouds",
+    "desc": "Bespoke chartered flights in modern, state-of-the-art jets tailored for the global traveler.",
+    "target": "chartered-flights",
+    "button": "Discover Flights"
+  },
+  {
+    "image": "/images/fleet/helicopter/1.webp",
+    "tag": "Helicopter Service",
+    "title": "Agile Luxury for the",
+    "highlight": "Modern Executive",
+    "desc": "Point-to-point urban mobility and scenic aerial transfers via our fleet of elite helicopters.",
+    "target": "chartered-flights",
+    "button": "Book Chopper"
+  },
+  {
+    "image": "/images/fleet/jets/3.jpg",
+    "tag": "The VIP Experience",
+    "title": "Catering to the World's",
+    "highlight": "Most Elite",
+    "desc": "Discretion, security, and world-class service for celebrities and global high-net-worth individuals.",
+    "target": "booking",
+    "button": "VIP Concierge"
+  },
+  {
+    "image": "/images/fleet/yacht/1.jpg",
+    "tag": "Maritime Excellence",
+    "title": "Master the Waves with",
+    "highlight": "Luxora",
+    "desc": "Elite maritime experiences and private yacht charters for exclusive horizons.",
+    "target": "yachts",
+    "button": "Explore Yachts"
+  },
+  {
+    "image": "/images/fleet/properties/1.jpg",
+    "tag": "Exclusive Properties",
+    "title": "Curating Portfolios of",
+    "highlight": "Majestic Estates",
+    "desc": "Discreet access to Bengaluru's most prestigious real estate and management services.",
+    "target": "properties",
+    "button": "View Properties"
+  },
+  {
+    "image": "/images/fleet/cars/3.jpg",
+    "tag": "Elite Goods",
+    "title": "Marketplace for Ultra",
+    "highlight": "Premium Pieces",
+    "desc": "Designer collections and rare horological pieces from the world's most iconic maisons.",
+    "target": "luxury-products",
+    "button": "Luxury Market"
+  }
+]
