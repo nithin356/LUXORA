@@ -101,15 +101,15 @@ const App: React.FC = () => {
         return (
           <>
             <Hero onExplore={setActivePage} />
+            <ServicesSection onNavigate={setActivePage} />
             <AboutSection />
-            <ServicesSection />
             <FleetSection onBook={() => setActivePage(Page.Booking)} />
           </>
         );
       case Page.Fleet:
         return <FleetSection onBook={() => setActivePage(Page.Booking)} />;
       case Page.Services:
-        return <ServicesSection />;
+        return <ServicesSection onNavigate={setActivePage} />;
       case Page.Booking:
         return <BookingForm />;
       case Page.Properties:
@@ -205,8 +205,8 @@ const App: React.FC = () => {
         return (
           <>
             <Hero onExplore={setActivePage} />
+            <ServicesSection onNavigate={setActivePage} />
             <AboutSection />
-            <ServicesSection />
             <FleetSection onBook={() => setActivePage(Page.Booking)} />
           </>
         );

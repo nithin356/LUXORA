@@ -7,6 +7,13 @@ import { Car } from '../types';
 const BookingForm: React.FC = () => {
   const [submitted, setSubmitted] = useState(false);
   const [fleet, setFleet] = useState<Car[]>([]);
+  const [selectedVipOptions, setSelectedVipOptions] = useState({
+    bodyguard: false,
+    personalConcierge: false,
+    premiumRefreshments: false,
+    customRoute: false
+  });
+  const [bookingHours, setBookingHours] = useState(1);
   const [formData, setFormData] = useState({
     customerName: '',
     customerPhone: '',
@@ -28,25 +35,46 @@ const BookingForm: React.FC = () => {
     loadData();
   }, []);
 
+  const selectedCar = fleet.find(c => c.id === formData.carId);
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
+  const handleVipOptionChange = (option: keyof typeof selectedVipOptions) => {
+    setSelectedVipOptions(prev => ({
+      ...prev,
+      [option]: !prev[option]
+    }));
+  };
+
+  const calculateTotalCost = () => {
+    if (!selectedCar) return 0;
+    let cost = selectedCar.pricePerHour * bookingHours;
+    // Add VIP option costs (example: each option adds 500)
+    const vipCount = Object.values(selectedVipOptions).filter(v => v).length;
+    cost += vipCount * 500;
+    return cost;
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    const selectedCar = fleet.find(c => c.id === formData.carId);
-    
+    const vipNote = Object.entries(selectedVipOptions)
+      .filter(([_, selected]) => selected)
+      .map(([option, _]) => option.replace(/([A-Z])/g, ' $1'))
+      .join(', ');
+
     await bookingService.addEnquiry({
       customerName: formData.customerName,
       customerPhone: formData.customerPhone,
       customerEmail: formData.customerEmail,
       carId: formData.carId,
-      carModel: selectedCar ? `${selectedCar.brand} ${selectedCar.model}` : 'Unknown Car',
+      carModel: selectedCar ? `${selectedCar.brand} ${selectedCar.model} (${selectedCar.fleetTier} Tier)` : 'Unknown Car',
       pickupDate: formData.pickupDate,
       duration: formData.duration,
-      message: formData.message
+      message: `Hours: ${bookingHours} | VIP Options: ${vipNote || 'None'} | Total: ₹${calculateTotalCost()}\n\n${formData.message}`
     });
     
     // Smooth scroll to top to see success message
@@ -125,9 +153,79 @@ const BookingForm: React.FC = () => {
               <div className="col-span-2">
                 <label className="block text-white/50 text-xs uppercase tracking-widest mb-2">Select Vehicle</label>
                 <select name="carId" value={formData.carId} onChange={handleInputChange} className="w-full bg-luxora-dark border border-white/10 p-3 text-white focus:outline-none focus:border-luxora-gold transition-colors">
-                  {fleet.map(car => <option key={car.id} value={car.id}>{car.brand} {car.model}</option>)}
+                  {fleet.map(car => <option key={car.id} value={car.id}>{car.brand} {car.model} - {car.fleetTier} Tier (₹{car.pricePerHour}/hr)</option>)}
                 </select>
               </div>
+
+              {/* Selected Car Info */}
+              {selectedCar && (
+                <div className="col-span-2 p-4 bg-luxora-gold/10 border border-luxora-gold/20 rounded-sm">
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div>
+                      <p className="text-luxora-gold text-[9px] uppercase tracking-widest font-bold">Hourly Rate</p>
+                      <p className="text-white text-lg font-bold">₹{selectedCar.pricePerHour.toLocaleString()}</p>
+                    </div>
+                    <div>
+                      <p className="text-luxora-gold text-[9px] uppercase tracking-widest font-bold">Fleet Tier</p>
+                      <p className="text-white text-lg font-bold">{selectedCar.fleetTier}</p>
+                    </div>
+                    <div>
+                      <p className="text-luxora-gold text-[9px] uppercase tracking-widest font-bold">Duration (Hours)</p>
+                      <input type="number" value={bookingHours} onChange={(e) => setBookingHours(Math.max(1, parseInt(e.target.value) || 1))} min="1" max="24" className="w-16 bg-luxora-dark border border-white/10 p-2 text-white focus:outline-none focus:border-luxora-gold transition-colors" />
+                    </div>
+                    <div>
+                      <p className="text-luxora-gold text-[9px] uppercase tracking-widest font-bold">Estimated Total</p>
+                      <p className="text-luxora-gold text-lg font-bold">₹{calculateTotalCost().toLocaleString()}</p>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* VIP Options - Only for VIP Tier Cars */}
+              {selectedCar?.fleetTier === 'VIP' && (
+                <div className="col-span-2 p-4 bg-red-900/20 border border-red-400/30 rounded-sm">
+                  <p className="text-red-400 text-[10px] uppercase tracking-widest font-bold mb-4">Premium VIP Package Options</p>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <label className="flex items-center gap-3 cursor-pointer hover:text-luxora-gold transition-colors">
+                      <input 
+                        type="checkbox" 
+                        checked={selectedVipOptions.bodyguard}
+                        onChange={() => handleVipOptionChange('bodyguard')}
+                        className="w-4 h-4 accent-luxora-gold"
+                      />
+                      <span className="text-white/80 text-[10px] uppercase tracking-widest">Professional Bodyguard (+₹500)</span>
+                    </label>
+                    <label className="flex items-center gap-3 cursor-pointer hover:text-luxora-gold transition-colors">
+                      <input 
+                        type="checkbox" 
+                        checked={selectedVipOptions.personalConcierge}
+                        onChange={() => handleVipOptionChange('personalConcierge')}
+                        className="w-4 h-4 accent-luxora-gold"
+                      />
+                      <span className="text-white/80 text-[10px] uppercase tracking-widest">Personal Concierge (+₹500)</span>
+                    </label>
+                    <label className="flex items-center gap-3 cursor-pointer hover:text-luxora-gold transition-colors">
+                      <input 
+                        type="checkbox" 
+                        checked={selectedVipOptions.premiumRefreshments}
+                        onChange={() => handleVipOptionChange('premiumRefreshments')}
+                        className="w-4 h-4 accent-luxora-gold"
+                      />
+                      <span className="text-white/80 text-[10px] uppercase tracking-widest">Premium Refreshments (+₹500)</span>
+                    </label>
+                    <label className="flex items-center gap-3 cursor-pointer hover:text-luxora-gold transition-colors">
+                      <input 
+                        type="checkbox" 
+                        checked={selectedVipOptions.customRoute}
+                        onChange={() => handleVipOptionChange('customRoute')}
+                        className="w-4 h-4 accent-luxora-gold"
+                      />
+                      <span className="text-white/80 text-[10px] uppercase tracking-widest">Custom Route Planning (+₹500)</span>
+                    </label>
+                  </div>
+                </div>
+              )}
+
               <div className="col-span-2 md:col-span-1">
                 <label className="block text-white/50 text-xs uppercase tracking-widest mb-2">Pickup Date</label>
                 <input required name="pickupDate" value={formData.pickupDate} onChange={handleInputChange} type="date" className="w-full bg-luxora-dark border border-white/10 p-3 text-white focus:outline-none focus:border-luxora-gold transition-colors" />

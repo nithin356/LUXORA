@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { fleetService } from '../services/fleetService';
 import { bookingService, BookingEnquiry } from '../services/bookingService';
-import { Car, CarCategory } from '../types';
+import { Car, CarCategory, FleetTier } from '../types';
 
 type MainCategory = 'Cars' | 'Flights' | 'Yachts' | 'Properties' | 'Luxury Products' | 'Enquiries';
 
@@ -34,12 +34,19 @@ const AdminPage: React.FC = () => {
     model: '',
     type: 'Luxury',
     category: 'Chauffeur Driven',
+    fleetTier: 'Normal',
     seats: 4,
     image: '',
     images: [],
     pricePerHour: 1000,
     description: '',
-    features: []
+    features: [],
+    vipOptions: {
+      bodyguard: false,
+      personalConcierge: false,
+      premiumRefreshments: false,
+      customRoute: false
+    }
   });
 
   const [featureInput, setFeatureInput] = useState('');
@@ -100,6 +107,16 @@ const AdminPage: React.FC = () => {
     setFormData(prev => ({
       ...prev,
       features: prev.features?.filter(f => f !== feature)
+    }));
+  };
+
+  const handleVipOptionChange = (option: keyof Exclude<Car['vipOptions'], undefined>) => {
+    setFormData(prev => ({
+      ...prev,
+      vipOptions: {
+        ...prev.vipOptions,
+        [option]: !prev.vipOptions?.[option]
+      }
     }));
   };
 
@@ -217,12 +234,19 @@ const AdminPage: React.FC = () => {
       model: '',
       type: 'Luxury',
       category: activeCarSubCategory,
+      fleetTier: 'Normal',
       seats: 4,
       image: '',
       images: [],
       pricePerHour: 1000,
       description: '',
-      features: []
+      features: [],
+      vipOptions: {
+        bodyguard: false,
+        personalConcierge: false,
+        premiumRefreshments: false,
+        customRoute: false
+      }
     });
     setSelectedFiles([]);
     setPreviews([]);
@@ -499,6 +523,15 @@ const AdminPage: React.FC = () => {
                         <option value="SUV">Elite SUV</option>
                       </select>
                     </div>
+                    <div>
+                      <label className="block text-white/40 text-[10px] uppercase tracking-widest mb-2 font-bold">Fleet Tier</label>
+                      <select name="fleetTier" value={formData.fleetTier || 'Normal'} onChange={handleInputChange} className="w-full bg-luxora-dark border border-white/10 p-3 text-white focus:border-luxora-gold outline-none transition-all">
+                        <option value="Normal">Normal</option>
+                        <option value="Elite">Elite</option>
+                        <option value="Platinum">Platinum</option>
+                        <option value="VIP">VIP</option>
+                      </select>
+                    </div>
                   </div>
 
                   <div className="space-y-6">
@@ -515,6 +548,49 @@ const AdminPage: React.FC = () => {
                       <label className="block text-white/40 text-[10px] uppercase tracking-widest mb-2 font-bold">Seating Capacity</label>
                       <input required type="number" name="seats" value={formData.seats} onChange={handleInputChange} className="w-full bg-luxora-dark border border-white/10 p-3 text-white focus:border-luxora-gold outline-none transition-all" />
                     </div>
+                    {formData.fleetTier === 'VIP' && (
+                      <div>
+                        <label className="block text-luxora-gold text-[10px] uppercase tracking-widest mb-3 font-bold">VIP Package Options</label>
+                        <div className="space-y-2 bg-luxora-dark/40 p-3 border border-luxora-gold/20 rounded-sm">
+                          <label className="flex items-center gap-3 cursor-pointer hover:text-luxora-gold transition-colors">
+                            <input 
+                              type="checkbox" 
+                              checked={formData.vipOptions?.bodyguard || false}
+                              onChange={() => handleVipOptionChange('bodyguard')}
+                              className="w-4 h-4 accent-luxora-gold"
+                            />
+                            <span className="text-white/80 text-[10px] uppercase tracking-widest font-bold">Professional Bodyguard</span>
+                          </label>
+                          <label className="flex items-center gap-3 cursor-pointer hover:text-luxora-gold transition-colors">
+                            <input 
+                              type="checkbox" 
+                              checked={formData.vipOptions?.personalConcierge || false}
+                              onChange={() => handleVipOptionChange('personalConcierge')}
+                              className="w-4 h-4 accent-luxora-gold"
+                            />
+                            <span className="text-white/80 text-[10px] uppercase tracking-widest font-bold">Personal Concierge</span>
+                          </label>
+                          <label className="flex items-center gap-3 cursor-pointer hover:text-luxora-gold transition-colors">
+                            <input 
+                              type="checkbox" 
+                              checked={formData.vipOptions?.premiumRefreshments || false}
+                              onChange={() => handleVipOptionChange('premiumRefreshments')}
+                              className="w-4 h-4 accent-luxora-gold"
+                            />
+                            <span className="text-white/80 text-[10px] uppercase tracking-widest font-bold">Premium Refreshments</span>
+                          </label>
+                          <label className="flex items-center gap-3 cursor-pointer hover:text-luxora-gold transition-colors">
+                            <input 
+                              type="checkbox" 
+                              checked={formData.vipOptions?.customRoute || false}
+                              onChange={() => handleVipOptionChange('customRoute')}
+                              className="w-4 h-4 accent-luxora-gold"
+                            />
+                            <span className="text-white/80 text-[10px] uppercase tracking-widest font-bold">Custom Route Planning</span>
+                          </label>
+                        </div>
+                      </div>
+                    )}
                     <div>
                       <label className={`block text-[10px] uppercase tracking-widest mb-2 font-bold ${errors.images ? 'text-red-500' : 'text-white/40'}`}>Asset Gallery</label>
                       <div className={`bg-luxora-dark border-2 border-dashed ${errors.images ? 'border-red-500/20' : 'border-white/5'} p-4 text-center`}>

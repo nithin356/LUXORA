@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { fleetService } from '../services/fleetService';
-import { Car } from '../types';
+import { Car, FleetTier } from '../types';
 
 interface FleetSectionProps {
   onBook: (carId: string) => void;
@@ -75,6 +75,7 @@ const ImageCarousel: React.FC<{ images: string[]; alt: string }> = ({ images, al
 
 const FleetSection: React.FC<FleetSectionProps> = ({ onBook }) => {
   const [filter, setFilter] = useState<'All' | 'Sedan' | 'SUV' | 'Luxury'>('All');
+  const [tierFilter, setTierFilter] = useState<'All' | FleetTier>('All');
   const [fleet, setFleet] = useState<Car[]>([]);
 
   useEffect(() => {
@@ -85,9 +86,11 @@ const FleetSection: React.FC<FleetSectionProps> = ({ onBook }) => {
     loadFleet();
   }, []);
 
-  const filteredFleet = filter === 'All' 
-    ? fleet 
-    : fleet.filter(car => car.type === filter);
+  const filteredFleet = fleet.filter(car => {
+    const typeMatch = filter === 'All' || car.type === filter;
+    const tierMatch = tierFilter === 'All' || car.fleetTier === tierFilter;
+    return typeMatch && tierMatch;
+  });
 
   return (
     <section className="py-24 bg-luxora-dark" id="fleet">
@@ -97,8 +100,8 @@ const FleetSection: React.FC<FleetSectionProps> = ({ onBook }) => {
           <h2 className="text-3xl md:text-5xl font-serif font-medium gold-text mb-4 uppercase tracking-tight">The Elite Collection</h2>
           <div className="w-24 h-[1px] bg-luxora-gold mx-auto mb-8"></div>
           
-          {/* Category Filter */}
-          <div className="flex flex-wrap justify-center gap-4 mt-8">
+          {/* Type Filter */}
+          <div className="flex flex-wrap justify-center gap-4 mt-8 mb-6">
             {['All', 'Sedan', 'SUV', 'Luxury'].map((cat) => (
               <button
                 key={cat}
@@ -110,6 +113,23 @@ const FleetSection: React.FC<FleetSectionProps> = ({ onBook }) => {
                 }`}
               >
                 {cat === 'Luxury' ? 'Ultra-Luxury' : cat + 's'}
+              </button>
+            ))}
+          </div>
+
+          {/* Fleet Tier Filter */}
+          <div className="flex flex-wrap justify-center gap-4">
+            {['All', 'Normal', 'Elite', 'Platinum', 'VIP'].map((tier) => (
+              <button
+                key={tier}
+                onClick={() => setTierFilter(tier as any)}
+                className={`px-6 py-2 text-xs uppercase tracking-widest transition-all rounded-full border ${
+                  tierFilter === tier 
+                    ? 'bg-luxora-gold text-luxora-dark border-luxora-gold font-bold' 
+                    : 'text-white/40 border-white/10 hover:border-luxora-gold/50'
+                }`}
+              >
+                {tier}
               </button>
             ))}
           </div>
@@ -133,9 +153,17 @@ const FleetSection: React.FC<FleetSectionProps> = ({ onBook }) => {
               >
                 <div className="aspect-[16/10] overflow-hidden relative">
                   <ImageCarousel images={displayImages} alt={`${car.brand} ${car.model}`} />
-                  <div className="absolute top-4 left-4 z-20">
+                  <div className="absolute top-4 left-4 z-20 flex flex-col gap-2">
                       <span className="bg-luxora-dark/80 backdrop-blur-sm text-luxora-gold text-[10px] uppercase tracking-widest px-3 py-1 border border-luxora-gold/20">
                           {car.type === 'Luxury' ? 'Ultra-Luxury' : car.type}
+                      </span>
+                      <span className={`text-[10px] uppercase tracking-widest px-3 py-1 border font-bold ${
+                        car.fleetTier === 'VIP' ? 'bg-red-900/60 text-red-300 border-red-400/30' :
+                        car.fleetTier === 'Platinum' ? 'bg-blue-900/60 text-blue-300 border-blue-400/30' :
+                        car.fleetTier === 'Elite' ? 'bg-yellow-900/60 text-yellow-300 border-yellow-400/30' :
+                        'bg-white/10 text-white/70 border-white/20'
+                      }`}>
+                          {car.fleetTier} Tier
                       </span>
                   </div>
                 </div>
@@ -164,6 +192,18 @@ const FleetSection: React.FC<FleetSectionProps> = ({ onBook }) => {
                     </div>
                   ))}
                 </div>
+
+                {car.fleetTier === 'VIP' && car.vipOptions && Object.values(car.vipOptions).some(v => v) && (
+                  <div className="mb-6 p-3 bg-red-900/20 border border-red-400/20 rounded-sm">
+                    <p className="text-red-400 text-[9px] uppercase tracking-widest font-bold mb-2">VIP Options Available</p>
+                    <div className="space-y-1">
+                      {car.vipOptions.bodyguard && <div className="text-[9px] text-white/60">✓ Professional Bodyguard</div>}
+                      {car.vipOptions.personalConcierge && <div className="text-[9px] text-white/60">✓ Personal Concierge</div>}
+                      {car.vipOptions.premiumRefreshments && <div className="text-[9px] text-white/60">✓ Premium Refreshments</div>}
+                      {car.vipOptions.customRoute && <div className="text-[9px] text-white/60">✓ Custom Route Planning</div>}
+                    </div>
+                  </div>
+                )}
 
                 <button 
                   onClick={() => onBook(car.id)}
