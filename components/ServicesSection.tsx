@@ -1,7 +1,6 @@
-
-import React from 'react';
-import { SERVICES } from '../constants';
-import { Page } from '../types';
+import React from "react";
+import { SERVICES } from "../constants";
+import { Page } from "../types";
 
 interface ServiceCategoryProps {
   onNavigate?: (page: Page) => void;
@@ -10,90 +9,99 @@ interface ServiceCategoryProps {
 const ServicesSection: React.FC<ServiceCategoryProps> = ({ onNavigate }) => {
   const serviceCategories = [
     {
-      id: 'cars',
-      title: 'Luxury Cars',
-      subtitle: 'Elite Fleet',
-      icon: '🏎️',
-      description: 'Curated collection of premium vehicles with expert chauffeurs.',
-      image: '/images/fleet/cars/1.jpg',
+      id: "cars",
+      title: "Luxury Cars",
+      subtitle: "Elite Fleet",
+      icon: "🏎️",
+      description:
+        "Curated collection of premium vehicles with expert chauffeurs.",
+      image: "/images/fleet/cars/1.jpg",
       page: Page.Fleet,
-      highlight: true
+      highlight: true,
     },
     {
-      id: 'flights',
-      title: 'Chartered Flights',
-      subtitle: 'Private Aviation',
-      icon: '✈️',
-      description: 'Bespoke air travel in state-of-the-art jets.',
-      image: '/images/fleet/jets/1.jpg',
-      page: Page.CharteredFlights
+      id: "flights",
+      title: "Chartered Flights",
+      subtitle: "Private Aviation",
+      icon: "✈️",
+      description: "Bespoke air travel in state-of-the-art jets.",
+      image: "/images/fleet/jets/1.jpg",
+      page: Page.CharteredFlights,
     },
     {
-      id: 'helicopters',
-      title: 'Helicopter Service',
-      subtitle: 'Aerial Mobility',
-      icon: '🚁',
-      description: 'Point-to-point urban luxury transfers.',
-      image: '/images/fleet/helicopter/1.webp',
-      page: Page.HelicopterService
+      id: "helicopters",
+      title: "Helicopter Service",
+      subtitle: "Aerial Mobility",
+      icon: "🚁",
+      description: "Point-to-point urban luxury transfers.",
+      image: "/images/fleet/helicopter/1.webp",
+      page: Page.HelicopterService,
     },
     {
-      id: 'yachts',
-      title: 'Yacht Service',
-      subtitle: 'Maritime Excellence',
-      icon: '⛵',
-      description: 'Exclusive yacht charters and maritime experiences.',
-      image: '/images/fleet/yacht/1.jpg',
-      page: Page.YachtService
+      id: "yachts",
+      title: "Yacht Service",
+      subtitle: "Maritime Excellence",
+      icon: "⛵",
+      description: "Exclusive yacht charters and maritime experiences.",
+      image: "/images/fleet/yacht/1.jpg",
+      page: Page.YachtService,
     },
     {
-      id: 'properties',
-      title: 'Majestic Estates',
-      subtitle: 'Exclusive Properties',
-      icon: '🏰',
-      description: 'Portfolio of prestigious real estate & management.',
-      image: '/images/fleet/properties/1.jpg',
-      page: Page.Properties
+      id: "properties",
+      title: "Majestic Estates",
+      subtitle: "Exclusive Properties",
+      icon: "🏰",
+      description: "Portfolio of prestigious real estate & management.",
+      image: "/images/fleet/properties/1.jpg",
+      page: Page.Properties,
     },
     {
-      id: 'luxury',
-      title: 'Luxury Goods',
-      subtitle: 'Premium Marketplace',
-      icon: '💎',
-      description: 'Designer collections and rare horological pieces.',
-      image: '/images/fleet/luxury-goods/1.png',
-      page: Page.LuxuryProducts
-    }
+      id: "luxury",
+      title: "Luxury Goods",
+      subtitle: "Premium Marketplace",
+      icon: "💎",
+      description: "Designer collections and rare horological pieces.",
+      image: "/images/fleet/luxury-goods/1.png",
+      page: Page.LuxuryProducts,
+    },
   ];
 
   return (
-    <section className="py-16 md:py-24 bg-luxora-dark relative overflow-hidden" id="services">
+    <section
+      className="py-16 md:py-24 bg-luxora-dark relative overflow-hidden"
+      id="services"
+    >
       {/* Decorative BG element */}
       <div className="absolute -top-40 -right-40 w-80 md:w-96 h-80 md:h-96 bg-luxora-gold/5 rounded-full blur-3xl"></div>
       <div className="absolute -bottom-40 -left-40 w-80 md:w-96 h-80 md:h-96 bg-luxora-gold/3 rounded-full blur-3xl"></div>
-      
+
       <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 relative z-10">
         <div className="mb-12 md:mb-20">
-          <span className="text-luxora-gold font-serif italic text-lg md:text-xl mb-3 md:mb-4 block">Our Ecosystem</span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-4 md:mb-6">Curated Services For The Elite</h2>
+          <span className="text-luxora-gold font-serif italic text-lg md:text-xl mb-3 md:mb-4 block">
+            Our Ecosystem
+          </span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-4 md:mb-6">
+            Curated Services For The Elite
+          </h2>
           <p className="text-white/50 text-sm md:text-base max-w-2xl font-light leading-relaxed">
-            From the moment you arrive to the final farewell, Luxora orchestrates every touchpoint with meticulous attention to detail.
+            From the moment you arrive to the final farewell, Luxora
+            orchestrates every touchpoint with meticulous attention to detail.
           </p>
         </div>
 
         {/* Main Service Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-8 md:mb-16">
           {serviceCategories.map((category) => (
-            <div 
+            <div
               key={category.id}
               onClick={() => onNavigate?.(category.page)}
               className={`group relative h-64 md:h-72 overflow-hidden rounded-lg cursor-pointer transition-all duration-500 ${
-                category.highlight ? 'lg:col-span-2 lg:row-span-2' : ''
+                category.highlight ? "lg:col-span-2 lg:row-span-2" : ""
               }`}
             >
               {/* Background Image */}
-              <img 
-                src={category.image} 
+              <img
+                src={category.image}
                 alt={category.title}
                 className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
                 onError={(e) => {
@@ -101,10 +109,10 @@ const ServicesSection: React.FC<ServiceCategoryProps> = ({ onNavigate }) => {
                   target.src = `https://images.unsplash.com/photo-1494976388531-d1058494cdd0?auto=format&fit=crop&q=80&w=800`;
                 }}
               />
-              
+
               {/* Gradient Overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-luxora-dark via-luxora-dark/40 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-500"></div>
-              
+
               {/* Content */}
               <div className="absolute inset-0 flex flex-col justify-end p-4 md:p-6 z-10">
                 <div className="text-3xl md:text-4xl mb-2 md:mb-3">
@@ -120,7 +128,10 @@ const ServicesSection: React.FC<ServiceCategoryProps> = ({ onNavigate }) => {
                   {category.description}
                 </p>
                 <div className="inline-flex items-center text-luxora-gold text-xs md:text-sm uppercase tracking-[0.2em] font-bold group-hover:gap-2 transition-all gap-1">
-                  Explore <span className="group-hover:translate-x-1 transition-transform">→</span>
+                  Explore{" "}
+                  <span className="group-hover:translate-x-1 transition-transform">
+                    →
+                  </span>
                 </div>
               </div>
             </div>
@@ -130,7 +141,10 @@ const ServicesSection: React.FC<ServiceCategoryProps> = ({ onNavigate }) => {
         {/* Quick Services */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 border-t border-white/5 pt-12 md:pt-16">
           {SERVICES.map((service) => (
-            <div key={service.id} className="group p-6 md:p-8 bg-luxora-charcoal/50 border border-white/5 hover:border-luxora-gold/30 transition-all duration-500 flex flex-col items-start text-left rounded-lg">
+            <div
+              key={service.id}
+              className="group p-6 md:p-8 bg-luxora-charcoal/50 border border-white/5 hover:border-luxora-gold/30 transition-all duration-500 flex flex-col items-start text-left rounded-lg"
+            >
               <div className="text-3xl md:text-4xl mb-4 transform group-hover:scale-110 transition-transform duration-500">
                 {service.icon}
               </div>
@@ -146,28 +160,51 @@ const ServicesSection: React.FC<ServiceCategoryProps> = ({ onNavigate }) => {
 
         {/* Why Choose Luxora */}
         <div className="mt-16 md:mt-24 border-t border-white/5 pt-12 md:pt-16">
-          <h3 className="text-xl md:text-2xl font-serif font-bold text-white mb-8 md:mb-12">Why Choose Luxora</h3>
+          <h3 className="text-xl md:text-2xl font-serif font-bold text-white mb-8 md:mb-12">
+            Why Choose Luxora
+          </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
             <div className="flex gap-4 md:gap-6">
-                <div className="w-10 md:w-12 h-10 md:h-12 flex-shrink-0 border border-luxora-gold/30 rounded-full flex items-center justify-center text-luxora-gold font-serif italic text-lg md:text-xl">1</div>
-                <div>
-                    <h4 className="text-white font-bold mb-2 text-sm md:text-base">Expert Personnel</h4>
-                    <p className="text-white/40 text-xs md:text-sm leading-relaxed uppercase tracking-wider">Professionally trained specialists embodying discretion & excellence across all services.</p>
-                </div>
+              <div className="w-10 md:w-12 h-10 md:h-12 flex-shrink-0 border border-luxora-gold/30 rounded-full flex items-center justify-center text-luxora-gold font-serif italic text-lg md:text-xl">
+                1
+              </div>
+              <div>
+                <h4 className="text-white font-bold mb-2 text-sm md:text-base">
+                  Expert Personnel
+                </h4>
+                <p className="text-white/40 text-xs md:text-sm leading-relaxed uppercase tracking-wider">
+                  Professionally trained specialists embodying discretion &
+                  excellence across all services.
+                </p>
+              </div>
             </div>
             <div className="flex gap-4 md:gap-6">
-                <div className="w-10 md:w-12 h-10 md:h-12 flex-shrink-0 border border-luxora-gold/30 rounded-full flex items-center justify-center text-luxora-gold font-serif italic text-lg md:text-xl">2</div>
-                <div>
-                    <h4 className="text-white font-bold mb-2 text-sm md:text-base">Curated Assets</h4>
-                    <p className="text-white/40 text-xs md:text-sm leading-relaxed uppercase tracking-wider">Meticulously maintained vehicles, aircraft & vessels ensuring safety & prestige.</p>
-                </div>
+              <div className="w-10 md:w-12 h-10 md:h-12 flex-shrink-0 border border-luxora-gold/30 rounded-full flex items-center justify-center text-luxora-gold font-serif italic text-lg md:text-xl">
+                2
+              </div>
+              <div>
+                <h4 className="text-white font-bold mb-2 text-sm md:text-base">
+                  Curated Assets
+                </h4>
+                <p className="text-white/40 text-xs md:text-sm leading-relaxed uppercase tracking-wider">
+                  Meticulously maintained vehicles, aircraft & vessels ensuring
+                  safety & prestige.
+                </p>
+              </div>
             </div>
             <div className="flex gap-4 md:gap-6">
-                <div className="w-10 md:w-12 h-10 md:h-12 flex-shrink-0 border border-luxora-gold/30 rounded-full flex items-center justify-center text-luxora-gold font-serif italic text-lg md:text-xl">3</div>
-                <div>
-                    <h4 className="text-white font-bold mb-2 text-sm md:text-base">Bespoke Concierge</h4>
-                    <p className="text-white/40 text-xs md:text-sm leading-relaxed uppercase tracking-wider">Tailored arrangements for complex journeys with meticulous attention to detail.</p>
-                </div>
+              <div className="w-10 md:w-12 h-10 md:h-12 flex-shrink-0 border border-luxora-gold/30 rounded-full flex items-center justify-center text-luxora-gold font-serif italic text-lg md:text-xl">
+                3
+              </div>
+              <div>
+                <h4 className="text-white font-bold mb-2 text-sm md:text-base">
+                  Bespoke Concierge
+                </h4>
+                <p className="text-white/40 text-xs md:text-sm leading-relaxed uppercase tracking-wider">
+                  Tailored arrangements for complex journeys with meticulous
+                  attention to detail.
+                </p>
+              </div>
             </div>
           </div>
         </div>

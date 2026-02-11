@@ -1,11 +1,11 @@
-export type CarCategory = 'Chauffeur Driven' | 'Monthly Rental' | 'Sales';
-export type FleetTier = 'Normal' | 'Elite' | 'Platinum' | 'VIP';
+export type CarCategory = "Chauffeur Driven" | "Monthly Rental" | "Sales";
+export type FleetTier = "Normal" | "Elite" | "Platinum" | "VIP";
 
 export interface Car {
   id: string;
   brand: string;
   model: string;
-  type: 'Sedan' | 'SUV' | 'Luxury';
+  type: "Sedan" | "SUV" | "Luxury";
   category: CarCategory;
   fleetTier: FleetTier;
   seats: number;
@@ -29,16 +29,15 @@ export interface Service {
   icon: string;
 }
 
-
 export enum Page {
-  Home = 'home',
-  Fleet = 'fleet',
-  Services = 'services',
-  Booking = 'booking',
-  Properties = 'properties',
-  LuxuryProducts = 'luxury-products',
-  CharteredFlights = 'chartered-flights',
-  HelicopterService = 'helicopters',
-  YachtService = 'yachts',
-  Admin = 'admin'
+  Home = "home",
+  Fleet = "fleet",
+  Services = "services",
+  Booking = "booking",
+  Properties = "properties",
+  LuxuryProducts = "luxury-products",
+  CharteredFlights = "chartered-flights",
+  HelicopterService = "helicopters",
+  YachtService = "yachts",
+  Admin = "admin",
 }

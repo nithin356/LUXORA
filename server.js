@@ -181,7 +181,7 @@ async function initServer() {
 
     app.post('/api/enquiries', async (req, res) => {
       try {
-        const enquiries = await fs.readJson(ENQUIRIES_FILE);
+        const enquiries = await safeReadJson(ENQUIRIES_FILE);
         const newEnquiry = {
           ...req.body,
           id: `enq-${Date.now()}`,
@@ -189,7 +189,7 @@ async function initServer() {
           timestamp: Date.now()
         };
         enquiries.push(newEnquiry);
-        await fs.writeJson(ENQUIRIES_FILE, enquiries);
+        await safeWriteJson(ENQUIRIES_FILE, enquiries);
         res.status(201).json(newEnquiry);
       } catch (err) {
         console.error('Error saving enquiry:', err);
@@ -199,11 +199,11 @@ async function initServer() {
 
     app.patch('/api/enquiries/:id', async (req, res) => {
       try {
-        const enquiries = await fs.readJson(ENQUIRIES_FILE);
+        const enquiries = await safeReadJson(ENQUIRIES_FILE);
         const index = enquiries.findIndex(e => e.id === req.params.id);
         if (index !== -1) {
           enquiries[index] = { ...enquiries[index], ...req.body };
-          await fs.writeJson(ENQUIRIES_FILE, enquiries);
+          await safeWriteJson(ENQUIRIES_FILE, enquiries);
           res.json(enquiries[index]);
         } else {
           res.status(404).send();
@@ -216,9 +216,9 @@ async function initServer() {
 
     app.delete('/api/enquiries/:id', async (req, res) => {
       try {
-        const enquiries = await fs.readJson(ENQUIRIES_FILE);
+        const enquiries = await safeReadJson(ENQUIRIES_FILE);
         const updatedEnquiries = enquiries.filter(e => e.id !== req.params.id);
-        await fs.writeJson(ENQUIRIES_FILE, updatedEnquiries);
+        await safeWriteJson(ENQUIRIES_FILE, updatedEnquiries);
         res.status(204).send();
       } catch (err) {
         console.error('Error deleting enquiry:', err);
