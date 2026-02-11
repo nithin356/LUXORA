@@ -33,14 +33,14 @@ function releaseLock(fileName) {
 async function safeReadJson(filePath, defaultValue = []) {
   try {
     if (!await fs.pathExists(filePath)) return defaultValue;
-    
+
     // Retry reading if file size is 0 (likely being written to)
     for (let i = 0; i < 5; i++) {
       const stats = await fs.stat(filePath);
       if (stats.size > 0) break;
       await new Promise(resolve => setTimeout(resolve, 100));
     }
-    
+
     return await fs.readJson(filePath);
   } catch (err) {
     console.error(`Error reading ${filePath}:`, err);
@@ -65,7 +65,7 @@ async function initServer() {
     // Ensure directories and files exist
     await fs.ensureDir(DATA_DIR);
     await fs.ensureDir(UPLOADS_DIR);
-    
+
     if (!await fs.pathExists(FLEET_FILE)) {
       await fs.writeJson(FLEET_FILE, []);
     }
@@ -103,7 +103,7 @@ async function initServer() {
           return res.status(400).json({ error: 'Missing carData in request' });
         }
         const carData = JSON.parse(req.body.carData);
-        
+
         let imageUrls = carData.images || [];
         if (req.files && req.files.length > 0) {
           const uploadedUrls = req.files.map(file => `/uploads/${file.filename}`);
@@ -143,9 +143,9 @@ async function initServer() {
         }
 
         const existingCar = fleet[index];
-        const mergedCar = { 
-          ...existingCar, 
-          ...carData, 
+        const mergedCar = {
+          ...existingCar,
+          ...carData,
           id: existingCar.id, // Absolute ID safety
           category: carData.category || existingCar.category,
           image: (imageUrls && imageUrls.length > 0) ? imageUrls[0] : (carData.image || existingCar.image),
@@ -235,12 +235,12 @@ async function initServer() {
 
     // Reset Fleet
     app.post('/api/fleet/reset', async (req, res) => {
-        try {
-          await fs.writeJson(FLEET_FILE, []);
-          res.status(200).send({ message: 'Fleet cleared' });
-        } catch (err) {
-          res.status(500).send();
-        }
+      try {
+        await fs.writeJson(FLEET_FILE, []);
+        res.status(200).send({ message: 'Fleet cleared' });
+      } catch (err) {
+        res.status(500).send();
+      }
     });
 
     // Catch-all route for SPA - MUST BE LAST

@@ -615,7 +615,9 @@ const AdminPage: React.FC = () => {
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8 sm:mb-12">
               <h3 className="text-lg sm:text-2xl font-serif text-white uppercase tracking-wider">
                 {activeCarSubCategory}{" "}
-                <span className="text-luxora-gold/50 ml-1 sm:ml-2">Inventory</span>
+                <span className="text-luxora-gold/50 ml-1 sm:ml-2">
+                  Inventory
+                </span>
               </h3>
               <button
                 onClick={() => {
@@ -1159,10 +1161,14 @@ const AdminPage: React.FC = () => {
                               );
                               if (success) {
                                 // Add a small delay to ensure file is written
-                                await new Promise(resolve => setTimeout(resolve, 300));
+                                await new Promise((resolve) =>
+                                  setTimeout(resolve, 300),
+                                );
                                 await refreshFleet();
                               } else {
-                                alert("Failed to update status. Please try again.");
+                                alert(
+                                  "Failed to update status. Please try again.",
+                                );
                               }
                             }}
                             className="px-4 py-2 border border-white/10 text-white/40 text-[10px] uppercase tracking-widest hover:text-white hover:border-white/30 transition-all font-bold"
@@ -1178,10 +1184,14 @@ const AdminPage: React.FC = () => {
                             );
                             if (success) {
                               // Add a small delay to ensure file is written
-                              await new Promise(resolve => setTimeout(resolve, 300));
+                              await new Promise((resolve) =>
+                                setTimeout(resolve, 300),
+                              );
                               await refreshFleet();
                             } else {
-                              alert("Failed to update status. Please try again.");
+                              alert(
+                                "Failed to update status. Please try again.",
+                              );
                             }
                           }}
                           className="px-4 py-2 border border-luxora-gold/30 text-luxora-gold text-[10px] uppercase tracking-widest hover:bg-luxora-gold hover:text-luxora-dark transition-all font-bold"
@@ -1191,13 +1201,18 @@ const AdminPage: React.FC = () => {
                         <button
                           onClick={async () => {
                             if (window.confirm("Delete enquiry?")) {
-                              const success = await bookingService.deleteEnquiry(enq.id);
+                              const success =
+                                await bookingService.deleteEnquiry(enq.id);
                               if (success) {
                                 // Add a small delay to ensure file is written
-                                await new Promise(resolve => setTimeout(resolve, 300));
+                                await new Promise((resolve) =>
+                                  setTimeout(resolve, 300),
+                                );
                                 await refreshFleet();
                               } else {
-                                alert("Failed to delete enquiry. Please try again.");
+                                alert(
+                                  "Failed to delete enquiry. Please try again.",
+                                );
                               }
                             }
                           }}

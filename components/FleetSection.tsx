@@ -127,7 +127,9 @@ const FleetSection: React.FC<FleetSectionProps> = ({ onBook }) => {
           <div className="max-w-4xl mx-auto">
             {/* Vehicle Type Filter */}
             <div className="mb-6">
-              <p className="text-luxora-gold text-[9px] uppercase tracking-[0.4em] font-bold mb-3">Vehicle Type</p>
+              <p className="text-luxora-gold text-[9px] uppercase tracking-[0.4em] font-bold mb-3">
+                Vehicle Type
+              </p>
               <div className="flex flex-wrap justify-center gap-3">
                 {["All", "Sedan", "SUV", "Luxury"].map((cat) => (
                   <button
@@ -139,7 +141,11 @@ const FleetSection: React.FC<FleetSectionProps> = ({ onBook }) => {
                         : "text-white/40 border-white/10 hover:border-luxora-gold/50"
                     }`}
                   >
-                    {cat === "Luxury" ? "Ultra-Luxury" : cat === "All" ? "All Types" : cat + "s"}
+                    {cat === "Luxury"
+                      ? "Ultra-Luxury"
+                      : cat === "All"
+                        ? "All Types"
+                        : cat + "s"}
                   </button>
                 ))}
               </div>
@@ -147,7 +153,9 @@ const FleetSection: React.FC<FleetSectionProps> = ({ onBook }) => {
 
             {/* Fleet Tier Filter */}
             <div>
-              <p className="text-luxora-gold text-[9px] uppercase tracking-[0.4em] font-bold mb-3">Fleet Tier</p>
+              <p className="text-luxora-gold text-[9px] uppercase tracking-[0.4em] font-bold mb-3">
+                Fleet Tier
+              </p>
               <div className="flex flex-wrap justify-center gap-3">
                 {["All", "Normal", "Elite", "Platinum", "VIP"].map((tier) => (
                   <button
@@ -166,156 +174,156 @@ const FleetSection: React.FC<FleetSectionProps> = ({ onBook }) => {
             </div>
           </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 mt-16">
-          {filteredFleet.map((car) => {
-            // Robust fallback for images array
-            const displayImages =
-              car.images && car.images.length > 0
-                ? car.images
-                : [
-                    car.image,
-                    car.image
-                      .replace("1.jpg", "2.jpg")
-                      .replace("1.webp", "2.jpg"),
-                    car.image
-                      .replace("1.jpg", "3.jpg")
-                      .replace("1.webp", "3.jpg"),
-                  ].filter((v, i, a) => a.indexOf(v) === i); // Deduplicate
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 mt-16">
+            {filteredFleet.map((car) => {
+              // Robust fallback for images array
+              const displayImages =
+                car.images && car.images.length > 0
+                  ? car.images
+                  : [
+                      car.image,
+                      car.image
+                        .replace("1.jpg", "2.jpg")
+                        .replace("1.webp", "2.jpg"),
+                      car.image
+                        .replace("1.jpg", "3.jpg")
+                        .replace("1.webp", "3.jpg"),
+                    ].filter((v, i, a) => a.indexOf(v) === i); // Deduplicate
 
-            return (
-              <div
-                key={car.id}
-                className="group relative bg-gradient-to-b from-luxora-charcoal to-black/60 overflow-hidden border border-white/10 hover:border-luxora-gold/50 transition-all duration-500 rounded-lg flex flex-col h-full shadow-2xl hover:shadow-luxora-gold/20"
-              >
-                {/* Image Section */}
-                <div className="aspect-[16/10] overflow-hidden relative">
-                  <ImageCarousel
-                    images={displayImages}
-                    alt={`${car.brand} ${car.model}`}
-                  />
-                  
-                  {/* Premium Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40 pointer-events-none"></div>
-                  
-                  {/* Badges */}
-                  <div className="absolute top-4 left-4 z-20 flex flex-col gap-2">
-                    <span className="bg-luxora-dark/90 backdrop-blur-md text-luxora-gold text-[10px] uppercase tracking-widest px-3 py-1.5 border border-luxora-gold/40 rounded-sm font-bold">
-                      {car.type === "Luxury" ? "Ultra-Luxury" : car.type}
-                    </span>
-                    <span
-                      className={`text-[10px] uppercase tracking-widest px-3 py-1.5 border rounded-sm font-bold backdrop-blur-md transition-all ${
-                        car.fleetTier === "VIP"
-                          ? "bg-red-600/80 text-red-100 border-red-400/60"
-                          : car.fleetTier === "Platinum"
-                            ? "bg-blue-600/80 text-blue-100 border-blue-400/60"
-                            : car.fleetTier === "Elite"
-                              ? "bg-amber-600/80 text-amber-100 border-amber-400/60"
-                              : "bg-white/20 text-white border-white/40"
-                      }`}
-                    >
-                      {car.fleetTier} Tier
-                    </span>
-                  </div>
-                </div>
+              return (
+                <div
+                  key={car.id}
+                  className="group relative bg-gradient-to-b from-luxora-charcoal to-black/60 overflow-hidden border border-white/10 hover:border-luxora-gold/50 transition-all duration-500 rounded-lg flex flex-col h-full shadow-2xl hover:shadow-luxora-gold/20"
+                >
+                  {/* Image Section */}
+                  <div className="aspect-[16/10] overflow-hidden relative">
+                    <ImageCarousel
+                      images={displayImages}
+                      alt={`${car.brand} ${car.model}`}
+                    />
 
-                {/* Content Section */}
-                <div className="p-5 md:p-6 flex-grow flex flex-col">
-                  {/* Header with Brand and Price */}
-                  <div className="flex justify-between items-start mb-3">
-                    <div className="flex-1 mr-4">
-                      <span className="text-luxora-gold text-[9px] uppercase tracking-[0.3em] mb-1 block font-bold opacity-80">
-                        {car.brand}
+                    {/* Premium Gradient Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40 pointer-events-none"></div>
+
+                    {/* Badges */}
+                    <div className="absolute top-4 left-4 z-20 flex flex-col gap-2">
+                      <span className="bg-luxora-dark/90 backdrop-blur-md text-luxora-gold text-[10px] uppercase tracking-widest px-3 py-1.5 border border-luxora-gold/40 rounded-sm font-bold">
+                        {car.type === "Luxury" ? "Ultra-Luxury" : car.type}
                       </span>
-                      <h3 className="text-xl md:text-2xl font-serif font-bold text-white leading-tight">
-                        {car.model}
-                      </h3>
-                    </div>
-                    <div className="text-right flex-shrink-0 bg-luxora-charcoal/80 rounded-lg p-3 border border-luxora-gold/20">
-                      <span className="text-luxora-gold font-bold text-xl md:text-2xl block">
-                        ₹{car.pricePerHour.toLocaleString("en-IN")}
-                      </span>
-                      <span className="text-white/40 text-[9px] uppercase tracking-widest block mt-1">
-                        / hour
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Description */}
-                  <p className="text-white/50 text-xs md:text-sm mb-4 font-light leading-relaxed line-clamp-2 italic border-l-2 border-luxora-gold/40 pl-3">
-                    {car.description}
-                  </p>
-
-                  {/* Features Grid */}
-                  <div className="grid grid-cols-2 gap-y-2.5 gap-x-3 mb-4 py-3 border-y border-white/5">
-                    {car.features.slice(0, 4).map((feature, idx) => (
-                      <div
-                        key={idx}
-                        className="flex items-center text-[9px] text-white/60 uppercase tracking-wider"
+                      <span
+                        className={`text-[10px] uppercase tracking-widest px-3 py-1.5 border rounded-sm font-bold backdrop-blur-md transition-all ${
+                          car.fleetTier === "VIP"
+                            ? "bg-red-600/80 text-red-100 border-red-400/60"
+                            : car.fleetTier === "Platinum"
+                              ? "bg-blue-600/80 text-blue-100 border-blue-400/60"
+                              : car.fleetTier === "Elite"
+                                ? "bg-amber-600/80 text-amber-100 border-amber-400/60"
+                                : "bg-white/20 text-white border-white/40"
+                        }`}
                       >
-                        <div className="w-1.5 h-1.5 bg-luxora-gold rounded-full mr-2 opacity-70 flex-shrink-0"></div>
-                        <span className="line-clamp-1">{feature}</span>
-                      </div>
-                    ))}
+                        {car.fleetTier} Tier
+                      </span>
+                    </div>
                   </div>
 
-                  {/* VIP Options Section */}
-                  {car.fleetTier === "VIP" &&
-                    car.vipOptions &&
-                    Object.values(car.vipOptions).some((v) => v) && (
-                      <div className="mb-4 p-3.5 bg-gradient-to-r from-red-900/30 to-red-900/10 border border-red-400/40 rounded-lg backdrop-blur-sm">
-                        <p className="text-red-300 text-[8px] uppercase tracking-[0.3em] font-bold mb-2.5 opacity-90">
-                          ✦ Premium VIP Services
-                        </p>
-                        <div className="space-y-1.5">
-                          {car.vipOptions.bodyguard && (
-                            <div className="text-[8px] text-red-200/80 flex items-center gap-2">
-                              <span className="text-red-400">●</span>
-                              <span>Professional Bodyguard</span>
-                            </div>
-                          )}
-                          {car.vipOptions.personalConcierge && (
-                            <div className="text-[8px] text-red-200/80 flex items-center gap-2">
-                              <span className="text-red-400">●</span>
-                              <span>Personal Concierge</span>
-                            </div>
-                          )}
-                          {car.vipOptions.premiumRefreshments && (
-                            <div className="text-[8px] text-red-200/80 flex items-center gap-2">
-                              <span className="text-red-400">●</span>
-                              <span>Premium Refreshments</span>
-                            </div>
-                          )}
-                          {car.vipOptions.customRoute && (
-                            <div className="text-[8px] text-red-200/80 flex items-center gap-2">
-                              <span className="text-red-400">●</span>
-                              <span>Custom Route Planning</span>
-                            </div>
-                          )}
-                        </div>
+                  {/* Content Section */}
+                  <div className="p-5 md:p-6 flex-grow flex flex-col">
+                    {/* Header with Brand and Price */}
+                    <div className="flex justify-between items-start mb-3">
+                      <div className="flex-1 mr-4">
+                        <span className="text-luxora-gold text-[9px] uppercase tracking-[0.3em] mb-1 block font-bold opacity-80">
+                          {car.brand}
+                        </span>
+                        <h3 className="text-xl md:text-2xl font-serif font-bold text-white leading-tight">
+                          {car.model}
+                        </h3>
                       </div>
-                    )}
+                      <div className="text-right flex-shrink-0 bg-luxora-charcoal/80 rounded-lg p-3 border border-luxora-gold/20">
+                        <span className="text-luxora-gold font-bold text-xl md:text-2xl block">
+                          ₹{car.pricePerHour.toLocaleString("en-IN")}
+                        </span>
+                        <span className="text-white/40 text-[9px] uppercase tracking-widest block mt-1">
+                          / hour
+                        </span>
+                      </div>
+                    </div>
 
-                  {/* CTA Button */}
-                  <button
-                    onClick={() => onBook(car.id)}
-                    className="w-full mt-auto py-3.5 border-2 border-luxora-gold/50 text-luxora-gold uppercase tracking-[0.15em] text-[9px] font-bold hover:bg-luxora-gold hover:text-luxora-dark hover:border-luxora-gold transition-all duration-300 group-hover:border-luxora-gold/80 rounded-lg bg-luxora-dark/50 backdrop-blur-sm"
-                  >
-                    Reserve Now
-                  </button>
+                    {/* Description */}
+                    <p className="text-white/50 text-xs md:text-sm mb-4 font-light leading-relaxed line-clamp-2 italic border-l-2 border-luxora-gold/40 pl-3">
+                      {car.description}
+                    </p>
+
+                    {/* Features Grid */}
+                    <div className="grid grid-cols-2 gap-y-2.5 gap-x-3 mb-4 py-3 border-y border-white/5">
+                      {car.features.slice(0, 4).map((feature, idx) => (
+                        <div
+                          key={idx}
+                          className="flex items-center text-[9px] text-white/60 uppercase tracking-wider"
+                        >
+                          <div className="w-1.5 h-1.5 bg-luxora-gold rounded-full mr-2 opacity-70 flex-shrink-0"></div>
+                          <span className="line-clamp-1">{feature}</span>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* VIP Options Section */}
+                    {car.fleetTier === "VIP" &&
+                      car.vipOptions &&
+                      Object.values(car.vipOptions).some((v) => v) && (
+                        <div className="mb-4 p-3.5 bg-gradient-to-r from-red-900/30 to-red-900/10 border border-red-400/40 rounded-lg backdrop-blur-sm">
+                          <p className="text-red-300 text-[8px] uppercase tracking-[0.3em] font-bold mb-2.5 opacity-90">
+                            ✦ Premium VIP Services
+                          </p>
+                          <div className="space-y-1.5">
+                            {car.vipOptions.bodyguard && (
+                              <div className="text-[8px] text-red-200/80 flex items-center gap-2">
+                                <span className="text-red-400">●</span>
+                                <span>Professional Bodyguard</span>
+                              </div>
+                            )}
+                            {car.vipOptions.personalConcierge && (
+                              <div className="text-[8px] text-red-200/80 flex items-center gap-2">
+                                <span className="text-red-400">●</span>
+                                <span>Personal Concierge</span>
+                              </div>
+                            )}
+                            {car.vipOptions.premiumRefreshments && (
+                              <div className="text-[8px] text-red-200/80 flex items-center gap-2">
+                                <span className="text-red-400">●</span>
+                                <span>Premium Refreshments</span>
+                              </div>
+                            )}
+                            {car.vipOptions.customRoute && (
+                              <div className="text-[8px] text-red-200/80 flex items-center gap-2">
+                                <span className="text-red-400">●</span>
+                                <span>Custom Route Planning</span>
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                      )}
+
+                    {/* CTA Button */}
+                    <button
+                      onClick={() => onBook(car.id)}
+                      className="w-full mt-auto py-3.5 border-2 border-luxora-gold/50 text-luxora-gold uppercase tracking-[0.15em] text-[9px] font-bold hover:bg-luxora-gold hover:text-luxora-dark hover:border-luxora-gold transition-all duration-300 group-hover:border-luxora-gold/80 rounded-lg bg-luxora-dark/50 backdrop-blur-sm"
+                    >
+                      Reserve Now
+                    </button>
+                  </div>
                 </div>
+              );
+            })}
+            {filteredFleet.length === 0 && (
+              <div className="col-span-full text-center py-20">
+                <p className="text-white/20 italic font-serif text-xl tracking-widest">
+                  No assets available in this category currently.
+                </p>
               </div>
-            );
-          })}
-          {filteredFleet.length === 0 && (
-            <div className="col-span-full text-center py-20">
-              <p className="text-white/20 italic font-serif text-xl tracking-widest">
-                No assets available in this category currently.
-              </p>
-            </div>
-          )}
+            )}
+          </div>
         </div>
       </div>
-    </div>
     </section>
   );
 };
