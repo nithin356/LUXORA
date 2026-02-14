@@ -1,9 +1,25 @@
-
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 const AboutSection: React.FC = () => {
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <section className="py-24 md:py-32 bg-luxora-dark overflow-hidden relative border-t border-white/5">
+    <section className="pt-32 pb-24 md:pt-40 md:pb-32 bg-luxora-dark overflow-hidden relative border-t border-white/5">
+      {/* Parallax Background Text */}
+      <div 
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[20vw] font-serif font-black text-white/[0.02] uppercase tracking-[0.2em] pointer-events-none select-none z-0 whitespace-nowrap"
+        style={{ transform: `translate(-50%, calc(-50% + ${scrollY * 0.05}px))` }}
+      >
+        Heritage
+      </div>
       <div className="container mx-auto px-6 sm:px-12 md:px-16 lg:px-24 xl:px-48 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
           

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Page } from "../types";
 
 interface ServiceCategoryProps {
@@ -6,6 +6,15 @@ interface ServiceCategoryProps {
 }
 
 const ServicesSection: React.FC<ServiceCategoryProps> = ({ onNavigate }) => {
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
   const serviceCategories = [
     {
       id: "cars",
@@ -67,12 +76,18 @@ const ServicesSection: React.FC<ServiceCategoryProps> = ({ onNavigate }) => {
 
   return (
     <section
-      className="py-16 md:py-24 bg-luxora-dark relative overflow-hidden"
+      className="pt-32 pb-16 md:pt-40 md:pb-24 bg-luxora-dark relative overflow-hidden"
       id="services"
     >
       {/* Decorative BG element */}
-      <div className="absolute -top-40 -right-40 w-80 md:w-96 h-80 md:h-96 bg-luxora-gold/5 rounded-full blur-3xl"></div>
-      <div className="absolute -bottom-40 -left-40 w-80 md:w-96 h-80 md:h-96 bg-luxora-gold/3 rounded-full blur-3xl"></div>
+      <div 
+        className="absolute -top-40 -right-40 w-80 md:w-96 h-80 md:h-96 bg-luxora-gold/5 rounded-full blur-3xl"
+        style={{ transform: `translateY(${scrollY * 0.1}px)` }}
+      ></div>
+      <div 
+        className="absolute -bottom-40 -left-40 w-80 md:w-96 h-80 md:h-96 bg-luxora-gold/3 rounded-full blur-3xl"
+        style={{ transform: `translateY(${scrollY * -0.05}px)` }}
+      ></div>
 
       <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 relative z-10">
         <div className="mb-12 md:mb-20 reveal">

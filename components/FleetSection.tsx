@@ -112,7 +112,7 @@ const FleetSection: React.FC<FleetSectionProps> = ({ onBook }) => {
   });
 
   return (
-    <section className="py-24 bg-luxora-dark" id="fleet">
+    <section className="pt-32 pb-24 bg-luxora-dark" id="fleet">
       <div className="container mx-auto px-6 sm:px-12 md:px-16 lg:px-24 xl:px-48">
         <div className="text-center mb-16 reveal">
           <span className="text-luxora-gold font-serif text-[10px] md:text-xs mb-4 tracking-[0.6em] block uppercase">

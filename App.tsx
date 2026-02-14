@@ -153,7 +153,7 @@ const App: React.FC = () => {
         return <BookingForm />;
       case Page.Properties:
         return (
-          <section className="relative py-48 bg-luxora-dark min-h-screen flex flex-col items-center justify-center px-6 overflow-hidden">
+          <section className="relative pt-32 pb-48 bg-luxora-dark min-h-screen flex flex-col items-center justify-center px-6 overflow-hidden">
             <BackgroundSlideshow
               images={[
                 "/images/fleet/properties/1.jpg",
@@ -180,7 +180,7 @@ const App: React.FC = () => {
         );
       case Page.LuxuryProducts:
         return (
-          <section className="relative py-48 bg-luxora-dark min-h-screen flex flex-col items-center justify-center px-6 overflow-hidden">
+          <section className="relative pt-32 pb-48 bg-luxora-dark min-h-screen flex flex-col items-center justify-center px-6 overflow-hidden">
             <BackgroundSlideshow
               images={[
                 "/images/fleet/luxury-goods/1.png",
@@ -207,7 +207,7 @@ const App: React.FC = () => {
         );
       case Page.CharteredFlights:
         return (
-          <section className="relative py-48 bg-luxora-dark min-h-screen flex flex-col items-center justify-center px-6 overflow-hidden">
+          <section className="relative pt-32 pb-48 bg-luxora-dark min-h-screen flex flex-col items-center justify-center px-6 overflow-hidden">
             <BackgroundSlideshow
               images={[
                 "/images/fleet/jets/1.jpg",
@@ -233,7 +233,7 @@ const App: React.FC = () => {
         );
       case Page.HelicopterService:
         return (
-          <section className="relative py-48 bg-luxora-dark min-h-screen flex flex-col items-center justify-center px-6 overflow-hidden">
+          <section className="relative pt-32 pb-48 bg-luxora-dark min-h-screen flex flex-col items-center justify-center px-6 overflow-hidden">
             <BackgroundSlideshow
               images={[
                 "/images/fleet/helicopter/1.webp",
@@ -260,7 +260,7 @@ const App: React.FC = () => {
         );
       case Page.YachtService:
         return (
-          <section className="relative py-48 bg-luxora-dark min-h-screen flex flex-col items-center justify-center px-6 overflow-hidden">
+          <section className="relative pt-32 pb-48 bg-luxora-dark min-h-screen flex flex-col items-center justify-center px-6 overflow-hidden">
             <BackgroundSlideshow
               images={[
                 "/images/fleet/yacht/1.jpg",

@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Page } from '../types';
 
 interface HeroProps {
@@ -76,6 +76,19 @@ const slides = [
 const Hero: React.FC<HeroProps> = ({ onExplore }) => {
   const [current, setCurrent] = useState(0);
 
+  const [scrollY, setScrollY] = useState(0);
+  const heroRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (heroRef.current) {
+        setScrollY(window.scrollY);
+      }
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrent((prev) => (prev + 1) % slides.length);
@@ -84,7 +97,10 @@ const Hero: React.FC<HeroProps> = ({ onExplore }) => {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-luxora-dark">
+    <section 
+      ref={heroRef}
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-luxora-dark"
+    >
       {/* Background Slides */}
       {slides.map((slide, idx) => (
         <div 
@@ -95,6 +111,10 @@ const Hero: React.FC<HeroProps> = ({ onExplore }) => {
             src={slide.image} 
             alt={slide.tag} 
             className={`w-full h-full object-cover transition-transform duration-[6000ms] ease-linear ${idx === current ? 'scale-110' : 'scale-100'}`}
+            style={{ 
+              transform: `translateY(${scrollY * 0.4}px) scale(${idx === current ? 1.1 : 1})`,
+              transition: idx === current ? 'transform 6000ms linear, opacity 1000ms ease-in-out' : 'opacity 1000ms ease-in-out'
+            }}
             onError={(e) => {
               if (slide.fallback) {
                 const target = e.target as HTMLImageElement;
@@ -107,7 +127,10 @@ const Hero: React.FC<HeroProps> = ({ onExplore }) => {
         </div>
       ))}
 
-      <div className="container mx-auto px-6 sm:px-12 md:px-16 lg:px-24 xl:px-48 relative z-10 py-24 flex flex-col items-center md:items-start text-center md:text-left">
+      <div 
+        className="container mx-auto px-6 sm:px-12 md:px-16 lg:px-24 xl:px-48 relative z-10 py-24 flex flex-col items-center md:items-start text-center md:text-left"
+        style={{ transform: `translateY(${scrollY * -0.2}px)` }}
+      >
         <div className="max-w-2xl lg:max-w-3xl">
           {slides.map((slide, idx) => (
             <div 

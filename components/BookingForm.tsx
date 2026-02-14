@@ -89,7 +89,7 @@ const BookingForm: React.FC = () => {
 
   if (submitted) {
     return (
-      <section className="py-24 bg-luxora-dark min-h-screen flex items-center">
+      <section className="pt-32 pb-24 bg-luxora-dark min-h-screen flex items-center">
         <div className="container mx-auto px-6 text-center">
           <div className="max-w-xl mx-auto bg-luxora-charcoal p-12 border border-luxora-gold/30 rounded-sm shadow-2xl">
             <div className="w-20 h-20 bg-luxora-gold/20 rounded-full flex items-center justify-center mx-auto mb-8">
@@ -127,7 +127,7 @@ const BookingForm: React.FC = () => {
   }
 
   return (
-    <section className="py-24 bg-luxora-dark overflow-hidden">
+    <section className="pt-32 pb-24 bg-luxora-dark overflow-hidden">
       <div className="container mx-auto px-6 reveal">
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row shadow-[0_30px_60px_rgba(0,0,0,0.5)] rounded-lg overflow-hidden border border-white/5 glass-card">
           {/* Left Side: Info */}
@@ -152,10 +152,7 @@ const BookingForm: React.FC = () => {
                     WhatsApp: +91 80503 23366
                   </a>
                 </div>
-                <div className="flex items-center text-luxora-dark">
-                  <span className="w-8">✉️</span>
-                  <span className="font-bold">concierge@luxora.in</span>
-                </div>
+
               </div>
             </div>
             <div className="mt-12 pt-12 border-t border-luxora-dark/10">
