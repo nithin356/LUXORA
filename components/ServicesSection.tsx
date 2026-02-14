@@ -1,5 +1,4 @@
 import React from "react";
-import { SERVICES } from "../constants";
 import { Page } from "../types";
 
 interface ServiceCategoryProps {
@@ -76,11 +75,11 @@ const ServicesSection: React.FC<ServiceCategoryProps> = ({ onNavigate }) => {
       <div className="absolute -bottom-40 -left-40 w-80 md:w-96 h-80 md:h-96 bg-luxora-gold/3 rounded-full blur-3xl"></div>
 
       <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 relative z-10">
-        <div className="mb-12 md:mb-20">
-          <span className="text-luxora-gold font-serif italic text-lg md:text-xl mb-3 md:mb-4 block">
+        <div className="mb-12 md:mb-20 reveal">
+          <span className="text-luxora-gold font-serif text-sm md:text-base mb-3 md:mb-4 block uppercase tracking-[0.4em] font-bold">
             Our Ecosystem
           </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-4 md:mb-6">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-extrabold text-white mb-4 md:mb-6 leading-none uppercase tracking-tighter">
             Curated Services For The Elite
           </h2>
           <p className="text-white/50 text-sm md:text-base max-w-2xl font-light leading-relaxed">
@@ -95,8 +94,8 @@ const ServicesSection: React.FC<ServiceCategoryProps> = ({ onNavigate }) => {
             <div
               key={category.id}
               onClick={() => onNavigate?.(category.page)}
-              className={`group relative h-64 md:h-72 overflow-hidden rounded-lg cursor-pointer transition-all duration-500 ${
-                category.highlight ? "lg:col-span-2 lg:row-span-2" : ""
+              className={`group relative h-64 md:h-72 overflow-hidden rounded-lg cursor-pointer transition-all duration-500 reveal gold-aura-hover ${
+                category.highlight ? "md:col-span-2" : ""
               }`}
             >
               {/* Background Image */}
@@ -121,7 +120,7 @@ const ServicesSection: React.FC<ServiceCategoryProps> = ({ onNavigate }) => {
                 <span className="text-luxora-gold text-xs md:text-sm uppercase tracking-[0.2em] font-bold mb-1 md:mb-2 opacity-80">
                   {category.subtitle}
                 </span>
-                <h3 className="text-lg md:text-2xl lg:text-3xl font-serif font-bold text-white mb-2 md:mb-3 group-hover:text-luxora-gold transition-colors">
+                <h3 className="text-lg md:text-2xl lg:text-3xl font-serif font-extrabold text-white mb-2 md:mb-3 group-hover:text-luxora-gold transition-colors uppercase tracking-tight">
                   {category.title}
                 </h3>
                 <p className="text-white/60 text-xs md:text-sm leading-relaxed mb-3 md:mb-4 line-clamp-2">
@@ -138,34 +137,16 @@ const ServicesSection: React.FC<ServiceCategoryProps> = ({ onNavigate }) => {
           ))}
         </div>
 
-        {/* Quick Services */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 border-t border-white/5 pt-12 md:pt-16">
-          {SERVICES.map((service) => (
-            <div
-              key={service.id}
-              className="group p-6 md:p-8 bg-luxora-charcoal/50 border border-white/5 hover:border-luxora-gold/30 transition-all duration-500 flex flex-col items-start text-left rounded-lg"
-            >
-              <div className="text-3xl md:text-4xl mb-4 transform group-hover:scale-110 transition-transform duration-500">
-                {service.icon}
-              </div>
-              <h3 className="text-base md:text-lg font-serif font-bold text-white mb-2 md:mb-3 group-hover:text-luxora-gold transition-colors">
-                {service.title}
-              </h3>
-              <p className="text-white/40 text-xs md:text-sm leading-relaxed font-light">
-                {service.description}
-              </p>
-            </div>
-          ))}
-        </div>
+
 
         {/* Why Choose Luxora */}
-        <div className="mt-16 md:mt-24 border-t border-white/5 pt-12 md:pt-16">
-          <h3 className="text-xl md:text-2xl font-serif font-bold text-white mb-8 md:mb-12">
+        <div className="mt-16 md:mt-24 border-t border-white/5 pt-12 md:pt-16 reveal">
+          <h3 className="text-2xl md:text-3xl font-serif font-extrabold text-white mb-8 md:mb-12 uppercase tracking-tight">
             Why Choose Luxora
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
             <div className="flex gap-4 md:gap-6">
-              <div className="w-10 md:w-12 h-10 md:h-12 flex-shrink-0 border border-luxora-gold/30 rounded-full flex items-center justify-center text-luxora-gold font-serif italic text-lg md:text-xl">
+              <div className="w-10 md:w-12 h-10 md:h-12 flex-shrink-0 border-2 border-luxora-gold/30 rounded-full flex items-center justify-center text-luxora-gold font-serif font-black text-xl md:text-2xl">
                 1
               </div>
               <div>
@@ -179,7 +160,7 @@ const ServicesSection: React.FC<ServiceCategoryProps> = ({ onNavigate }) => {
               </div>
             </div>
             <div className="flex gap-4 md:gap-6">
-              <div className="w-10 md:w-12 h-10 md:h-12 flex-shrink-0 border border-luxora-gold/30 rounded-full flex items-center justify-center text-luxora-gold font-serif italic text-lg md:text-xl">
+              <div className="w-10 md:w-12 h-10 md:h-12 flex-shrink-0 border-2 border-luxora-gold/30 rounded-full flex items-center justify-center text-luxora-gold font-serif font-black text-xl md:text-2xl">
                 2
               </div>
               <div>
@@ -193,7 +174,7 @@ const ServicesSection: React.FC<ServiceCategoryProps> = ({ onNavigate }) => {
               </div>
             </div>
             <div className="flex gap-4 md:gap-6">
-              <div className="w-10 md:w-12 h-10 md:h-12 flex-shrink-0 border border-luxora-gold/30 rounded-full flex items-center justify-center text-luxora-gold font-serif italic text-lg md:text-xl">
+              <div className="w-10 md:w-12 h-10 md:h-12 flex-shrink-0 border-2 border-luxora-gold/30 rounded-full flex items-center justify-center text-luxora-gold font-serif font-black text-xl md:text-2xl">
                 3
               </div>
               <div>

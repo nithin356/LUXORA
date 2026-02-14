@@ -33,7 +33,7 @@ const Navbar: React.FC<NavbarProps> = ({ activePage, setPage }) => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled || isMenuOpen ? "bg-luxora-dark/95 backdrop-blur-md py-2 sm:py-3 shadow-2xl" : "bg-transparent py-3 sm:py-5"}`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${isScrolled || isMenuOpen ? "glass-nav py-2 sm:py-3 shadow-2xl border-b border-white/5" : "bg-transparent py-3 sm:py-5"}`}
     >
       <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 flex justify-between items-center">
         <div
@@ -56,9 +56,10 @@ const Navbar: React.FC<NavbarProps> = ({ activePage, setPage }) => {
             <button
               key={item.value}
               onClick={() => handleNavClick(item.value)}
-              className={`text-xs lg:text-sm uppercase tracking-widest font-medium transition-colors whitespace-nowrap ${activePage === item.value ? "text-luxora-gold underline underline-offset-8" : "text-white/70 hover:text-luxora-gold"}`}
+              className={`text-xs lg:text-sm uppercase tracking-widest font-medium transition-all duration-300 relative group/nav ${activePage === item.value ? "text-luxora-gold" : "text-white/70 hover:text-luxora-gold"}`}
             >
-              {item.label}
+              <span className="relative z-10">{item.label}</span>
+              <span className={`absolute -bottom-2 left-0 w-full h-[1px] bg-luxora-gold transition-transform duration-500 scale-x-0 group-hover/nav:scale-x-100 ${activePage === item.value ? "scale-x-100" : ""}`}></span>
             </button>
           ))}
           <button
@@ -149,7 +150,7 @@ const Navbar: React.FC<NavbarProps> = ({ activePage, setPage }) => {
               <button
                 key={item.value}
                 onClick={() => handleNavClick(item.value)}
-                className={`text-base sm:text-lg md:text-xl uppercase tracking-[0.3em] sm:tracking-[0.4em] font-serif transition-all duration-700 text-left relative group ${
+                className={`text-lg sm:text-2xl md:text-3xl uppercase tracking-[0.2em] sm:tracking-[0.3em] font-serif font-black transition-all duration-700 text-left relative group ${
                   activePage === item.value
                     ? "text-luxora-gold pl-4 sm:pl-6"
                     : "text-white/60 hover:text-white pl-0"

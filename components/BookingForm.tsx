@@ -127,9 +127,9 @@ const BookingForm: React.FC = () => {
   }
 
   return (
-    <section className="py-24 bg-luxora-dark">
-      <div className="container mx-auto px-6">
-        <div className="max-w-5xl mx-auto flex flex-col md:flex-row shadow-2xl rounded-lg overflow-hidden border border-white/5">
+    <section className="py-24 bg-luxora-dark overflow-hidden">
+      <div className="container mx-auto px-6 reveal">
+        <div className="max-w-5xl mx-auto flex flex-col md:flex-row shadow-[0_30px_60px_rgba(0,0,0,0.5)] rounded-lg overflow-hidden border border-white/5 glass-card">
           {/* Left Side: Info */}
           <div className="md:w-1/3 bg-luxora-gold p-10 flex flex-col justify-between">
             <div>
@@ -142,18 +142,14 @@ const BookingForm: React.FC = () => {
               </p>
               <div className="space-y-4">
                 <div className="flex items-center text-luxora-dark">
-                  <span className="w-8">📞</span>
-                  <span className="font-bold">+91 80 4444 8888</span>
-                </div>
-                <div className="flex items-center text-luxora-dark">
                   <span className="w-8">💬</span>
                   <a
-                    href="https://wa.me/918050313366"
+                    href="https://wa.me/918050213366"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="font-bold hover:underline"
                   >
-                    WhatsApp: +91 80503 13366
+                    WhatsApp: +91 80503 23366
                   </a>
                 </div>
                 <div className="flex items-center text-luxora-dark">
@@ -364,9 +360,7 @@ const BookingForm: React.FC = () => {
                   onChange={handleInputChange}
                   className="w-full bg-luxora-dark border border-white/10 p-3 text-white focus:outline-none focus:border-luxora-gold transition-colors"
                 >
-                  <option>Airport Transfer</option>
-                  <option>Corporate Event</option>
-                  <option>Wedding Service</option>
+                  <option>Elite Chauffeur Service</option>
                   <option>Full Day Disposal</option>
                 </select>
               </div>

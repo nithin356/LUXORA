@@ -34,6 +34,13 @@ const AdminPage: React.FC = () => {
   const [previews, setPreviews] = useState<string[]>([]);
   const [isProcessing, setIsProcessing] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [activeStep, setActiveStep] = useState(0);
+
+  const formSteps = [
+    { title: "Basic Details", icon: "📝" },
+    { title: "Specs & VIP", icon: "⚙️" },
+    { title: "Gallery & Description", icon: "🖼️" },
+  ];
 
   // Form State
   const [formData, setFormData] = useState<Partial<Car>>({
@@ -281,6 +288,7 @@ const AdminPage: React.FC = () => {
     setErrors({});
     setIsEditing(null);
     setShowForm(false);
+    setActiveStep(0);
   };
 
   const filteredFleet = fleet.filter(
@@ -353,7 +361,7 @@ const AdminPage: React.FC = () => {
           </form>
 
           <div className="mt-8 text-center text-white/20 text-[8px] uppercase tracking-[0.4em]">
-            Luxora Central Security Hub
+            Luxora Security Hub
           </div>
         </div>
       </section>
@@ -363,19 +371,10 @@ const AdminPage: React.FC = () => {
   // Dashboard Selector Screen
   if (activeMainCategory === null) {
     return (
-      <section className="min-h-screen bg-luxora-dark pt-20 pb-8 px-4 sm:px-6 md:px-8 lg:px-12">
+      <section className="min-h-screen bg-luxora-dark pt-32 sm:pt-40 pb-8 px-4 sm:px-6 md:px-8 lg:px-12">
         <div className="container mx-auto text-center">
-          <div className="w-20 h-20 border-2 border-luxora-gold rounded-full flex items-center justify-center mx-auto mb-8">
-            <span className="text-luxora-gold font-serif font-bold text-3xl">
-              L
-            </span>
-          </div>
-          <h2 className="text-3xl sm:text-5xl font-serif font-bold text-white uppercase tracking-widest mb-4">
-            Luxora <span className="gold-text">Central</span>
-          </h2>
-          <p className="text-white/30 text-[10px] sm:text-xs uppercase tracking-[0.5em] mb-12 sm:mb-24">
-            Enterprise Resource Management
-          </p>
+
+
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 max-w-6xl mx-auto px-2">
             {/* Cars Module */}
@@ -518,7 +517,7 @@ const AdminPage: React.FC = () => {
   }
 
   return (
-    <section className="min-h-screen bg-luxora-dark pt-24 pb-12">
+    <section className="min-h-screen bg-luxora-dark pt-32 pb-12">
       <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
         {/* Module Header & Breadcrumb */}
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-8 lg:mb-12 gap-4 lg:gap-8 pb-6 lg:pb-8 border-b border-white/5">
@@ -645,364 +644,183 @@ const AdminPage: React.FC = () => {
                   </div>
                 </div>
 
-                <form
-                  onSubmit={handleSubmit}
-                  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6"
-                >
-                  <div className="space-y-6">
-                    <div>
-                      <label
-                        className={`block text-[10px] uppercase tracking-widest mb-2 font-bold ${errors.brand ? "text-red-500" : "text-white/40"}`}
-                      >
-                        Brand Name
-                      </label>
-                      <input
-                        required
-                        name="brand"
-                        value={formData.brand}
-                        onChange={handleInputChange}
-                        className={`w-full bg-luxora-dark border ${errors.brand ? "border-red-500/50" : "border-white/10"} p-3 text-white focus:border-luxora-gold outline-none transition-all`}
-                        placeholder="e.g. Rolls Royce"
-                      />
-                      {errors.brand && (
-                        <p className="text-red-500 text-[8px] mt-1 uppercase tracking-widest">
-                          {errors.brand}
-                        </p>
-                      )}
-                    </div>
-                    <div>
-                      <label
-                        className={`block text-[10px] uppercase tracking-widest mb-2 font-bold ${errors.model ? "text-red-500" : "text-white/40"}`}
-                      >
-                        Model
-                      </label>
-                      <input
-                        required
-                        name="model"
-                        value={formData.model}
-                        onChange={handleInputChange}
-                        className={`w-full bg-luxora-dark border ${errors.model ? "border-red-500/50" : "border-white/10"} p-3 text-white focus:border-luxora-gold outline-none transition-all`}
-                        placeholder="e.g. Phantom VIII"
-                      />
-                      {errors.model && (
-                        <p className="text-red-500 text-[8px] mt-1 uppercase tracking-widest">
-                          {errors.model}
-                        </p>
-                      )}
-                    </div>
-                    <div>
-                      <label className="block text-white/40 text-[10px] uppercase tracking-widest mb-2 font-bold">
-                        Asset Class
-                      </label>
-                      <select
-                        name="type"
-                        value={formData.type}
-                        onChange={handleInputChange}
-                        className="w-full bg-luxora-dark border border-white/10 p-3 text-white focus:border-luxora-gold outline-none transition-all"
-                      >
-                        <option value="Luxury">Ultra-Luxury</option>
-                        <option value="Sedan">Executive Sedan</option>
-                        <option value="SUV">Elite SUV</option>
-                      </select>
-                    </div>
-                    <div>
-                      <label className="block text-white/40 text-[10px] uppercase tracking-widest mb-2 font-bold">
-                        Fleet Tier
-                      </label>
-                      <select
-                        name="fleetTier"
-                        value={formData.fleetTier || "Normal"}
-                        onChange={handleInputChange}
-                        className="w-full bg-luxora-dark border border-white/10 p-3 text-white focus:border-luxora-gold outline-none transition-all"
-                      >
-                        <option value="Normal">Normal</option>
-                        <option value="Elite">Elite</option>
-                        <option value="Platinum">Platinum</option>
-                        <option value="VIP">VIP</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  <div className="space-y-6">
-                    <div>
-                      <label
-                        className={`block text-[10px] uppercase tracking-widest mb-2 font-bold ${errors.pricePerHour ? "text-red-500" : "text-white/40"}`}
-                      >
-                        Pricing (₹)
-                      </label>
-                      <div className="relative">
-                        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-white/20">
-                          ₹
-                        </span>
-                        <input
-                          required
-                          type="number"
-                          name="pricePerHour"
-                          value={formData.pricePerHour}
-                          onChange={handleInputChange}
-                          className={`w-full bg-luxora-dark border ${errors.pricePerHour ? "border-red-500/50" : "border-white/10"} p-3 pl-8 text-white focus:border-luxora-gold outline-none transition-all`}
-                        />
-                      </div>
-                      {errors.pricePerHour && (
-                        <p className="text-red-500 text-[8px] mt-1 uppercase tracking-widest">
-                          {errors.pricePerHour}
-                        </p>
-                      )}
-                      <p className="mt-1 text-[8px] text-white/20 uppercase tracking-widest">
-                        {activeCarSubCategory === "Sales"
-                          ? "Total Price"
-                          : "Rate Per Period"}
-                      </p>
-                    </div>
-                    <div>
-                      <label className="block text-white/40 text-[10px] uppercase tracking-widest mb-2 font-bold">
-                        Seating Capacity
-                      </label>
-                      <input
-                        required
-                        type="number"
-                        name="seats"
-                        value={formData.seats}
-                        onChange={handleInputChange}
-                        className="w-full bg-luxora-dark border border-white/10 p-3 text-white focus:border-luxora-gold outline-none transition-all"
-                      />
-                    </div>
-                    {formData.fleetTier === "VIP" && (
-                      <div>
-                        <label className="block text-luxora-gold text-[10px] uppercase tracking-widest mb-3 font-bold">
-                          VIP Package Options
-                        </label>
-                        <div className="space-y-2 bg-luxora-dark/40 p-3 border border-luxora-gold/20 rounded-sm">
-                          <label className="flex items-center gap-3 cursor-pointer hover:text-luxora-gold transition-colors">
-                            <input
-                              type="checkbox"
-                              checked={formData.vipOptions?.bodyguard || false}
-                              onChange={() =>
-                                handleVipOptionChange("bodyguard")
-                              }
-                              className="w-4 h-4 accent-luxora-gold"
-                            />
-                            <span className="text-white/80 text-[10px] uppercase tracking-widest font-bold">
-                              Professional Bodyguard
-                            </span>
-                          </label>
-                          <label className="flex items-center gap-3 cursor-pointer hover:text-luxora-gold transition-colors">
-                            <input
-                              type="checkbox"
-                              checked={
-                                formData.vipOptions?.personalConcierge || false
-                              }
-                              onChange={() =>
-                                handleVipOptionChange("personalConcierge")
-                              }
-                              className="w-4 h-4 accent-luxora-gold"
-                            />
-                            <span className="text-white/80 text-[10px] uppercase tracking-widest font-bold">
-                              Personal Concierge
-                            </span>
-                          </label>
-                          <label className="flex items-center gap-3 cursor-pointer hover:text-luxora-gold transition-colors">
-                            <input
-                              type="checkbox"
-                              checked={
-                                formData.vipOptions?.premiumRefreshments ||
-                                false
-                              }
-                              onChange={() =>
-                                handleVipOptionChange("premiumRefreshments")
-                              }
-                              className="w-4 h-4 accent-luxora-gold"
-                            />
-                            <span className="text-white/80 text-[10px] uppercase tracking-widest font-bold">
-                              Premium Refreshments
-                            </span>
-                          </label>
-                          <label className="flex items-center gap-3 cursor-pointer hover:text-luxora-gold transition-colors">
-                            <input
-                              type="checkbox"
-                              checked={
-                                formData.vipOptions?.customRoute || false
-                              }
-                              onChange={() =>
-                                handleVipOptionChange("customRoute")
-                              }
-                              className="w-4 h-4 accent-luxora-gold"
-                            />
-                            <span className="text-white/80 text-[10px] uppercase tracking-widest font-bold">
-                              Custom Route Planning
-                            </span>
-                          </label>
-                        </div>
-                      </div>
-                    )}
-                    <div>
-                      <label
-                        className={`block text-[10px] uppercase tracking-widest mb-2 font-bold ${errors.images ? "text-red-500" : "text-white/40"}`}
-                      >
-                        Asset Gallery
-                      </label>
-                      <div
-                        className={`bg-luxora-dark border-2 border-dashed ${errors.images ? "border-red-500/20" : "border-white/5"} p-4 text-center`}
-                      >
-                        <div className="flex flex-col items-center gap-4">
-                          <input
-                            type="file"
-                            id="file-upload"
-                            accept="image/*"
-                            multiple
-                            onChange={handleFileUpload}
-                            className="hidden"
-                          />
-                          <label
-                            htmlFor="file-upload"
-                            className="cursor-pointer px-6 py-3 border border-luxora-gold/20 text-[10px] uppercase tracking-widest hover:bg-luxora-gold hover:text-luxora-dark transition-all font-bold"
-                          >
-                            Add Images
-                          </label>
-
-                          {/* Gallery Preview */}
-                          {(previews.length > 0 ||
-                            (formData.images &&
-                              formData.images.length > 0)) && (
-                            <div className="grid grid-cols-4 gap-2 w-full mt-4 max-h-40 overflow-y-auto p-2 bg-black/20">
-                              {/* Existing server images */}
-                              {formData.images?.map((img, idx) => (
-                                <div
-                                  key={`exist-${idx}`}
-                                  className="relative aspect-square border border-white/10 group/img"
-                                >
-                                  <img
-                                    src={img}
-                                    className="w-full h-full object-cover"
-                                    alt="Preview"
-                                  />
-                                  <button
-                                    type="button"
-                                    onClick={() => removePreview(idx, true)}
-                                    className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 text-white text-[10px] flex items-center justify-center rounded-full opacity-0 group-hover/img:opacity-100 transition-all"
-                                  >
-                                    ×
-                                  </button>
-                                </div>
-                              ))}
-                              {/* New local previews */}
-                              {previews.map((img, idx) => (
-                                <div
-                                  key={`new-${idx}`}
-                                  className="relative aspect-square border border-luxora-gold/20 group/img"
-                                >
-                                  <img
-                                    src={img}
-                                    className="w-full h-full object-cover"
-                                    alt="Preview"
-                                  />
-                                  <div className="absolute top-0 left-0 bg-luxora-gold text-[8px] px-1 text-luxora-dark font-bold">
-                                    NEW
-                                  </div>
-                                  <button
-                                    type="button"
-                                    onClick={() => removePreview(idx, false)}
-                                    className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 text-white text-[10px] flex items-center justify-center rounded-full opacity-0 group-hover/img:opacity-100 transition-all"
-                                  >
-                                    ×
-                                  </button>
-                                </div>
-                              ))}
-                            </div>
-                          )}
-
-                          {errors.images && (
-                            <p className="text-red-500 text-[8px] uppercase tracking-widest mt-2">
-                              {errors.images}
-                            </p>
-                          )}
-                          <p className="text-white/20 text-[8px] uppercase tracking-widest mt-2">
-                            Max 10 high-fidelity images
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="space-y-6">
-                    <div>
-                      <label
-                        className={`block text-[10px] uppercase tracking-widest mb-2 font-bold ${errors.description ? "text-red-500" : "text-white/40"}`}
-                      >
-                        Marketing Statement
-                      </label>
-                      <textarea
-                        required
-                        name="description"
-                        value={formData.description}
-                        onChange={handleInputChange}
-                        rows={3}
-                        className={`w-full bg-luxora-dark border ${errors.description ? "border-red-500/50" : "border-white/10"} p-3 text-white focus:border-luxora-gold outline-none transition-all`}
-                        placeholder="Craft a compelling description..."
-                      />
-                      {errors.description && (
-                        <p className="text-red-500 text-[8px] mt-1 uppercase tracking-widest">
-                          {errors.description}
-                        </p>
-                      )}
-                    </div>
-                    <div>
-                      <label className="block text-white/40 text-[10px] uppercase tracking-widest mb-2 font-bold">
-                        Elite Features
-                      </label>
-                      <div className="flex gap-2 mb-3">
-                        <input
-                          value={featureInput}
-                          onChange={(e) => setFeatureInput(e.target.value)}
-                          onKeyDown={(e) =>
-                            e.key === "Enter" &&
-                            (e.preventDefault(), addFeature())
-                          }
-                          className="flex-1 bg-luxora-dark border border-white/10 p-3 text-white outline-none focus:border-luxora-gold transition-all"
-                          placeholder="Add amenity..."
-                        />
+                {/* Step Indicators */}
+                <div className="flex justify-center mb-10 overflow-x-auto pb-4 no-scrollbar">
+                  <div className="flex items-center gap-2 sm:gap-4 px-2">
+                    {formSteps.map((step, idx) => (
+                      <React.Fragment key={idx}>
                         <button
                           type="button"
-                          onClick={addFeature}
-                          className="px-4 bg-luxora-gold text-luxora-dark font-bold"
+                          onClick={() => setActiveStep(idx)}
+                          className={`flex items-center gap-2 px-4 py-2 rounded-full border transition-all whitespace-nowrap ${
+                            activeStep === idx
+                              ? "border-luxora-gold bg-luxora-gold text-luxora-dark font-bold shadow-[0_0_20px_rgba(212,175,55,0.3)]"
+                              : "border-white/10 text-white/40 hover:border-white/20"
+                          }`}
                         >
-                          +
-                        </button>
-                      </div>
-                      <div className="flex flex-wrap gap-2">
-                        {formData.features?.map((f) => (
-                          <span
-                            key={f}
-                            className="bg-luxora-dark px-2 py-1 text-[8px] text-luxora-gold border border-luxora-gold/20 rounded-sm flex items-center uppercase tracking-widest"
-                          >
-                            {f}
-                            <button
-                              type="button"
-                              onClick={() => removeFeature(f)}
-                              className="ml-2 text-white/40 hover:text-white"
-                            >
-                              ×
-                            </button>
+                          <span className="text-sm">{step.icon}</span>
+                          <span className="text-[10px] uppercase tracking-widest">
+                            {step.title}
                           </span>
-                        ))}
+                        </button>
+                        {idx < formSteps.length - 1 && (
+                          <div className="w-4 sm:w-8 h-[1px] bg-white/10 hidden sm:block"></div>
+                        )}
+                      </React.Fragment>
+                    ))}
+                  </div>
+                </div>
+
+                <form onSubmit={handleSubmit} className="space-y-8 animate-in fade-in duration-500">
+                  {/* STEP 0: BASIC DETAILS */}
+                  {activeStep === 0 && (
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="space-y-6">
+                        <div>
+                          <label className={`block text-[10px] uppercase tracking-widest mb-2 font-bold ${errors.brand ? "text-red-500" : "text-white/40"}`}>Brand Name</label>
+                          <input required name="brand" value={formData.brand} onChange={handleInputChange} className={`w-full bg-luxora-dark border ${errors.brand ? "border-red-500/50" : "border-white/10"} p-3 text-white focus:border-luxora-gold outline-none transition-all`} placeholder="e.g. Rolls Royce" />
+                          {errors.brand && <p className="text-red-500 text-[8px] mt-1 uppercase tracking-widest">{errors.brand}</p>}
+                        </div>
+                        <div>
+                          <label className={`block text-[10px] uppercase tracking-widest mb-2 font-bold ${errors.model ? "text-red-500" : "text-white/40"}`}>Model</label>
+                          <input required name="model" value={formData.model} onChange={handleInputChange} className={`w-full bg-luxora-dark border ${errors.model ? "border-red-500/50" : "border-white/10"} p-3 text-white focus:border-luxora-gold outline-none transition-all`} placeholder="e.g. Phantom VIII" />
+                          {errors.model && <p className="text-red-500 text-[8px] mt-1 uppercase tracking-widest">{errors.model}</p>}
+                        </div>
+                      </div>
+                      <div className="space-y-6">
+                        <div>
+                          <label className="block text-white/40 text-[10px] uppercase tracking-widest mb-2 font-bold">Asset Class</label>
+                          <select name="type" value={formData.type} onChange={handleInputChange} className="w-full bg-luxora-dark border border-white/10 p-3 text-white focus:border-luxora-gold outline-none transition-all">
+                            <option value="Luxury">Ultra-Luxury</option>
+                            <option value="Sedan">Executive Sedan</option>
+                            <option value="SUV">Elite SUV</option>
+                          </select>
+                        </div>
+                        <div>
+                          <label className="block text-white/40 text-[10px] uppercase tracking-widest mb-2 font-bold">Fleet Tier</label>
+                          <select name="fleetTier" value={formData.fleetTier || "Normal"} onChange={handleInputChange} className="w-full bg-luxora-dark border border-white/10 p-3 text-white focus:border-luxora-gold outline-none transition-all">
+                            <option value="Normal">Normal</option>
+                            <option value="Elite">Elite</option>
+                            <option value="Platinum">Platinum</option>
+                            <option value="VIP">VIP</option>
+                          </select>
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  )}
 
-                  <div className="md:col-span-3 pt-6 border-t border-white/5 flex justify-end gap-4">
-                    <button
-                      type="button"
-                      onClick={resetForm}
-                      className="px-8 py-3 text-white/60 uppercase tracking-widest text-[10px] hover:text-white"
-                    >
-                      Discard
-                    </button>
-                    <button
-                      type="submit"
-                      className="px-12 py-3 gold-gradient text-luxora-dark font-bold uppercase tracking-widest rounded-sm shadow-xl"
-                    >
-                      {isEditing ? "Authorize Update" : "Initialize Asset"}
-                    </button>
+                  {/* STEP 1: SPECS & VIP */}
+                  {activeStep === 1 && (
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                      <div className="space-y-6">
+                        <div>
+                          <label className={`block text-[10px] uppercase tracking-widest mb-2 font-bold ${errors.pricePerHour ? "text-red-500" : "text-white/40"}`}>Pricing (₹)</label>
+                          <div className="relative">
+                            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-white/20">₹</span>
+                            <input required type="number" name="pricePerHour" value={formData.pricePerHour} onChange={handleInputChange} className={`w-full bg-luxora-dark border ${errors.pricePerHour ? "border-red-500/50" : "border-white/10"} p-3 pl-8 text-white focus:border-luxora-gold outline-none transition-all`} />
+                          </div>
+                          {errors.pricePerHour && <p className="text-red-500 text-[8px] mt-1 uppercase tracking-widest">{errors.pricePerHour}</p>}
+                          <p className="mt-1 text-[8px] text-white/20 uppercase tracking-widest">{activeCarSubCategory === "Sales" ? "Total Price" : "Rate Per Period"}</p>
+                        </div>
+                        <div>
+                          <label className="block text-white/40 text-[10px] uppercase tracking-widest mb-2 font-bold">Seating Capacity</label>
+                          <input required type="number" name="seats" value={formData.seats} onChange={handleInputChange} className="w-full bg-luxora-dark border border-white/10 p-3 text-white focus:border-luxora-gold outline-none transition-all" />
+                        </div>
+                      </div>
+                      <div className="bg-luxora-dark/30 p-6 rounded-sm border border-white/5 h-full">
+                        <label className="block text-luxora-gold text-[10px] uppercase tracking-widest mb-4 font-bold">VIP Package Options</label>
+                        {formData.fleetTier === "VIP" ? (
+                          <div className="space-y-3">
+                            {["bodyguard", "personalConcierge", "premiumRefreshments", "customRoute"].map((opt) => (
+                              <label key={opt} className="flex items-center gap-3 cursor-pointer hover:text-luxora-gold transition-colors">
+                                <input type="checkbox" checked={formData.vipOptions?.[opt as keyof typeof formData.vipOptions] || false} onChange={() => handleVipOptionChange(opt as any)} className="w-4 h-4 accent-luxora-gold" />
+                                <span className="text-white/80 text-[10px] uppercase tracking-widest font-bold">{opt.replace(/([A-Z])/g, ' $1')}</span>
+                              </label>
+                            ))}
+                          </div>
+                        ) : (
+                          <p className="text-white/20 text-[10px] uppercase tracking-widest italic pt-4">VIP options are available for the VIP Tier only.</p>
+                        )}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* STEP 2: MEDIA & CONTENT */}
+                  {activeStep === 2 && (
+                    <div className="space-y-8">
+                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        <div>
+                          <label className={`block text-[10px] uppercase tracking-widest mb-2 font-bold ${errors.images ? "text-red-500" : "text-white/40"}`}>Asset Gallery</label>
+                          <div className={`bg-luxora-dark border-2 border-dashed ${errors.images ? "border-red-500/20" : "border-white/5"} p-6 text-center rounded-sm`}>
+                            <input type="file" id="file-upload" accept="image/*" multiple onChange={handleFileUpload} className="hidden" />
+                            <label htmlFor="file-upload" className="cursor-pointer px-8 py-3 bg-luxora-gold/10 border border-luxora-gold/30 text-luxora-gold text-[10px] uppercase tracking-widest hover:bg-luxora-gold hover:text-luxora-dark transition-all font-bold rounded-sm">Add High-Fidelity Images</label>
+                            
+                            {(previews.length > 0 || (formData.images && formData.images.length > 0)) && (
+                              <div className="grid grid-cols-5 gap-2 w-full mt-6 max-h-48 overflow-y-auto p-2 bg-black/20 rounded-sm">
+                                {formData.images?.map((img, idx) => (
+                                  <div key={`exist-${idx}`} className="relative aspect-square border border-white/10 group/img">
+                                    <img src={img} className="w-full h-full object-cover" alt="Preview" />
+                                    <button type="button" onClick={() => removePreview(idx, true)} className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 text-white text-xs flex items-center justify-center rounded-full opacity-0 group-hover/img:opacity-100 transition-all shadow-xl">×</button>
+                                  </div>
+                                ))}
+                                {previews.map((img, idx) => (
+                                  <div key={`new-${idx}`} className="relative aspect-square border border-luxora-gold/20 group/img">
+                                    <img src={img} className="w-full h-full object-cover" alt="Preview" />
+                                    <div className="absolute top-0 left-0 bg-luxora-gold text-[8px] px-1 text-luxora-dark font-bold">NEW</div>
+                                    <button type="button" onClick={() => removePreview(idx, false)} className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 text-white text-xs flex items-center justify-center rounded-full opacity-0 group-hover/img:opacity-100 transition-all shadow-xl">×</button>
+                                  </div>
+                                ))}
+                              </div>
+                            )}
+                            {errors.images && <p className="text-red-500 text-[8px] uppercase tracking-widest mt-3">{errors.images}</p>}
+                          </div>
+                        </div>
+
+                        <div className="space-y-6">
+                          <div>
+                            <label className={`block text-[10px] uppercase tracking-widest mb-2 font-bold ${errors.description ? "text-red-500" : "text-white/40"}`}>Marketing Statement</label>
+                            <textarea required name="description" value={formData.description} onChange={handleInputChange} rows={3} className={`w-full bg-luxora-dark border ${errors.description ? "border-red-500/50" : "border-white/10"} p-4 text-white focus:border-luxora-gold outline-none transition-all rounded-sm`} placeholder="Craft a compelling description..." />
+                          </div>
+                          <div>
+                            <label className="block text-white/40 text-[10px] uppercase tracking-widest mb-2 font-bold">Elite Features</label>
+                            <div className="flex gap-2 mb-3">
+                              <input value={featureInput} onChange={(e) => setFeatureInput(e.target.value)} onKeyDown={(e) => e.key === "Enter" && (e.preventDefault(), addFeature())} className="flex-1 bg-luxora-dark border border-white/10 p-3 text-white outline-none focus:border-luxora-gold transition-all" placeholder="Add amenity..." />
+                              <button type="button" onClick={addFeature} className="px-5 bg-luxora-gold text-luxora-dark font-bold hover:scale-105 transition-transform">+</button>
+                            </div>
+                            <div className="flex flex-wrap gap-2">
+                              {formData.features?.map((f) => (
+                                <span key={f} className="bg-luxora-gold/10 px-3 py-1.5 text-[9px] text-luxora-gold border border-luxora-gold/20 rounded-sm flex items-center uppercase tracking-widest">
+                                  {f}
+                                  <button type="button" onClick={() => removeFeature(f)} className="ml-2 text-white/40 hover:text-white">×</button>
+                                </span>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  <div className="pt-8 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-4">
+                    <div className="flex gap-4 w-full sm:w-auto">
+                      {activeStep > 0 && (
+                        <button type="button" onClick={() => setActiveStep((p) => p - 1)} className="px-8 py-3 border border-white/10 text-white/60 uppercase tracking-widest text-[10px] hover:text-white hover:border-white/20 transition-all font-bold">← Back</button>
+                      )}
+                      <button type="button" onClick={resetForm} className="px-6 py-3 text-red-500/40 uppercase tracking-widest text-[10px] hover:text-red-500 transition-all font-bold">Discard</button>
+                    </div>
+
+                    {activeStep < formSteps.length - 1 ? (
+                      <button type="button" onClick={() => setActiveStep((p) => p + 1)} className="w-full sm:w-auto px-12 py-3 bg-white text-luxora-dark font-bold uppercase tracking-widest text-[10px] hover:bg-luxora-gold transition-all shadow-xl">Next: {formSteps[activeStep + 1].title} →</button>
+                    ) : (
+                      <button type="submit" disabled={isProcessing} className="w-full sm:w-auto px-16 py-3 gold-gradient text-luxora-dark font-bold uppercase tracking-widest text-[10px] rounded-sm shadow-2xl hover:opacity-90 active:scale-[0.98] transition-all flex items-center justify-center gap-3">
+                        {isProcessing ? (
+                          <>
+                            <div className="w-4 h-4 border-2 border-luxora-dark/20 border-t-luxora-dark rounded-full animate-spin"></div>
+                            Creating Asset...
+                          </>
+                        ) : isEditing ? "Authorize Update" : "Initialize Luxury Asset"}
+                      </button>
+                    )}
                   </div>
                 </form>
               </div>

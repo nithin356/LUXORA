@@ -61,11 +61,42 @@ const App: React.FC = () => {
 
   // Initial loader
   useEffect(() => {
+    // Hidden entry point for Admin portal: check URL for ?admin=1
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('admin') === '1') {
+      setActivePage(Page.Admin);
+      // Clean up URL
+      window.history.replaceState({}, '', window.location.pathname);
+    }
+
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 2000);
     return () => clearTimeout(timer);
   }, []);
+
+  // Scroll Reveal Observer
+  useEffect(() => {
+    if (isLoading) return;
+
+    const observerOptions = {
+      threshold: 0.15,
+      rootMargin: "0px 0px -50px 0px",
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("active");
+        }
+      });
+    }, observerOptions);
+
+    const revealElements = document.querySelectorAll(".reveal");
+    revealElements.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, [isLoading, activePage]);
 
   if (isLoading) {
     return (
@@ -132,14 +163,14 @@ const App: React.FC = () => {
               alt="Elite Mansion"
             />
             <div className="relative z-10 text-center">
-              <span className="text-luxora-gold font-serif italic text-xl mb-4 block">
+              <span className="text-luxora-gold font-serif text-sm tracking-[0.3em] uppercase mb-4 block">
                 Coming Soon
               </span>
               <h2 className="text-4xl md:text-8xl font-serif font-bold text-white mb-8 text-center uppercase tracking-widest leading-tight">
                 Luxora <span className="gold-text">Properties</span>
               </h2>
               <div className="w-24 h-[1px] bg-luxora-gold/50 mx-auto mb-10"></div>
-              <p className="text-white/60 max-w-xl mx-auto leading-relaxed text-lg font-light tracking-wide italic">
+              <p className="text-white/60 max-w-xl mx-auto leading-relaxed text-sm md:text-base font-light tracking-wide">
                 "We are currently curating an exclusive portfolio of elite real
                 estate and majestic estates. Arriving shortly for the discerning
                 investor."
@@ -159,14 +190,14 @@ const App: React.FC = () => {
               alt="Luxury Brands"
             />
             <div className="relative z-10 text-center">
-              <span className="text-luxora-gold font-serif italic text-xl mb-4 block">
+              <span className="text-luxora-gold font-serif text-sm tracking-[0.3em] uppercase mb-4 block">
                 Coming Soon
               </span>
               <h2 className="text-4xl md:text-8xl font-serif font-bold text-white mb-8 text-center uppercase tracking-widest leading-tight">
                 Elite <span className="gold-text">Goods</span>
               </h2>
               <div className="w-24 h-[1px] bg-luxora-gold/50 mx-auto mb-10"></div>
-              <p className="text-white/60 max-w-xl mx-auto leading-relaxed text-lg font-light tracking-wide italic">
+              <p className="text-white/60 max-w-xl mx-auto leading-relaxed text-sm md:text-base font-light tracking-wide">
                 "A curated marketplace for ultra-premium lifestyle products,
                 designer collections, and rare horological pieces from the
                 world's most iconic maisons."
@@ -186,14 +217,14 @@ const App: React.FC = () => {
               alt="Luxury Aviation"
             />
             <div className="relative z-10 text-center">
-              <span className="text-luxora-gold font-serif italic text-xl mb-4 block">
+              <span className="text-luxora-gold font-serif text-sm tracking-[0.3em] uppercase mb-4 block">
                 Coming Soon
               </span>
               <h2 className="text-4xl md:text-8xl font-serif font-bold text-white mb-8 text-center uppercase tracking-widest leading-tight">
                 Chartered <span className="gold-text">Flights</span>
               </h2>
               <div className="w-24 h-[1px] bg-luxora-gold/50 mx-auto mb-10"></div>
-              <p className="text-white/60 max-w-xl mx-auto leading-relaxed text-lg font-light tracking-wide italic">
+              <p className="text-white/60 max-w-xl mx-auto leading-relaxed text-sm md:text-base font-light tracking-wide">
                 "Take to the skies in unparalleled comfort. Our bespoke private
                 aviation services are being curated for the global traveler."
               </p>
@@ -212,14 +243,14 @@ const App: React.FC = () => {
               alt="Elite Helicopters"
             />
             <div className="relative z-10 text-center">
-              <span className="text-luxora-gold font-serif italic text-xl mb-4 block">
+              <span className="text-luxora-gold font-serif text-sm tracking-[0.3em] uppercase mb-4 block">
                 Coming Soon
               </span>
               <h2 className="text-4xl md:text-8xl font-serif font-bold text-white mb-8 text-center uppercase tracking-widest leading-tight">
                 Private <span className="gold-text">Helicopters</span>
               </h2>
               <div className="w-24 h-[1px] bg-luxora-gold/50 mx-auto mb-10"></div>
-              <p className="text-white/60 max-w-xl mx-auto leading-relaxed text-lg font-light tracking-wide italic">
+              <p className="text-white/60 max-w-xl mx-auto leading-relaxed text-sm md:text-base font-light tracking-wide">
                 "Experience the ultimate in point-to-point luxury travel. Our
                 exclusive helicopter fleet is being prepared for your next swift
                 ascent."
@@ -239,14 +270,14 @@ const App: React.FC = () => {
               alt="Super Yacht"
             />
             <div className="relative z-10 text-center">
-              <span className="text-luxora-gold font-serif italic text-xl mb-4 block">
+              <span className="text-luxora-gold font-serif text-sm tracking-[0.3em] uppercase mb-4 block">
                 Coming Soon
               </span>
               <h2 className="text-4xl md:text-8xl font-serif font-bold text-white mb-8 text-center uppercase tracking-widest leading-tight">
                 Yacht <span className="gold-text">Service</span>
               </h2>
               <div className="w-24 h-[1px] bg-luxora-gold/50 mx-auto mb-10"></div>
-              <p className="text-white/60 max-w-xl mx-auto leading-relaxed text-lg font-light tracking-wide italic">
+              <p className="text-white/60 max-w-xl mx-auto leading-relaxed text-sm md:text-base font-light tracking-wide">
                 "Master the waves with Luxora. Elite maritime experiences and
                 private yacht charters are arriving on the horizon."
               </p>

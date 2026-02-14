@@ -8,39 +8,39 @@ interface HeroProps {
 
 const slides = [
   {
-    image: "/images/fleet/cars/1.jpg",
+    image: "/images/fleet/cars/1_first.jpg",
     fallback: "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&q=80&w=2000",
-    tag: "Bengaluru's Premier Car Service",
-    title: "Where Every Journey Feels",
-    highlight: "Exceptional",
-    desc: "Experience the ultimate in sophistication with our curated fleet of elite, chauffeur-driven vehicles.",
+    tag: "Premier Car Service",
+    title: "Refining the Art of",
+    highlight: "Travel",
+    desc: "Elite chauffeur-driven experiences across Bengaluru's most prestigious routes.",
     target: Page.Fleet,
-    button: "Explore Fleet"
+    button: "Our Fleet"
   },
   {
     image: "/images/fleet/jets/1.jpg",
     tag: "Private Aviation",
-    title: "Unparalleled Comfort Above",
-    highlight: "the Clouds",
-    desc: "Bespoke chartered flights in modern, state-of-the-art jets tailored for the global traveler.",
+    title: "High-Altitude",
+    highlight: "Excellence",
+    desc: "Bespoke chartered flights tailored for the requirements of the global traveler.",
     target: Page.CharteredFlights,
-    button: "Discover Flights"
+    button: "Aviation"
   },
   {
     image: "/images/fleet/helicopter/1.webp",
-    tag: "Helicopter Service",
-    title: "Agile Luxury for the",
-    highlight: "Modern Executive",
-    desc: "Point-to-point urban mobility and scenic aerial transfers via our fleet of elite helicopters.",
+    tag: "AERIAL MOBILITY",
+    title: "Swift Urban",
+    highlight: "Transfers",
+    desc: "Point-to-point urban aerial mobility via our fleet of elite helicopters.",
     target: Page.CharteredFlights,
     button: "Book Chopper"
   },
   {
     image: "/images/fleet/jets/3.jpg",
-    tag: "The VIP Experience",
-    title: "Catering to the World's",
-    highlight: "Most Elite",
-    desc: "Discretion, security, and world-class service for celebrities and global high-net-worth individuals.",
+    tag: "The VIP Elite",
+    title: "Catering to",
+    highlight: "Global Icons",
+    desc: "Discretion and world-class concierge for high-net-worth individuals.",
     target: Page.Booking,
     button: "VIP Concierge"
   },
@@ -51,23 +51,23 @@ const slides = [
     highlight: "Luxora",
     desc: "Elite maritime experiences and private yacht charters for exclusive horizons.",
     target: Page.YachtService,
-    button: "Explore Yachts"
+    button: "Yachts"
   },
   {
     image: "/images/fleet/properties/1.jpg",
-    tag: "Exclusive Properties",
-    title: "Curating Portfolios of",
-    highlight: "Majestic Estates",
-    desc: "Discreet access to Bengaluru's most prestigious real estate and management services.",
+    tag: "Elite ESTATES",
+    title: "Portfolios of",
+    highlight: "Majestic Real Estate",
+    desc: "Discreet access to Bengaluru's most prestigious properties and management.",
     target: Page.Properties,
-    button: "View Properties"
+    button: "Estates"
   },
   {
     image: "/images/fleet/cars/3.jpg",
-    tag: "Elite Goods",
-    title: "Marketplace for Ultra",
+    tag: "Iconic Rarities",
+    title: "Curated Market for",
     highlight: "Premium Pieces",
-    desc: "Designer collections and rare horological pieces from the world's most iconic maisons.",
+    desc: "Designer collections and rare horological pieces from the world's finest maisons.",
     target: Page.LuxuryProducts,
     button: "Luxury Market"
   }
@@ -108,18 +108,18 @@ const Hero: React.FC<HeroProps> = ({ onExplore }) => {
       ))}
 
       <div className="container mx-auto px-6 sm:px-12 md:px-16 lg:px-24 xl:px-48 relative z-10 py-24 flex flex-col items-center md:items-start text-center md:text-left">
-        <div className="max-w-3xl xl:max-w-4xl">
+        <div className="max-w-2xl lg:max-w-3xl">
           {slides.map((slide, idx) => (
             <div 
               key={idx}
               className={`${idx === current ? 'block animate-in fade-in slide-in-from-left-8 duration-700' : 'hidden'}`}
             >
-              <span className="text-luxora-gold font-serif text-[10px] md:text-xs mb-4 tracking-[0.8em] block uppercase opacity-80">{slide.tag}</span>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-serif font-medium text-white mb-6 leading-tight uppercase tracking-[-0.01em] drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)] max-w-xl">
-                {slide.title} <span className="gold-text underline decoration-luxora-gold/20 font-normal italic">{slide.highlight}</span>
+              <span className="text-luxora-gold font-serif text-[10px] md:text-xs mb-3 tracking-[0.4em] block uppercase font-bold opacity-70">{slide.tag}</span>
+              <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-extrabold text-white mb-6 leading-[1] uppercase tracking-[-0.03em] drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]">
+                {slide.title} <span className="gold-text block sm:inline">{slide.highlight}</span>
               </h1>
-              <p className="text-xs md:text-sm text-white/50 mb-10 max-w-sm mx-auto md:mx-0 font-light leading-relaxed border-l-[1px] border-luxora-gold/10 pl-6 uppercase tracking-[0.2em] italic">
-                "{slide.desc}"
+              <p className="text-[10px] md:text-xs text-white/50 mb-10 max-w-sm mx-auto md:mx-0 font-medium leading-relaxed border-l-[1px] border-luxora-gold/20 pl-6 uppercase tracking-[0.2em] opacity-80">
+                {slide.desc}
               </p>
               {slide.target === Page.Fleet ? (
                 <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 justify-center md:justify-start">

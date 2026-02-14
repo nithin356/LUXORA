@@ -114,11 +114,11 @@ const FleetSection: React.FC<FleetSectionProps> = ({ onBook }) => {
   return (
     <section className="py-24 bg-luxora-dark" id="fleet">
       <div className="container mx-auto px-6 sm:px-12 md:px-16 lg:px-24 xl:px-48">
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 reveal">
           <span className="text-luxora-gold font-serif text-[10px] md:text-xs mb-4 tracking-[0.6em] block uppercase">
             Curated Excellence
           </span>
-          <h2 className="text-3xl md:text-5xl font-serif font-medium gold-text mb-4 uppercase tracking-tight">
+          <h2 className="text-4xl md:text-6xl font-serif font-extrabold gold-text mb-4 uppercase tracking-tighter">
             The Elite Collection
           </h2>
           <div className="w-24 h-[1px] bg-luxora-gold mx-auto mb-8"></div>
@@ -193,7 +193,7 @@ const FleetSection: React.FC<FleetSectionProps> = ({ onBook }) => {
               return (
                 <div
                   key={car.id}
-                  className="group relative bg-gradient-to-b from-luxora-charcoal to-black/60 overflow-hidden border border-white/10 hover:border-luxora-gold/50 transition-all duration-500 rounded-lg flex flex-col h-full shadow-2xl hover:shadow-luxora-gold/20"
+                  className="group relative bg-gradient-to-b from-luxora-charcoal to-black/60 overflow-hidden border border-white/10 hover:border-luxora-gold/50 transition-all duration-500 rounded-lg flex flex-col h-full shadow-2xl hover:shadow-luxora-gold/20 reveal gold-aura-hover"
                 >
                   {/* Image Section */}
                   <div className="aspect-[16/10] overflow-hidden relative">
@@ -234,7 +234,7 @@ const FleetSection: React.FC<FleetSectionProps> = ({ onBook }) => {
                         <span className="text-luxora-gold text-[9px] uppercase tracking-[0.3em] mb-1 block font-bold opacity-80">
                           {car.brand}
                         </span>
-                        <h3 className="text-xl md:text-2xl font-serif font-bold text-white leading-tight">
+                        <h3 className="text-xl md:text-2xl font-serif font-extrabold text-white leading-none uppercase tracking-tight">
                           {car.model}
                         </h3>
                       </div>
@@ -249,7 +249,7 @@ const FleetSection: React.FC<FleetSectionProps> = ({ onBook }) => {
                     </div>
 
                     {/* Description */}
-                    <p className="text-white/50 text-xs md:text-sm mb-4 font-light leading-relaxed line-clamp-2 italic border-l-2 border-luxora-gold/40 pl-3">
+                    <p className="text-white/50 text-xs md:text-sm mb-4 font-normal leading-relaxed line-clamp-2 border-l-2 border-luxora-gold/40 pl-3">
                       {car.description}
                     </p>
 
@@ -316,7 +316,7 @@ const FleetSection: React.FC<FleetSectionProps> = ({ onBook }) => {
             })}
             {filteredFleet.length === 0 && (
               <div className="col-span-full text-center py-20">
-                <p className="text-white/20 italic font-serif text-xl tracking-widest">
+                <p className="text-white/20 font-serif font-bold text-2xl tracking-widest uppercase opacity-50">
                   No assets available in this category currently.
                 </p>
               </div>

@@ -22,13 +22,19 @@ const Footer: React.FC<FooterProps> = ({ setPage }) => {
   return (
     <footer className="bg-luxora-dark pt-24 pb-12 border-t border-white/5">
       <div className="container mx-auto px-6 sm:px-12 md:px-16 lg:px-24 xl:px-48">
-        <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 gap-12 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
           <div className="col-span-1 lg:col-span-2">
             <div className="flex flex-col mb-8">
-              <div className="flex items-center mb-8">
-                <img src="/logo_Lg.png" alt="Luxora Logo" className="h-20 w-auto object-contain" />
-              </div>
-              <p className="text-white/40 text-sm leading-relaxed mb-8 italic max-w-sm">
+              <button 
+                onClick={() => setPage(Page.Home)}
+                className="flex flex-col items-start mb-8 gap-2 group/flogo outline-none"
+              >
+                <img src="/logo_Lg.png" alt="Luxora Logo" className="h-28 w-auto object-contain transform -translate-x-2 group-hover/flogo:scale-105 transition-transform duration-500" />
+                <span className="text-2xl md:text-3xl font-futuristic gold-text tracking-[0.2em] font-bold group-hover/flogo:drop-shadow-[0_0_10px_rgba(212,175,55,0.3)] transition-all">
+                  LUXORA
+                </span>
+              </button>
+              <p className="text-white/40 text-sm leading-relaxed mb-8 max-w-sm font-medium">
                 Bengaluru's premier luxury ecosystem. Delivering world-class elite travel and lifestyle experiences with unparalleled sophistication.
               </p>
             </div>
@@ -52,7 +58,7 @@ const Footer: React.FC<FooterProps> = ({ setPage }) => {
           </div>
 
           <div>
-            <h4 className="text-white font-serif text-lg mb-6 underline decoration-luxora-gold/30 underline-offset-8">Quick Links</h4>
+            <h4 className="text-white text-sm font-black uppercase tracking-[0.2em] mb-6 underline decoration-luxora-gold/30 underline-offset-8">Quick Links</h4>
             <ul className="space-y-4">
               <li><button onClick={() => setPage(Page.Home)} className="text-white/40 hover:text-luxora-gold transition-colors text-sm">Home</button></li>
               <li><button onClick={() => setPage(Page.Fleet)} className="text-white/40 hover:text-luxora-gold transition-colors text-sm">Our Fleet</button></li>
@@ -62,32 +68,26 @@ const Footer: React.FC<FooterProps> = ({ setPage }) => {
           </div>
 
           <div>
-            <h4 className="text-white font-serif text-lg mb-6 underline decoration-luxora-gold/30 underline-offset-8">Our Services</h4>
+            <h4 className="text-white text-sm font-black uppercase tracking-[0.2em] mb-6 underline decoration-luxora-gold/30 underline-offset-8">Our Tiers</h4>
             <ul className="space-y-4">
-              <li className="text-white/40 text-sm">Grand Weddings</li>
-              <li className="text-white/40 text-sm">Corporate Travel</li>
-              <li className="text-white/40 text-sm">VIP Airport Transfers</li>
-              <li className="text-white/40 text-sm">Chauffeur Training</li>
-              <li className="text-white/40 text-sm">VIP Events</li>
-              <li><button className="text-white/40 hover:text-luxora-gold transition-colors text-sm">Request Another Service</button></li>
+              <li className="text-white/40 text-sm flex items-center gap-2"><span className="w-1.5 h-1.5 bg-luxora-gold rounded-full shadow-[0_0_5px_rgba(212,175,55,0.5)]"></span> Elite Fleet</li>
+              <li className="text-white/40 text-sm flex items-center gap-2"><span className="w-1.5 h-1.5 bg-luxora-gold rounded-full shadow-[0_0_5px_rgba(212,175,55,0.5)]"></span> VIP Platinum</li>
+              <li className="text-white/40 text-sm flex items-center gap-2"><span className="w-1.5 h-1.5 bg-luxora-gold rounded-full shadow-[0_0_5px_rgba(212,175,55,0.5)]"></span> Chauffeur Excellence</li>
+              <li className="text-white/40 text-sm flex items-center gap-2"><span className="w-1.5 h-1.5 bg-luxora-gold rounded-full shadow-[0_0_5px_rgba(212,175,55,0.5)]"></span> Monthly Rental</li>
             </ul>
           </div>
 
           <div>
-            <h4 className="text-white font-serif text-lg mb-6 underline decoration-luxora-gold/30 underline-offset-8">Contact Us</h4>
+            <h4 className="text-white font-serif text-sm font-black uppercase tracking-[0.2em] mb-6 underline decoration-luxora-gold/30 underline-offset-8">Contact Us</h4>
             <div className="space-y-4">
               <div className="flex items-start space-x-3 group">
                 <span className="text-luxora-gold mt-1">📍</span>
                 <p className="text-white/40 text-sm leading-relaxed">No. 2C-324, basement, 2nd Main Rd, OMBR Layout, Banaswadi, Bengaluru, Karnataka 560043</p>
               </div>
               <div className="flex items-center space-x-3 group">
-                <span className="text-luxora-gold">📞</span>
-                <p className="text-white/40 text-sm">+91 80 4444 8888</p>
-              </div>
-              <div className="flex items-center space-x-3 group">
                 <span className="text-luxora-gold">💬</span>
                 <p className="text-white/40 text-sm">
-                  <a href="https://wa.me/918050313366" target="_blank" rel="noopener noreferrer" className="hover:text-luxora-gold transition-colors">+91 80503 13366</a>
+                  <a href="https://wa.me/918050323366" target="_blank" rel="noopener noreferrer" className="hover:text-luxora-gold transition-colors">+91 80503 23366</a>
                 </p>
               </div>
             </div>
@@ -99,13 +99,6 @@ const Footer: React.FC<FooterProps> = ({ setPage }) => {
             <p className="text-white/20 text-[10px] uppercase tracking-widest">
               &copy; {new Date().getFullYear()} Luxora Premier Luxury Ecosystem.
             </p>
-            <button 
-              onClick={() => setPage(Page.Admin)}
-              className="flex items-center text-white/30 hover:text-luxora-gold text-[10px] uppercase tracking-[0.3em] transition-colors border-l border-white/5 pl-6"
-            >
-              <svg className="w-3 h-3 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
-              Portal Login
-            </button>
           </div>
           <div className="flex space-x-6">
             <a href="#" className="text-white/20 hover:text-white/40 text-[10px] uppercase tracking-widest transition-colors">Privacy Policy</a>

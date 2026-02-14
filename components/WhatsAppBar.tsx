@@ -2,7 +2,7 @@
 import React from 'react';
 
 const WhatsAppBar: React.FC = () => {
-  const whatsappUrl = "https://wa.me/918050313366";
+  const whatsappUrl = "https://wa.me/918050213366";
   
   return (
     <div className="fixed right-6 bottom-0 z-40 hidden lg:flex flex-col items-center space-y-6">
@@ -20,7 +20,7 @@ const WhatsAppBar: React.FC = () => {
         >
           {/* Tooltip-style number reveal on hover */}
           <div className="absolute right-12 px-3 py-1 bg-luxora-charcoal border border-luxora-gold/30 text-luxora-gold text-[10px] tracking-widest whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none rounded-sm">
-            +91 80503 13366
+            +91 80503 23366
           </div>
           
           <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">

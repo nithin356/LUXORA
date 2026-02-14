@@ -24,7 +24,7 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link
-      href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..72,400..900;1,6..72,400..900&family=Montserrat:wght@300;400;500;600&family=Syncopate:wght@400;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&family=Syncopate:wght@400;700&display=swap"
       rel="stylesheet"
     />
     <script>
@@ -41,8 +41,8 @@
               },
             },
             fontFamily: {
-              serif: ["Bodoni Moda", "serif"],
-              sans: ["Montserrat", "sans-serif"],
+              serif: ["Syne", "sans-serif"],
+              sans: ["Outfit", "sans-serif"],
               futuristic: ["Syncopate", "sans-serif"],
             },
           },
@@ -85,6 +85,54 @@
         background: #d4af37;
         border-radius: 10px;
       }
+
+      /* Luxury Motion & Depth */
+      @keyframes reveal-up {
+        from {
+          opacity: 0;
+          transform: translateY(30px) scale(0.98);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+
+      .reveal {
+        opacity: 0;
+      }
+
+      .reveal.active {
+        animation: reveal-up 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+
+      .glass-card {
+        background: rgba(26, 26, 26, 0.6);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px border rgba(255, 255, 255, 0.05);
+      }
+
+      .glass-nav {
+        background: rgba(10, 10, 10, 0.7);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+      }
+
+      .gold-aura-hover {
+        transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .gold-aura-hover:hover {
+        box-shadow: 0 0 30px rgba(212, 175, 55, 0.15);
+        border-color: rgba(212, 175, 55, 0.3);
+        transform: translateY(-5px);
+      }
+
+      .stagger-1 { animation-delay: 0.1s; }
+      .stagger-2 { animation-delay: 0.2s; }
+      .stagger-3 { animation-delay: 0.3s; }
+      .stagger-4 { animation-delay: 0.4s; }
     </style>
     <script type="importmap">
       {
