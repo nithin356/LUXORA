@@ -138,7 +138,7 @@ const Hero: React.FC<HeroProps> = ({ onExplore }) => {
               className={`${idx === current ? 'block animate-in fade-in slide-in-from-left-8 duration-700' : 'hidden'}`}
             >
               <span className="text-luxora-gold font-serif text-[10px] md:text-xs mb-3 tracking-[0.4em] block uppercase font-bold opacity-70">{slide.tag}</span>
-              <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-extrabold text-white mb-6 leading-[1] uppercase tracking-[-0.03em] drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]">
+              <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-extrabold text-white mb-6 leading-[1.1] uppercase tracking-[-0.03em] drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]">
                 {slide.title} <span className="gold-text block sm:inline">{slide.highlight}</span>
               </h1>
               <p className="text-[10px] md:text-xs text-white/50 mb-10 max-w-sm mx-auto md:mx-0 font-medium leading-relaxed border-l-[1px] border-luxora-gold/20 pl-6 uppercase tracking-[0.2em] opacity-80">

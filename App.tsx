@@ -299,7 +299,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col selection:bg-luxora-gold selection:text-luxora-dark">
+    <div className="min-h-screen flex flex-col selection:bg-luxora-gold selection:text-luxora-dark overflow-x-hidden">
       <Navbar activePage={activePage} setPage={setActivePage} />
 
       <SocialBar />

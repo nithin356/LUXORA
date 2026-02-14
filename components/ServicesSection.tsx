@@ -94,7 +94,7 @@ const ServicesSection: React.FC<ServiceCategoryProps> = ({ onNavigate }) => {
           <span className="text-luxora-gold font-serif text-sm md:text-base mb-3 md:mb-4 block uppercase tracking-[0.4em] font-bold">
             Our Ecosystem
           </span>
-          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-extrabold text-white mb-4 md:mb-6 leading-none uppercase tracking-tighter">
+          <h2 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-serif font-extrabold text-white mb-4 md:mb-6 leading-none uppercase tracking-tighter">
             Curated Services For The Elite
           </h2>
           <p className="text-white/50 text-sm md:text-base max-w-2xl font-light leading-relaxed">
@@ -135,7 +135,7 @@ const ServicesSection: React.FC<ServiceCategoryProps> = ({ onNavigate }) => {
                 <span className="text-luxora-gold text-xs md:text-sm uppercase tracking-[0.2em] font-bold mb-1 md:mb-2 opacity-80">
                   {category.subtitle}
                 </span>
-                <h3 className="text-lg md:text-2xl lg:text-3xl font-serif font-extrabold text-white mb-2 md:mb-3 group-hover:text-luxora-gold transition-colors uppercase tracking-tight">
+                <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-serif font-extrabold text-white mb-2 md:mb-3 group-hover:text-luxora-gold transition-colors uppercase tracking-tight">
                   {category.title}
                 </h3>
                 <p className="text-white/60 text-xs md:text-sm leading-relaxed mb-3 md:mb-4 line-clamp-2">

@@ -118,13 +118,13 @@ const FleetSection: React.FC<FleetSectionProps> = ({ onBook }) => {
           <span className="text-luxora-gold font-serif text-[10px] md:text-xs mb-4 tracking-[0.6em] block uppercase">
             Curated Excellence
           </span>
-          <h2 className="text-4xl md:text-6xl font-serif font-extrabold gold-text mb-4 uppercase tracking-tighter">
+          <h2 className="text-3xl sm:text-4xl md:text-6xl font-serif font-extrabold gold-text mb-4 uppercase tracking-tighter">
             The Elite Collection
           </h2>
           <div className="w-24 h-[1px] bg-luxora-gold mx-auto mb-8"></div>
 
           {/* Filters Section */}
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-4xl mx-auto px-2 md:px-0">
             {/* Vehicle Type Filter */}
             <div className="mb-6">
               <p className="text-luxora-gold text-[9px] uppercase tracking-[0.4em] font-bold mb-3">

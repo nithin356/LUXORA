@@ -15,7 +15,7 @@ const AboutSection: React.FC = () => {
     <section className="pt-32 pb-24 md:pt-40 md:pb-32 bg-luxora-dark overflow-hidden relative border-t border-white/5">
       {/* Parallax Background Text */}
       <div 
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[20vw] font-serif font-black text-white/[0.02] uppercase tracking-[0.2em] pointer-events-none select-none z-0 whitespace-nowrap"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[15vw] md:text-[20vw] font-serif font-black text-white/[0.02] uppercase tracking-[0.2em] pointer-events-none select-none z-0 whitespace-nowrap"
         style={{ transform: `translate(-50%, calc(-50% + ${scrollY * 0.05}px))` }}
       >
         Heritage
@@ -91,13 +91,13 @@ const AboutSection: React.FC = () => {
                 </p>
               </div>
               
-              <div className="grid grid-cols-2 gap-8 mb-12 border-t border-white/5 pt-10">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-12 border-t border-white/5 pt-10">
                 <div>
-                  <h4 className="text-luxora-gold font-serif text-2xl md:text-3xl font-black mb-1 uppercase tracking-tight">Tailored</h4>
+                  <h4 className="text-luxora-gold font-serif text-xl sm:text-2xl md:text-3xl font-black mb-1 uppercase tracking-tight">Tailored</h4>
                   <p className="text-white/20 text-[9px] uppercase tracking-[0.3em] font-bold">Bespoke Excellence</p>
                 </div>
                 <div>
-                  <h4 className="text-luxora-gold font-serif text-2xl md:text-3xl font-black mb-1 uppercase tracking-tight">Protocol</h4>
+                  <h4 className="text-luxora-gold font-serif text-xl sm:text-2xl md:text-3xl font-black mb-1 uppercase tracking-tight">Protocol</h4>
                   <p className="text-white/20 text-[9px] uppercase tracking-[0.3em] font-bold">Elite Certified</p>
                 </div>
               </div>
