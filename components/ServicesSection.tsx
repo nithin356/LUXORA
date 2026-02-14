@@ -18,7 +18,7 @@ const ServicesSection: React.FC<ServiceCategoryProps> = ({ onNavigate }) => {
   const serviceCategories = [
     {
       id: "cars",
-      title: "Luxury Cars",
+      title: "Luxury Car Rentals",
       subtitle: "Elite Fleet",
       icon: "🏎️",
       description:
@@ -129,9 +129,7 @@ const ServicesSection: React.FC<ServiceCategoryProps> = ({ onNavigate }) => {
 
               {/* Content */}
               <div className="absolute inset-0 flex flex-col justify-end p-4 md:p-6 z-10">
-                <div className="text-3xl md:text-4xl mb-2 md:mb-3">
-                  {category.icon}
-                </div>
+
                 <span className="text-luxora-gold text-xs md:text-sm uppercase tracking-[0.2em] font-bold mb-1 md:mb-2 opacity-80">
                   {category.subtitle}
                 </span>
