@@ -11,7 +11,7 @@
     "images": [
       "/uploads/cd-sportscar-elite.jpg"
     ],
-    "pricePerHour": 5000,
+    "pricePerHour": 3999,
     "description": "Aston Martin Vantage. Handcrafted British grand tourer with breathtaking design and exhilarating performance.",
     "features": [
       "Sports Exhaust",
@@ -27,19 +27,24 @@
     },
     "packages": [
       {
-        "duration": 6,
+        "duration": 4,
+        "kmLimit": 40,
+        "price": 15999
+      },
+      {
+        "duration": 8,
         "kmLimit": 80,
-        "price": 30000
+        "price": 24999
       },
       {
         "duration": 12,
         "kmLimit": 120,
-        "price": 40000
+        "price": 32999
       },
       {
         "duration": 24,
         "kmLimit": 200,
-        "price": 50000
+        "price": 45999
       }
     ],
     "securityOptions": [
@@ -76,7 +81,7 @@
     "images": [
       "/uploads/sales-bmw-suv.jpg"
     ],
-    "pricePerHour": 2500,
+    "pricePerHour": 2199,
     "description": "BMW X6. The ultimate driving machine, combining dynamic performance with premium luxury.",
     "features": [
       "iDrive System",
@@ -92,19 +97,24 @@
     },
     "packages": [
       {
-        "duration": 6,
-        "kmLimit": 100,
-        "price": 15000
+        "duration": 4,
+        "kmLimit": 40,
+        "price": 8499
       },
       {
-        "duration": 10,
-        "kmLimit": 150,
-        "price": 20000
+        "duration": 8,
+        "kmLimit": 80,
+        "price": 12999
+      },
+      {
+        "duration": 12,
+        "kmLimit": 120,
+        "price": 16999
       },
       {
         "duration": 24,
-        "kmLimit": 250,
-        "price": 30000
+        "kmLimit": 200,
+        "price": 25999
       }
     ],
     "securityOptions": [
@@ -141,7 +151,7 @@
     "images": [
       "/uploads/corrected-porsche-suv.jpg"
     ],
-    "pricePerHour": 2500,
+    "pricePerHour": 2199,
     "description": "Porsche Cayenne. Uncompromising performance and engineering perfection from Stuttgart.",
     "features": [
       "Sport Chrono Package",
@@ -157,19 +167,24 @@
     },
     "packages": [
       {
-        "duration": 6,
-        "kmLimit": 100,
-        "price": 15000
+        "duration": 4,
+        "kmLimit": 40,
+        "price": 8499
       },
       {
-        "duration": 10,
-        "kmLimit": 150,
-        "price": 20000
+        "duration": 8,
+        "kmLimit": 80,
+        "price": 12999
+      },
+      {
+        "duration": 12,
+        "kmLimit": 120,
+        "price": 16999
       },
       {
         "duration": 24,
-        "kmLimit": 250,
-        "price": 30000
+        "kmLimit": 200,
+        "price": 25999
       }
     ],
     "securityOptions": [
@@ -206,7 +221,7 @@
     "images": [
       "/uploads/sales-audi-suv.jpg"
     ],
-    "pricePerHour": 2500,
+    "pricePerHour": 2199,
     "description": "Audi Q7. Progressive luxury with Quattro all-wheel drive and cutting-edge technology.",
     "features": [
       "Quattro AWD",
@@ -222,19 +237,24 @@
     },
     "packages": [
       {
-        "duration": 6,
-        "kmLimit": 100,
-        "price": 15000
+        "duration": 4,
+        "kmLimit": 40,
+        "price": 8499
       },
       {
-        "duration": 10,
-        "kmLimit": 150,
-        "price": 20000
+        "duration": 8,
+        "kmLimit": 80,
+        "price": 12999
+      },
+      {
+        "duration": 12,
+        "kmLimit": 120,
+        "price": 16999
       },
       {
         "duration": 24,
-        "kmLimit": 250,
-        "price": 30000
+        "kmLimit": 200,
+        "price": 25999
       }
     ],
     "securityOptions": [
@@ -271,7 +291,7 @@
     "images": [
       "/uploads/cd-bmw-7series.jpg"
     ],
-    "pricePerHour": 2500,
+    "pricePerHour": 2199,
     "description": "BMW 730LD. The ultimate driving machine, combining dynamic performance with premium luxury.",
     "features": [
       "iDrive System",
@@ -287,19 +307,24 @@
     },
     "packages": [
       {
-        "duration": 6,
-        "kmLimit": 100,
-        "price": 15000
+        "duration": 4,
+        "kmLimit": 40,
+        "price": 8499
       },
       {
-        "duration": 10,
-        "kmLimit": 150,
-        "price": 20000
+        "duration": 8,
+        "kmLimit": 80,
+        "price": 12999
+      },
+      {
+        "duration": 12,
+        "kmLimit": 120,
+        "price": 16999
       },
       {
         "duration": 24,
-        "kmLimit": 250,
-        "price": 30000
+        "kmLimit": 200,
+        "price": 25999
       }
     ],
     "securityOptions": [
@@ -336,7 +361,7 @@
     "images": [
       "/uploads/cd-mercedes-luxury.jpg"
     ],
-    "pricePerHour": 2500,
+    "pricePerHour": 2199,
     "description": "Mercedes-Benz GL350 - 5 Seater. The pinnacle of German automotive engineering, blending luxury with performance.",
     "features": [
       "COMAND System",
@@ -352,19 +377,24 @@
     },
     "packages": [
       {
-        "duration": 6,
-        "kmLimit": 100,
-        "price": 15000
+        "duration": 4,
+        "kmLimit": 40,
+        "price": 8499
       },
       {
-        "duration": 10,
-        "kmLimit": 150,
-        "price": 20000
+        "duration": 8,
+        "kmLimit": 80,
+        "price": 12999
+      },
+      {
+        "duration": 12,
+        "kmLimit": 120,
+        "price": 16999
       },
       {
         "duration": 24,
-        "kmLimit": 250,
-        "price": 30000
+        "kmLimit": 200,
+        "price": 25999
       }
     ],
     "securityOptions": [
@@ -401,7 +431,7 @@
     "images": [
       "/uploads/sales-evoque.jpg"
     ],
-    "pricePerHour": 1833,
+    "pricePerHour": 1499,
     "description": "Range Rover Evoque. Iconic British luxury SUV with commanding road presence and refined off-road capability.",
     "features": [
       "Terrain Response",
@@ -417,19 +447,24 @@
     },
     "packages": [
       {
-        "duration": 6,
-        "kmLimit": 80,
-        "price": 11000
+        "duration": 4,
+        "kmLimit": 40,
+        "price": 5999
       },
       {
-        "duration": 10,
+        "duration": 8,
+        "kmLimit": 80,
+        "price": 8999
+      },
+      {
+        "duration": 12,
         "kmLimit": 120,
-        "price": 15000
+        "price": 11999
       },
       {
         "duration": 24,
         "kmLimit": 200,
-        "price": 25000
+        "price": 18999
       }
     ],
     "securityOptions": [
@@ -466,7 +501,7 @@
     "images": [
       "/uploads/sales-volvo-suv.jpg"
     ],
-    "pricePerHour": 1833,
+    "pricePerHour": 1499,
     "description": "Volvo XC60. Swedish engineering excellence with industry-leading safety and Scandinavian luxury.",
     "features": [
       "City Safety",
@@ -482,19 +517,24 @@
     },
     "packages": [
       {
-        "duration": 6,
-        "kmLimit": 80,
-        "price": 11000
+        "duration": 4,
+        "kmLimit": 40,
+        "price": 5999
       },
       {
-        "duration": 10,
+        "duration": 8,
+        "kmLimit": 80,
+        "price": 8999
+      },
+      {
+        "duration": 12,
         "kmLimit": 120,
-        "price": 15000
+        "price": 11999
       },
       {
         "duration": 24,
         "kmLimit": 200,
-        "price": 25000
+        "price": 18999
       }
     ],
     "securityOptions": [
@@ -531,7 +571,7 @@
     "images": [
       "/uploads/sales-audi-sedan.jpg"
     ],
-    "pricePerHour": 1833,
+    "pricePerHour": 1499,
     "description": "Audi A6 Matrix. Progressive luxury with Quattro all-wheel drive and cutting-edge technology.",
     "features": [
       "Quattro AWD",
@@ -547,19 +587,24 @@
     },
     "packages": [
       {
-        "duration": 6,
-        "kmLimit": 80,
-        "price": 11000
+        "duration": 4,
+        "kmLimit": 40,
+        "price": 5999
       },
       {
-        "duration": 10,
+        "duration": 8,
+        "kmLimit": 80,
+        "price": 8999
+      },
+      {
+        "duration": 12,
         "kmLimit": 120,
-        "price": 15000
+        "price": 11999
       },
       {
         "duration": 24,
         "kmLimit": 200,
-        "price": 25000
+        "price": 18999
       }
     ],
     "securityOptions": [
@@ -596,7 +641,7 @@
     "images": [
       "/uploads/sales-jaguar-sedan.jpg"
     ],
-    "pricePerHour": 1833,
+    "pricePerHour": 1499,
     "description": "Jaguar XFS. British sporting elegance with a heritage of performance and refined craftsmanship.",
     "features": [
       "InControl Touch",
@@ -612,19 +657,24 @@
     },
     "packages": [
       {
-        "duration": 6,
-        "kmLimit": 80,
-        "price": 11000
+        "duration": 4,
+        "kmLimit": 40,
+        "price": 5999
       },
       {
-        "duration": 10,
+        "duration": 8,
+        "kmLimit": 80,
+        "price": 8999
+      },
+      {
+        "duration": 12,
         "kmLimit": 120,
-        "price": 15000
+        "price": 11999
       },
       {
         "duration": 24,
         "kmLimit": 200,
-        "price": 25000
+        "price": 18999
       }
     ],
     "securityOptions": [
@@ -661,7 +711,7 @@
     "images": [
       "/uploads/sales-bmw-suv.jpg"
     ],
-    "pricePerHour": 1833,
+    "pricePerHour": 1499,
     "description": "BMW 520D. The ultimate driving machine, combining dynamic performance with premium luxury.",
     "features": [
       "iDrive System",
@@ -677,19 +727,24 @@
     },
     "packages": [
       {
-        "duration": 6,
-        "kmLimit": 80,
-        "price": 11000
+        "duration": 4,
+        "kmLimit": 40,
+        "price": 5999
       },
       {
-        "duration": 10,
+        "duration": 8,
+        "kmLimit": 80,
+        "price": 8999
+      },
+      {
+        "duration": 12,
         "kmLimit": 120,
-        "price": 15000
+        "price": 11999
       },
       {
         "duration": 24,
         "kmLimit": 200,
-        "price": 25000
+        "price": 18999
       }
     ],
     "securityOptions": [
@@ -726,7 +781,7 @@
     "images": [
       "/uploads/sales-audi-sedan.jpg"
     ],
-    "pricePerHour": 1833,
+    "pricePerHour": 1499,
     "description": "Audi S6. Progressive luxury with Quattro all-wheel drive and cutting-edge technology.",
     "features": [
       "Quattro AWD",
@@ -742,19 +797,24 @@
     },
     "packages": [
       {
-        "duration": 6,
-        "kmLimit": 80,
-        "price": 11000
+        "duration": 4,
+        "kmLimit": 40,
+        "price": 5999
       },
       {
-        "duration": 10,
+        "duration": 8,
+        "kmLimit": 80,
+        "price": 8999
+      },
+      {
+        "duration": 12,
         "kmLimit": 120,
-        "price": 15000
+        "price": 11999
       },
       {
         "duration": 24,
         "kmLimit": 200,
-        "price": 25000
+        "price": 18999
       }
     ],
     "securityOptions": [
@@ -791,7 +851,7 @@
     "images": [
       "/uploads/sales-bmw-suv.jpg"
     ],
-    "pricePerHour": 1833,
+    "pricePerHour": 1499,
     "description": "BMW X3. The ultimate driving machine, combining dynamic performance with premium luxury.",
     "features": [
       "iDrive System",
@@ -807,19 +867,24 @@
     },
     "packages": [
       {
-        "duration": 6,
-        "kmLimit": 80,
-        "price": 11000
+        "duration": 4,
+        "kmLimit": 40,
+        "price": 5999
       },
       {
-        "duration": 10,
+        "duration": 8,
+        "kmLimit": 80,
+        "price": 8999
+      },
+      {
+        "duration": 12,
         "kmLimit": 120,
-        "price": 15000
+        "price": 11999
       },
       {
         "duration": 24,
         "kmLimit": 200,
-        "price": 25000
+        "price": 18999
       }
     ],
     "securityOptions": [
@@ -856,7 +921,7 @@
     "images": [
       "/uploads/sales-mercedes-sedan.jpg"
     ],
-    "pricePerHour": 1333,
+    "pricePerHour": 999,
     "description": "Mercedes-Benz GLA. The pinnacle of German automotive engineering, blending luxury with performance.",
     "features": [
       "COMAND System",
@@ -872,19 +937,24 @@
     },
     "packages": [
       {
-        "duration": 6,
-        "kmLimit": 80,
-        "price": 8000
+        "duration": 4,
+        "kmLimit": 40,
+        "price": 3999
       },
       {
-        "duration": 10,
+        "duration": 8,
+        "kmLimit": 80,
+        "price": 5999
+      },
+      {
+        "duration": 12,
         "kmLimit": 120,
-        "price": 12000
+        "price": 7999
       },
       {
         "duration": 24,
         "kmLimit": 200,
-        "price": 20000
+        "price": 12999
       }
     ],
     "securityOptions": [
@@ -921,7 +991,7 @@
     "images": [
       "/uploads/sales-mercedes-sedan.jpg"
     ],
-    "pricePerHour": 1333,
+    "pricePerHour": 999,
     "description": "Mercedes-Benz C200. The pinnacle of German automotive engineering, blending luxury with performance.",
     "features": [
       "COMAND System",
@@ -937,19 +1007,24 @@
     },
     "packages": [
       {
-        "duration": 6,
-        "kmLimit": 80,
-        "price": 8000
+        "duration": 4,
+        "kmLimit": 40,
+        "price": 3999
       },
       {
-        "duration": 10,
+        "duration": 8,
+        "kmLimit": 80,
+        "price": 5999
+      },
+      {
+        "duration": 12,
         "kmLimit": 120,
-        "price": 12000
+        "price": 7999
       },
       {
         "duration": 24,
         "kmLimit": 200,
-        "price": 20000
+        "price": 12999
       }
     ],
     "securityOptions": [
@@ -986,7 +1061,7 @@
     "images": [
       "/uploads/sales-audi-sedan.jpg"
     ],
-    "pricePerHour": 1333,
+    "pricePerHour": 999,
     "description": "Audi A4. Progressive luxury with Quattro all-wheel drive and cutting-edge technology.",
     "features": [
       "Quattro AWD",
@@ -1002,19 +1077,24 @@
     },
     "packages": [
       {
-        "duration": 6,
-        "kmLimit": 80,
-        "price": 8000
+        "duration": 4,
+        "kmLimit": 40,
+        "price": 3999
       },
       {
-        "duration": 10,
+        "duration": 8,
+        "kmLimit": 80,
+        "price": 5999
+      },
+      {
+        "duration": 12,
         "kmLimit": 120,
-        "price": 12000
+        "price": 7999
       },
       {
         "duration": 24,
         "kmLimit": 200,
-        "price": 20000
+        "price": 12999
       }
     ],
     "securityOptions": [
@@ -1051,7 +1131,7 @@
     "images": [
       "/uploads/corrected-landrover-suv.jpg"
     ],
-    "pricePerHour": 1333,
+    "pricePerHour": 999,
     "description": "Land Rover Freelander 2. Legendary capability meets refined luxury for the ultimate adventure vehicle.",
     "features": [
       "Terrain Response",
@@ -1067,19 +1147,24 @@
     },
     "packages": [
       {
-        "duration": 6,
-        "kmLimit": 80,
-        "price": 8000
+        "duration": 4,
+        "kmLimit": 40,
+        "price": 3999
       },
       {
-        "duration": 10,
+        "duration": 8,
+        "kmLimit": 80,
+        "price": 5999
+      },
+      {
+        "duration": 12,
         "kmLimit": 120,
-        "price": 12000
+        "price": 7999
       },
       {
         "duration": 24,
         "kmLimit": 200,
-        "price": 20000
+        "price": 12999
       }
     ],
     "securityOptions": [
@@ -1116,7 +1201,7 @@
     "images": [
       "/uploads/sales-audi-suv.jpg"
     ],
-    "pricePerHour": 1333,
+    "pricePerHour": 999,
     "description": "Audi Q3. Progressive luxury with Quattro all-wheel drive and cutting-edge technology.",
     "features": [
       "Quattro AWD",
@@ -1132,19 +1217,24 @@
     },
     "packages": [
       {
-        "duration": 6,
-        "kmLimit": 80,
-        "price": 8000
+        "duration": 4,
+        "kmLimit": 40,
+        "price": 3999
       },
       {
-        "duration": 10,
+        "duration": 8,
+        "kmLimit": 80,
+        "price": 5999
+      },
+      {
+        "duration": 12,
         "kmLimit": 120,
-        "price": 12000
+        "price": 7999
       },
       {
         "duration": 24,
         "kmLimit": 200,
-        "price": 20000
+        "price": 12999
       }
     ],
     "securityOptions": [
@@ -1181,7 +1271,7 @@
     "images": [
       "/uploads/sales-mercedes-sedan.jpg"
     ],
-    "pricePerHour": 1333,
+    "pricePerHour": 999,
     "description": "Mercedes-Benz C200 Petrol. The pinnacle of German automotive engineering, blending luxury with performance.",
     "features": [
       "COMAND System",
@@ -1197,19 +1287,24 @@
     },
     "packages": [
       {
-        "duration": 6,
-        "kmLimit": 80,
-        "price": 8000
+        "duration": 4,
+        "kmLimit": 40,
+        "price": 3999
       },
       {
-        "duration": 10,
+        "duration": 8,
+        "kmLimit": 80,
+        "price": 5999
+      },
+      {
+        "duration": 12,
         "kmLimit": 120,
-        "price": 12000
+        "price": 7999
       },
       {
         "duration": 24,
         "kmLimit": 200,
-        "price": 20000
+        "price": 12999
       }
     ],
     "securityOptions": [
@@ -1231,6 +1326,307 @@
     "paymentPolicy": {
       "advancePercentage": 10,
       "arrivalPercentage": 90
+    },
+    "status": "Available"
+  },
+  {
+    "id": "rolls-royce-ghost-2020-vip-001",
+    "brand": "Rolls-Royce",
+    "model": "Ghost",
+    "type": "Luxury",
+    "seats": 4,
+    "image": "/uploads/cd-mercedes-luxury.jpg",
+    "images": [
+      "/uploads/cd-mercedes-luxury.jpg"
+    ],
+    "description": "Rolls-Royce Ghost. The ultimate expression of luxury motoring. Whisper-quiet cabin with handcrafted perfection.",
+    "features": [
+      "Starlight Headliner",
+      "Bespoke Audio",
+      "Lamb's Wool Carpets",
+      "Spirit of Ecstasy"
+    ],
+    "category": "Chauffeur Driven",
+    "fleetTier": "VIP",
+    "pricePerHour": 6499,
+    "packages": [
+      {
+        "duration": 4,
+        "kmLimit": 40,
+        "price": 25999
+      },
+      {
+        "duration": 8,
+        "kmLimit": 80,
+        "price": 39999
+      },
+      {
+        "duration": 12,
+        "kmLimit": 120,
+        "price": 54999
+      },
+      {
+        "duration": 24,
+        "kmLimit": 200,
+        "price": 79999
+      }
+    ],
+    "vipOptions": {
+      "bodyguard": true,
+      "personalConcierge": true,
+      "premiumRefreshments": true,
+      "customRoute": true
+    },
+    "securityOptions": [
+      {
+        "id": "sec-std",
+        "label": "Standard (Driver only)",
+        "carCount": 1,
+        "bodyguardCount": 0,
+        "price": 0
+      },
+      {
+        "id": "sec-plus",
+        "label": "Executive Protection",
+        "carCount": 2,
+        "bodyguardCount": 2,
+        "price": 25000
+      },
+      {
+        "id": "sec-elite",
+        "label": "Full Convoy Security",
+        "carCount": 3,
+        "bodyguardCount": 4,
+        "price": 50000
+      }
+    ],
+    "paymentPolicy": {
+      "advancePercentage": 25,
+      "arrivalPercentage": 75
+    },
+    "status": "Available"
+  },
+  {
+    "id": "bentley-continental-gt-2019-vip-002",
+    "brand": "Bentley",
+    "model": "Continental GT",
+    "type": "Luxury",
+    "seats": 4,
+    "image": "/uploads/cd-sportscar-elite.jpg",
+    "images": [
+      "/uploads/cd-sportscar-elite.jpg"
+    ],
+    "description": "Bentley Continental GT. Grand touring perfection with handcrafted British luxury and exhilarating performance.",
+    "features": [
+      "Naim Audio System",
+      "Diamond Quilted Leather",
+      "Rotating Display",
+      "W12 Twin-Turbo"
+    ],
+    "category": "Chauffeur Driven",
+    "fleetTier": "VIP",
+    "pricePerHour": 6499,
+    "packages": [
+      {
+        "duration": 4,
+        "kmLimit": 40,
+        "price": 25999
+      },
+      {
+        "duration": 8,
+        "kmLimit": 80,
+        "price": 39999
+      },
+      {
+        "duration": 12,
+        "kmLimit": 120,
+        "price": 54999
+      },
+      {
+        "duration": 24,
+        "kmLimit": 200,
+        "price": 79999
+      }
+    ],
+    "vipOptions": {
+      "bodyguard": true,
+      "personalConcierge": true,
+      "premiumRefreshments": true,
+      "customRoute": true
+    },
+    "securityOptions": [
+      {
+        "id": "sec-std",
+        "label": "Standard (Driver only)",
+        "carCount": 1,
+        "bodyguardCount": 0,
+        "price": 0
+      },
+      {
+        "id": "sec-plus",
+        "label": "Executive Protection",
+        "carCount": 2,
+        "bodyguardCount": 2,
+        "price": 25000
+      },
+      {
+        "id": "sec-elite",
+        "label": "Full Convoy Security",
+        "carCount": 3,
+        "bodyguardCount": 4,
+        "price": 50000
+      }
+    ],
+    "paymentPolicy": {
+      "advancePercentage": 25,
+      "arrivalPercentage": 75
+    },
+    "status": "Available"
+  },
+  {
+    "id": "mercedes-maybach-s580-2021-vip-003",
+    "brand": "Mercedes-Maybach",
+    "model": "S 580",
+    "type": "Sedan",
+    "seats": 4,
+    "image": "/uploads/cd-mercedes-luxury.jpg",
+    "images": [
+      "/uploads/cd-mercedes-luxury.jpg"
+    ],
+    "description": "Mercedes-Maybach S 580. The pinnacle of Mercedes luxury. First-class rear seating with executive comfort.",
+    "features": [
+      "Executive Rear Seats",
+      "Burmester 4D Audio",
+      "Chauffeur Package",
+      "MBUX Rear Tablet"
+    ],
+    "category": "Chauffeur Driven",
+    "fleetTier": "VIP",
+    "pricePerHour": 6499,
+    "packages": [
+      {
+        "duration": 4,
+        "kmLimit": 40,
+        "price": 25999
+      },
+      {
+        "duration": 8,
+        "kmLimit": 80,
+        "price": 39999
+      },
+      {
+        "duration": 12,
+        "kmLimit": 120,
+        "price": 54999
+      },
+      {
+        "duration": 24,
+        "kmLimit": 200,
+        "price": 79999
+      }
+    ],
+    "vipOptions": {
+      "bodyguard": true,
+      "personalConcierge": true,
+      "premiumRefreshments": true,
+      "customRoute": true
+    },
+    "securityOptions": [
+      {
+        "id": "sec-std",
+        "label": "Standard (Driver only)",
+        "carCount": 1,
+        "bodyguardCount": 0,
+        "price": 0
+      },
+      {
+        "id": "sec-plus",
+        "label": "Executive Protection",
+        "carCount": 2,
+        "bodyguardCount": 2,
+        "price": 25000
+      },
+      {
+        "id": "sec-elite",
+        "label": "Full Convoy Security",
+        "carCount": 3,
+        "bodyguardCount": 4,
+        "price": 50000
+      }
+    ],
+    "paymentPolicy": {
+      "advancePercentage": 25,
+      "arrivalPercentage": 75
+    },
+    "status": "Available"
+  },
+  {
+    "id": "lamborghini-huracan-2020-elite-002",
+    "brand": "Lamborghini",
+    "model": "Huracán",
+    "type": "Luxury",
+    "category": "Chauffeur Driven",
+    "fleetTier": "Elite",
+    "seats": 2,
+    "image": "/uploads/cd-sportscar-elite.jpg",
+    "images": [
+      "/uploads/cd-sportscar-elite.jpg"
+    ],
+    "pricePerHour": 3999,
+    "description": "Lamborghini Huracán. Italian supercar excellence with naturally-aspirated V10 fury and jaw-dropping design.",
+    "features": [
+      "V10 Engine",
+      "Carbon Ceramic Brakes",
+      "LDVI Technology",
+      "Forged Composites"
+    ],
+    "vipOptions": {
+      "bodyguard": true,
+      "personalConcierge": true,
+      "premiumRefreshments": true,
+      "customRoute": true
+    },
+    "packages": [
+      {
+        "duration": 4,
+        "kmLimit": 40,
+        "price": 15999
+      },
+      {
+        "duration": 8,
+        "kmLimit": 80,
+        "price": 24999
+      },
+      {
+        "duration": 12,
+        "kmLimit": 120,
+        "price": 32999
+      },
+      {
+        "duration": 24,
+        "kmLimit": 200,
+        "price": 45999
+      }
+    ],
+    "securityOptions": [
+      {
+        "id": "sec-std",
+        "label": "Standard (Driver only)",
+        "carCount": 1,
+        "bodyguardCount": 0,
+        "price": 0
+      },
+      {
+        "id": "sec-plus",
+        "label": "Executive Protection",
+        "carCount": 2,
+        "bodyguardCount": 2,
+        "price": 15000
+      }
+    ],
+    "paymentPolicy": {
+      "advancePercentage": 15,
+      "arrivalPercentage": 85
     },
     "status": "Available"
   }

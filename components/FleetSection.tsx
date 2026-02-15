@@ -96,6 +96,9 @@ const FleetSection: React.FC<FleetSectionProps> = ({ onBook }) => {
   );
   const [selectedTier, setSelectedTier] = useState<FleetTier | "All" | null>(null);
   const [fleet, setFleet] = useState<Car[]>([]);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [packageFilter, setPackageFilter] = useState<number | "All">("All");
+  const [filterOpen, setFilterOpen] = useState(false);
 
   useEffect(() => {
     const loadFleet = async () => {
@@ -105,48 +108,55 @@ const FleetSection: React.FC<FleetSectionProps> = ({ onBook }) => {
     loadFleet();
   }, []);
 
-  // Dynamic car count per tier
-  const getCountForTier = (tierId: string) => fleet.filter(c => c.fleetTier === tierId).length;
+  // Dynamic car count per tier (respects type filter and search)
+  const getCountForTier = (tierId: string) => fleet.filter(c => {
+    const tierMatch = c.fleetTier === tierId;
+    const typeMatch = filter === "All" || c.type === filter;
+    const searchMatch = !searchQuery || 
+      c.brand.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      c.model.toLowerCase().includes(searchQuery.toLowerCase());
+    return tierMatch && typeMatch && searchMatch;
+  }).length;
 
   const collections = [
     { 
       id: 'Gold', 
       title: 'Gold Collection', 
-      desc: 'Premium Entry into Luxury Rentals', 
-      img: 'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?auto=format&fit=crop&q=80&w=800',
-      tag: 'Luxury Standard',
+      desc: 'Audi A4 · Mercedes C-Class · Compact SUVs', 
+      img: '/uploads/sales-audi-sedan.jpg',
+      tag: '4hr / 40km — From ₹3,999',
       gradient: 'from-amber-900/80 via-amber-800/40'
     },
     { 
       id: 'Platinum', 
       title: 'Platinum Collection', 
-      desc: 'Dynamic Business & Leisure SUV/Sedans', 
-      img: 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&q=80&w=800',
-      tag: 'Executive Choice',
+      desc: 'BMW 5 Series · Audi A6 · Jaguar XF · Range Rover', 
+      img: '/uploads/sales-bmw-sedan.jpg',
+      tag: '4hr / 40km — From ₹5,999',
       gradient: 'from-slate-800/80 via-slate-700/40'
     },
     { 
       id: 'Diamond', 
       title: 'Diamond Collection', 
-      desc: 'The Pinnacle of Executive Travel', 
-      img: 'https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&q=80&w=800',
-      tag: 'Flagship Luxury',
+      desc: 'Mercedes S-Class · BMW 7 Series · Porsche Cayenne · Audi Q7', 
+      img: '/images/fleet/cars/1.jpg',
+      tag: '4hr / 40km — From ₹8,499',
       gradient: 'from-purple-900/80 via-purple-800/40'
     },
     { 
       id: 'Elite', 
       title: 'Elite Collection', 
-      desc: 'Handcrafted Performance & Rarities', 
+      desc: 'Aston Martin · Lamborghini · Exotic Supercars', 
       img: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=80&w=800',
-      tag: 'Sports & Supercars',
+      tag: '4hr / 40km — From ₹15,999',
       gradient: 'from-orange-900/80 via-orange-800/40'
     },
     { 
       id: 'VIP', 
       title: 'VIP Collection', 
-      desc: 'Elite Security & Discreet Travel', 
-      img: 'https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&q=80&w=800',
-      tag: 'Protection Included',
+      desc: 'Rolls-Royce · Bentley · Mercedes-Maybach', 
+      img: 'https://images.unsplash.com/photo-1631295868223-63265b40d9e4?auto=format&fit=crop&q=80&w=800',
+      tag: '4hr / 40km — From ₹25,999',
       gradient: 'from-red-900/80 via-red-800/40'
     }
   ];
@@ -154,12 +164,31 @@ const FleetSection: React.FC<FleetSectionProps> = ({ onBook }) => {
   const filteredFleet = fleet.filter((car) => {
     const tierMatch = !selectedTier || selectedTier === "All" || car.fleetTier === selectedTier;
     const typeMatch = filter === "All" || car.type === filter;
-    return tierMatch && typeMatch;
+    const searchMatch = !searchQuery || 
+      car.brand.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      car.model.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      (car.type && car.type.toLowerCase().includes(searchQuery.toLowerCase()));
+    return tierMatch && typeMatch && searchMatch;
+  });
+
+  // Filter collections based on search too
+  const filteredCollections = collections.filter(col => {
+    if (!searchQuery) return true;
+    const q = searchQuery.toLowerCase();
+    // Check if any car in this tier matches the search
+    const hasCar = fleet.some(car => 
+      car.fleetTier === col.id && 
+      (car.brand.toLowerCase().includes(q) || car.model.toLowerCase().includes(q))
+    );
+    return col.title.toLowerCase().includes(q) || col.desc.toLowerCase().includes(q) || hasCar;
   });
 
   const handleBackToCollections = () => {
     setSelectedTier(null);
     setFilter("All");
+    setSearchQuery("");
+    setPackageFilter("All");
+    setFilterOpen(false);
     setTimeout(() => {
       document.getElementById('fleet')?.scrollIntoView({ behavior: 'smooth' });
     }, 50);
@@ -186,6 +215,7 @@ const FleetSection: React.FC<FleetSectionProps> = ({ onBook }) => {
             </button>
           )}
         </div>
+
 
         {!selectedTier ? (
           /* ======= Tier Landing View ======= */
@@ -278,21 +308,118 @@ const FleetSection: React.FC<FleetSectionProps> = ({ onBook }) => {
         ) : (
           /* ======= Drill-down Collection View ======= */
           <div>
-            {/* Vehicle Type Filters */}
-            <div className="flex flex-wrap justify-center gap-3 md:gap-4 mb-12">
-              {["All", "SUV", "Sedan", "Luxury"].map((t) => (
+            {/* Search Bar with Filter Icon */}
+            <div className="max-w-2xl mx-auto mb-10">
+              <div className="relative flex items-center gap-3">
+                {/* Search Input */}
+                <div className="relative flex-1">
+                  <input
+                    type="text"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    placeholder="Search by brand, model, or type..."
+                    className="w-full bg-white/5 border border-white/10 focus:border-luxora-gold/50 rounded-full px-6 py-3.5 pl-12 text-white text-sm placeholder:text-white/30 outline-none transition-all focus:bg-white/[0.07] focus:shadow-lg focus:shadow-luxora-gold/5"
+                  />
+                  <svg className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-white/30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                  </svg>
+                  {searchQuery && (
+                    <button
+                      onClick={() => setSearchQuery("")}
+                      className="absolute right-4 top-1/2 -translate-y-1/2 text-white/30 hover:text-luxora-gold text-lg transition-colors"
+                    >
+                      ×
+                    </button>
+                  )}
+                </div>
+
+                {/* Filter Button */}
                 <button
-                  key={t}
-                  onClick={() => setFilter(t as any)}
-                  className={`text-[10px] uppercase tracking-[0.3em] font-bold px-6 py-2.5 transition-all border rounded-full ${
-                    filter === t 
-                      ? "border-luxora-gold bg-luxora-gold/10 text-luxora-gold" 
-                      : "border-white/10 text-white/30 hover:text-white/60 hover:border-white/20"
+                  onClick={() => setFilterOpen(!filterOpen)}
+                  className={`relative flex-shrink-0 w-12 h-12 rounded-full border flex items-center justify-center transition-all ${
+                    filterOpen || filter !== "All" || packageFilter !== "All"
+                      ? "border-luxora-gold/60 bg-luxora-gold/10 text-luxora-gold"
+                      : "border-white/15 bg-white/5 text-white/40 hover:text-white/70 hover:border-white/25"
                   }`}
                 >
-                  {t === "All" ? "All Models" : t === "Luxury" ? "Ultra-Luxury" : `${t}s`}
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" />
+                  </svg>
+                  {/* Active filter indicator dot */}
+                  {(filter !== "All" || packageFilter !== "All") && (
+                    <span className="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 bg-luxora-gold rounded-full"></span>
+                  )}
                 </button>
-              ))}
+              </div>
+
+              {/* Filter Dropdown Panel */}
+              {filterOpen && (
+                <div className="mt-3 bg-luxora-charcoal/95 backdrop-blur-xl border border-white/10 rounded-2xl p-5 shadow-2xl shadow-black/50 animate-fadeIn">
+                  <div className="flex flex-col sm:flex-row gap-4">
+                    {/* Vehicle Type */}
+                    <div className="flex-1">
+                      <label className="text-white/30 text-[9px] uppercase tracking-[0.3em] font-bold mb-2 block">Vehicle Type</label>
+                      <div className="flex flex-wrap gap-2">
+                        {["All", "SUV", "Sedan", "Luxury"].map((t) => (
+                          <button
+                            key={t}
+                            onClick={() => setFilter(t as any)}
+                            className={`text-[9px] uppercase tracking-[0.2em] font-bold px-4 py-1.5 transition-all border rounded-full ${
+                              filter === t
+                                ? "border-luxora-gold bg-luxora-gold/15 text-luxora-gold"
+                                : "border-white/10 text-white/30 hover:text-white/60 hover:border-white/20"
+                            }`}
+                          >
+                            {t === "All" ? "All" : t === "Luxury" ? "Ultra-Luxury" : t}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                    {/* Package Duration */}
+                    <div className="flex-1">
+                      <label className="text-white/30 text-[9px] uppercase tracking-[0.3em] font-bold mb-2 block">Package</label>
+                      <div className="flex flex-wrap gap-2">
+                        {(["All", 4, 8, 12, 24] as (number | "All")[]).map((p) => (
+                          <button
+                            key={p}
+                            onClick={() => setPackageFilter(p)}
+                            className={`text-[9px] uppercase tracking-[0.2em] font-bold px-4 py-1.5 transition-all border rounded-full ${
+                              packageFilter === p
+                                ? "border-luxora-gold bg-luxora-gold/15 text-luxora-gold"
+                                : "border-white/10 text-white/30 hover:text-white/60 hover:border-white/20"
+                            }`}
+                          >
+                            {p === "All" ? "All" : `${p}hr`}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                  {/* Active Filters Summary + Clear */}
+                  {(filter !== "All" || packageFilter !== "All") && (
+                    <div className="mt-4 pt-3 border-t border-white/5 flex items-center justify-between">
+                      <div className="flex gap-2 flex-wrap">
+                        {filter !== "All" && (
+                          <span className="text-[9px] uppercase tracking-widest bg-luxora-gold/10 text-luxora-gold border border-luxora-gold/20 rounded-full px-3 py-1">
+                            {filter === "Luxury" ? "Ultra-Luxury" : filter}
+                          </span>
+                        )}
+                        {packageFilter !== "All" && (
+                          <span className="text-[9px] uppercase tracking-widest bg-luxora-gold/10 text-luxora-gold border border-luxora-gold/20 rounded-full px-3 py-1">
+                            {packageFilter}hr Package
+                          </span>
+                        )}
+                      </div>
+                      <button
+                        onClick={() => { setFilter("All"); setPackageFilter("All"); }}
+                        className="text-[9px] uppercase tracking-widest text-white/30 hover:text-luxora-gold transition-colors"
+                      >
+                        Clear All
+                      </button>
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
 
             {filteredFleet.length > 0 ? (
@@ -342,10 +469,22 @@ const FleetSection: React.FC<FleetSectionProps> = ({ onBook }) => {
                           <div className="text-right flex-shrink-0 bg-luxora-charcoal/80 rounded-lg p-3 border border-luxora-gold/20">
                             <span className="text-white/30 text-[7px] uppercase tracking-widest block mb-1">From</span>
                             <span className="text-luxora-gold font-bold text-lg block">
-                              ₹{car.packages && car.packages.length > 0 ? Math.min(...car.packages.map(p => p.price)).toLocaleString("en-IN") : car.pricePerHour.toLocaleString("en-IN")}
+                              ₹{(() => {
+                                if (!car.packages || car.packages.length === 0) return car.pricePerHour.toLocaleString("en-IN");
+                                const pkg = packageFilter !== "All" 
+                                  ? car.packages.find(p => p.duration === packageFilter) || car.packages[0]
+                                  : car.packages[0];
+                                return pkg.price.toLocaleString("en-IN");
+                              })()}
                             </span>
                             <span className="text-white/20 text-[7px] uppercase tracking-widest block mt-1">
-                              {car.packages && car.packages.length > 0 ? `${car.packages[0].duration}h Pkg` : "/hr"}
+                              {(() => {
+                                if (!car.packages || car.packages.length === 0) return "/hr";
+                                const pkg = packageFilter !== "All" 
+                                  ? car.packages.find(p => p.duration === packageFilter) || car.packages[0]
+                                  : car.packages[0];
+                                return `${pkg.duration}hr / ${pkg.kmLimit}km`;
+                              })()}
                             </span>
                           </div>
                         </div>
