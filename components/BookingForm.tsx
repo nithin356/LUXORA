@@ -129,8 +129,8 @@ const BookingForm: React.FC<BookingFormProps> = ({ selectedCarId }) => {
     
     // Default fallback
     return {
-      advance: Math.round(total * 0.2), 
-      arrival: Math.round(total * 0.8)
+      advance: Math.round(total * 0.1), 
+      arrival: Math.round(total * 0.9)
     };
   };
 

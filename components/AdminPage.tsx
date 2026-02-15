@@ -37,9 +37,9 @@ const AdminPage: React.FC = () => {
   const [activeStep, setActiveStep] = useState(0);
 
   const formSteps = [
-    { title: "Basic Details", icon: "📝" },
-    { title: "Specs & VIP", icon: "⚙️" },
-    { title: "Gallery & Description", icon: "🖼️" },
+    { title: "Basic Details", icon: "01" },
+    { title: "Specs & VIP", icon: "02" },
+    { title: "Gallery & Description", icon: "03" },
   ];
 
   // Form State
@@ -333,9 +333,17 @@ const AdminPage: React.FC = () => {
     setActiveStep(0);
   };
 
-  const filteredFleet = fleet.filter(
-    (car) => car.category === activeCarSubCategory,
-  );
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filterTier, setFilterTier] = useState("All");
+  const [filterType, setFilterType] = useState("All");
+
+  const filteredFleet = fleet.filter((car) => {
+    const matchesCategory = car.category === activeCarSubCategory;
+    const matchesSearch = (car.brand + " " + car.model).toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesTier = filterTier === "All" || car.fleetTier === filterTier;
+    const matchesType = filterType === "All" || car.type === filterType;
+    return matchesCategory && matchesSearch && matchesTier && matchesType;
+  });
 
   // Login View
   if (!isAuthenticated) {
@@ -425,7 +433,7 @@ const AdminPage: React.FC = () => {
               className="group relative bg-luxora-charcoal border border-white/5 p-6 sm:p-8 hover:border-luxora-gold/50 transition-all duration-500 text-center flex flex-col items-center"
             >
               <div className="text-3xl sm:text-5xl mb-4 sm:mb-8 group-hover:scale-110 transition-transform text-luxora-gold">
-                🏎️
+                <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" d="M19 13l-7 7-7-7m14-8l-7 7-7-7" /></svg>
               </div>
               <h3 className="text-lg sm:text-2xl font-serif text-white mb-2 uppercase tracking-widest">
                 Cars
@@ -442,94 +450,87 @@ const AdminPage: React.FC = () => {
             {/* Enquiries Module */}
             <button
               onClick={() => setActiveMainCategory("Enquiries")}
-              className="group relative bg-luxora-charcoal border border-white/5 p-12 hover:border-luxora-gold/50 transition-all duration-500 text-center flex flex-col items-center"
+              className="group relative bg-luxora-charcoal border border-white/5 p-6 sm:p-8 hover:border-luxora-gold/50 transition-all duration-500 text-center flex flex-col items-center"
             >
-              <div className="text-5xl mb-8 group-hover:scale-110 transition-transform text-luxora-gold">
-                📩
+              <div className="text-3xl sm:text-5xl mb-4 sm:mb-8 group-hover:scale-110 transition-transform text-luxora-gold">
+                <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
               </div>
-              <h3 className="text-2xl font-serif text-white mb-2 uppercase tracking-widest">
+              <h3 className="text-lg sm:text-2xl font-serif text-white mb-2 uppercase tracking-widest">
                 Enquiries
               </h3>
               <p className="text-white/30 text-[10px] uppercase tracking-widest mb-8">
                 Booking Requests
               </p>
               <div className="w-12 h-[1px] bg-luxora-gold/30 group-hover:w-24 transition-all"></div>
-              {enquiries.some((e) => e.status === "pending") && (
-                <span className="absolute top-4 right-4 bg-red-500 px-2 py-1 text-[8px] text-white font-bold uppercase rounded-sm">
-                  New
-                </span>
-              )}
+              <span className="absolute top-4 right-4 text-[8px] bg-red-900/50 text-red-200 px-2 py-1 rounded-full font-bold uppercase tracking-wider animate-pulse">
+                New
+              </span>
             </button>
 
             {/* Flights Module */}
             <button
-              onClick={() => setActiveMainCategory("Flights")}
-              className="group relative bg-luxora-charcoal border border-white/5 p-12 hover:border-luxora-gold/50 transition-all duration-500 text-center flex flex-col items-center"
+              disabled
+              className="group relative bg-luxora-charcoal border border-white/5 p-6 sm:p-8 opacity-50 cursor-not-allowed hover:border-white/10 transition-all duration-500 text-center flex flex-col items-center grayscale"
             >
-              <div className="text-5xl mb-8 group-hover:scale-110 transition-transform text-luxora-gold">
-                ✈️
+              <div className="text-3xl sm:text-5xl mb-4 sm:mb-8 text-white/20">
+                <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" /></svg>
               </div>
-              <h3 className="text-2xl font-serif text-white mb-2 uppercase tracking-widest">
+              <h3 className="text-lg sm:text-2xl font-serif text-white/40 mb-2 uppercase tracking-widest">
                 Flights
               </h3>
-              <p className="text-white/30 text-[10px] uppercase tracking-widest mb-8">
+              <p className="text-white/20 text-[10px] uppercase tracking-widest mb-8">
                 Chartered Aviation
               </p>
-              <div className="w-12 h-[1px] bg-luxora-gold/30 group-hover:w-24 transition-all"></div>
-              <div className="mt-4 px-3 py-1 bg-luxora-gold text-luxora-dark text-[8px] font-bold uppercase tracking-widest rounded-full">
+              <span className="bg-luxora-gold/20 text-luxora-gold px-3 py-1 text-[8px] uppercase tracking-widest rounded-full">
                 Coming Soon
-              </div>
+              </span>
             </button>
 
             {/* Yachts Module */}
             <button
-              onClick={() => setActiveMainCategory("Yachts")}
-              className="group relative bg-luxora-charcoal border border-white/5 p-12 hover:border-luxora-gold/50 transition-all duration-500 text-center flex flex-col items-center"
+              disabled
+              className="group relative bg-luxora-charcoal border border-white/5 p-6 sm:p-8 opacity-50 cursor-not-allowed hover:border-white/10 transition-all duration-500 text-center flex flex-col items-center grayscale"
             >
-              <div className="text-5xl mb-8 group-hover:scale-110 transition-transform text-luxora-gold">
-                🛥️
+              <div className="text-3xl sm:text-5xl mb-4 sm:mb-8 text-white/20">
+                <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
               </div>
-              <h3 className="text-2xl font-serif text-white mb-2 uppercase tracking-widest">
+              <h3 className="text-lg sm:text-2xl font-serif text-white/40 mb-2 uppercase tracking-widest">
                 Yachts
               </h3>
-              <p className="text-white/30 text-[10px] uppercase tracking-widest mb-8">
+              <p className="text-white/20 text-[10px] uppercase tracking-widest mb-8">
                 Maritime Service
               </p>
-              <div className="w-12 h-[1px] bg-luxora-gold/30 group-hover:w-24 transition-all"></div>
-              <div className="mt-4 px-3 py-1 bg-luxora-gold text-luxora-dark text-[8px] font-bold uppercase tracking-widest rounded-full">
+              <span className="bg-luxora-gold/20 text-luxora-gold px-3 py-1 text-[8px] uppercase tracking-widest rounded-full">
                 Coming Soon
-              </div>
+              </span>
             </button>
 
             {/* Properties Module */}
             <button
-              onClick={() => setActiveMainCategory("Properties")}
-              className="group relative bg-luxora-charcoal border border-white/5 p-12 hover:border-luxora-gold/50 transition-all duration-500 text-center flex flex-col items-center"
+               onClick={() => setActiveMainCategory("Properties")}
+               className="group relative bg-luxora-charcoal border border-white/5 p-6 sm:p-8 hover:border-luxora-gold/50 transition-all duration-500 text-center flex flex-col items-center"
             >
-              <div className="text-5xl mb-8 group-hover:scale-110 transition-transform text-luxora-gold">
-                🏨
+              <div className="text-3xl sm:text-5xl mb-4 sm:mb-8 group-hover:scale-110 transition-transform text-luxora-gold">
+                <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
               </div>
-              <h3 className="text-2xl font-serif text-white mb-2 uppercase tracking-widest">
+              <h3 className="text-lg sm:text-2xl font-serif text-white mb-2 uppercase tracking-widest">
                 Properties
               </h3>
               <p className="text-white/30 text-[10px] uppercase tracking-widest mb-8">
                 Estates & Sales
               </p>
               <div className="w-12 h-[1px] bg-luxora-gold/30 group-hover:w-24 transition-all"></div>
-              <div className="mt-4 px-3 py-1 bg-luxora-gold text-luxora-dark text-[8px] font-bold uppercase tracking-widest rounded-full">
-                Coming Soon
-              </div>
             </button>
 
-            {/* Luxury Products Module */}
+            {/* Luxury Goods Module */}
             <button
-              onClick={() => setActiveMainCategory("Luxury Products")}
-              className="group relative bg-luxora-charcoal border border-white/5 p-12 hover:border-luxora-gold/50 transition-all duration-500 text-center flex flex-col items-center"
+               onClick={() => setActiveMainCategory("Luxury Products")}
+               className="group relative bg-luxora-charcoal border border-white/5 p-6 sm:p-8 hover:border-luxora-gold/50 transition-all duration-500 text-center flex flex-col items-center"
             >
-              <div className="text-5xl mb-8 group-hover:scale-110 transition-transform text-luxora-gold">
-                💎
+              <div className="text-3xl sm:text-5xl mb-4 sm:mb-8 group-hover:scale-110 transition-transform text-luxora-gold">
+                <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" /></svg>
               </div>
-              <h3 className="text-2xl font-serif text-white mb-2 uppercase tracking-widest">
+              <h3 className="text-lg sm:text-2xl font-serif text-white mb-2 uppercase tracking-widest">
                 Luxury Goods
               </h3>
               <p className="text-white/30 text-[10px] uppercase tracking-widest mb-8">
@@ -632,7 +633,7 @@ const AdminPage: React.FC = () => {
             {/* Sub-category selection */}
             <div className="flex flex-wrap gap-2 sm:gap-3 mb-8 sm:mb-12">
               {(
-                ["Chauffeur Driven", "Monthly Rental", "Sales"] as CarCategory[]
+                ["Chauffeur Driven", "Monthly Rental"] as CarCategory[]
               ).map((sub) => (
                 <button
                   key={sub}
@@ -653,22 +654,62 @@ const AdminPage: React.FC = () => {
               ))}
             </div>
 
-            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8 sm:mb-12">
-              <h3 className="text-lg sm:text-2xl font-serif text-white uppercase tracking-wider">
-                {activeCarSubCategory}{" "}
-                <span className="text-luxora-gold/50 ml-1 sm:ml-2">
-                  Inventory
-                </span>
-              </h3>
-              <button
-                onClick={() => {
-                  resetForm();
-                  setShowForm(!showForm);
-                }}
-                className="w-full sm:w-auto px-4 sm:px-8 py-3 gold-gradient text-luxora-dark font-bold uppercase tracking-widest text-[10px] rounded-sm shadow-xl hover:opacity-90 transition-all"
-              >
-                {showForm ? "Cancel" : "Add New Asset"}
-              </button>
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8 sm:mb-12">
+              <div className="w-full md:w-auto">
+                <h3 className="text-lg sm:text-2xl font-serif text-white uppercase tracking-wider mb-4 md:mb-0">
+                  {activeCarSubCategory}{" "}
+                  <span className="text-luxora-gold/50 ml-1 sm:ml-2">
+                    Inventory
+                  </span>
+                </h3>
+              </div>
+              
+              <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+                <div className="relative">
+                  <input
+                    type="text"
+                    placeholder="Search fleet..."
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    className="w-full sm:w-48 bg-luxora-dark border border-white/10 p-2 pl-8 text-white text-xs outline-none focus:border-luxora-gold transition-all rounded-sm"
+                  />
+                  <svg className="w-3 h-3 text-white/40 absolute left-3 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+                </div>
+                
+                <select 
+                  value={filterTier}
+                  onChange={(e) => setFilterTier(e.target.value)}
+                  className="bg-luxora-dark border border-white/10 p-2 text-white text-xs outline-none focus:border-luxora-gold transition-all rounded-sm"
+                >
+                  <option value="All">All Tiers</option>
+                  <option value="Gold">Gold</option>
+                  <option value="Platinum">Platinum</option>
+                  <option value="Diamond">Diamond</option>
+                  <option value="Elite">Elite</option>
+                  <option value="VIP">VIP</option>
+                </select>
+
+                <select 
+                  value={filterType}
+                  onChange={(e) => setFilterType(e.target.value)}
+                  className="bg-luxora-dark border border-white/10 p-2 text-white text-xs outline-none focus:border-luxora-gold transition-all rounded-sm"
+                >
+                  <option value="All">All Types</option>
+                  <option value="Luxury">Ultra-Luxury</option>
+                  <option value="Sedan">Sedan</option>
+                  <option value="SUV">SUV</option>
+                </select>
+
+                <button
+                  onClick={() => {
+                    resetForm();
+                    setShowForm(!showForm);
+                  }}
+                  className="px-6 py-2 gold-gradient text-luxora-dark font-bold uppercase tracking-widest text-[10px] rounded-sm shadow-xl hover:opacity-90 transition-all whitespace-nowrap"
+                >
+                  {showForm ? "Cancel" : "Add Asset"}
+                </button>
+              </div>
             </div>
 
             {showForm && (
@@ -742,11 +783,11 @@ const AdminPage: React.FC = () => {
                           <label className="block text-white/40 text-[10px] uppercase tracking-widest mb-2 font-bold">Fleet Tier</label>
                           <select name="fleetTier" value={formData.fleetTier || "Normal"} onChange={handleInputChange} className="w-full bg-luxora-dark border border-white/10 p-3 text-white focus:border-luxora-gold outline-none transition-all">
                             <option value="Normal">Normal</option>
-                            <option value="Elite">Elite</option>
-                            <option value="Platinum">Platinum</option>
-                            <option value="VIP">VIP</option>
                             <option value="Gold">Gold</option>
+                            <option value="Platinum">Platinum</option>
                             <option value="Diamond">Diamond</option>
+                            <option value="Elite">Elite</option>
+                            <option value="VIP">VIP</option>
                           </select>
                         </div>
                       </div>
@@ -757,16 +798,7 @@ const AdminPage: React.FC = () => {
                   {activeStep === 1 && (
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                       <div className="space-y-8">
-                        {activeCarSubCategory === "Sales" ? (
-                          <div className="bg-luxora-dark/30 p-6 rounded-sm border border-white/5">
-                            <label className={`block text-luxora-gold text-[10px] uppercase tracking-widest mb-4 font-bold ${errors.pricePerHour ? "text-red-500" : ""}`}>Acquisition Price (₹)</label>
-                            <div className="relative">
-                              <span className="absolute left-3 top-1/2 -translate-y-1/2 text-white/20">₹</span>
-                              <input required type="number" name="pricePerHour" value={formData.pricePerHour} onChange={handleInputChange} className={`w-full bg-luxora-dark border ${errors.pricePerHour ? "border-red-500/50" : "border-white/10"} p-3 pl-8 text-white focus:border-luxora-gold outline-none transition-all`} />
-                            </div>
-                            <p className="mt-2 text-[8px] text-white/20 uppercase tracking-widest font-bold">Set the total dealership price for this asset.</p>
-                          </div>
-                        ) : (
+
                           <div className="bg-luxora-dark/30 p-6 rounded-sm border border-white/5 space-y-6">
                             <div>
                               <label className="block text-luxora-gold text-[10px] uppercase tracking-widest mb-4 font-bold font-black tracking-widest">Base Hourly Rate (₹)</label>
@@ -821,7 +853,6 @@ const AdminPage: React.FC = () => {
                               </div>
                             </div>
                           </div>
-                        )}
                         
                         <div className="bg-luxora-dark/30 p-6 rounded-sm border border-white/5">
                           <label className="block text-white/40 text-[10px] uppercase tracking-widest mb-3 font-bold">Passenger Capacity</label>
@@ -1074,21 +1105,21 @@ const AdminPage: React.FC = () => {
                       </div>
 
                       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                        {/* Column 1: Contact & Car */}
+                         {/* Column 1: Contact & Car */}
                         <div className="space-y-3">
                            <p className="text-luxora-gold text-[9px] uppercase tracking-widest font-bold mb-2">Client Details</p>
                            <div className="space-y-2">
                              <div className="flex items-center gap-2 text-white/70 text-xs">
-                               <span className="text-white/30 w-4">📱</span> {enq.customerPhone}
+                               <span className="text-white/30 w-12 text-[9px] uppercase tracking-wider">Phone:</span> {enq.customerPhone}
                              </div>
                              <div className="flex items-center gap-2 text-white/70 text-xs">
-                               <span className="text-white/30 w-4">✉️</span> {enq.customerEmail}
+                               <span className="text-white/30 w-12 text-[9px] uppercase tracking-wider">Email:</span> {enq.customerEmail}
                              </div>
                              <div className="flex items-center gap-2 text-white/70 text-xs">
-                               <span className="text-white/30 w-4">🏎️</span> {enq.carModel}
+                               <span className="text-white/30 w-12 text-[9px] uppercase tracking-wider">Car:</span> {enq.carModel}
                              </div>
                              <div className="flex items-center gap-2 text-white/70 text-xs">
-                               <span className="text-white/30 w-4">📅</span> {enq.pickupDate} ({enq.duration})
+                               <span className="text-white/30 w-12 text-[9px] uppercase tracking-wider">Pickup:</span> {enq.pickupDate} ({enq.duration})
                              </div>
                            </div>
                         </div>
