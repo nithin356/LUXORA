@@ -1,1 +1,1986 @@
-[]
+[
+  {
+    "id": "aston-martin-vantage-2016-1771154130606-121739",
+    "brand": "Aston Martin",
+    "model": "Vantage (2016)",
+    "type": "Luxury",
+    "category": "Chauffeur Driven",
+    "fleetTier": "Elite",
+    "seats": 4,
+    "image": "/uploads/cd-sportscar-elite.jpg",
+    "images": [
+      "/uploads/cd-sportscar-elite.jpg"
+    ],
+    "pricePerHour": 5000,
+    "description": "2016 Aston Martin Vantage. Handcrafted British grand tourer with breathtaking design and exhilarating performance.",
+    "features": [
+      "Sports Exhaust",
+      "Bang & Olufsen Audio",
+      "Carbon Fibre",
+      "Hand-Stitched Leather"
+    ],
+    "vipOptions": {
+      "bodyguard": true,
+      "personalConcierge": true,
+      "premiumRefreshments": true,
+      "customRoute": true
+    },
+    "packages": [
+      {
+        "duration": 6,
+        "kmLimit": 80,
+        "price": 30000
+      },
+      {
+        "duration": 12,
+        "kmLimit": 120,
+        "price": 40000
+      },
+      {
+        "duration": 24,
+        "kmLimit": 200,
+        "price": 50000
+      }
+    ],
+    "securityOptions": [
+      {
+        "id": "sec-std",
+        "label": "Standard (Driver only)",
+        "carCount": 1,
+        "bodyguardCount": 0,
+        "price": 0
+      },
+      {
+        "id": "sec-plus",
+        "label": "Executive Protection",
+        "carCount": 2,
+        "bodyguardCount": 2,
+        "price": 15000
+      }
+    ],
+    "paymentPolicy": {
+      "advancePercentage": 10,
+      "arrivalPercentage": 90
+    }
+  },
+  {
+    "id": "bmw-x6-2011-1771154130604-986930",
+    "brand": "BMW",
+    "model": "X6 (2011)",
+    "type": "SUV",
+    "category": "Chauffeur Driven",
+    "fleetTier": "Diamond",
+    "seats": 5,
+    "image": "/uploads/sales-bmw-suv.jpg",
+    "images": [
+      "/uploads/sales-bmw-suv.jpg"
+    ],
+    "pricePerHour": 2500,
+    "description": "2011 BMW X6 (UP Reg). The ultimate driving machine, combining dynamic performance with premium luxury.",
+    "features": [
+      "iDrive System",
+      "Harman Kardon Audio",
+      "M Sport Package",
+      "Leather Interior"
+    ],
+    "vipOptions": {
+      "bodyguard": true,
+      "personalConcierge": true,
+      "premiumRefreshments": true,
+      "customRoute": true
+    },
+    "packages": [
+      {
+        "duration": 6,
+        "kmLimit": 100,
+        "price": 15000
+      },
+      {
+        "duration": 10,
+        "kmLimit": 150,
+        "price": 20000
+      },
+      {
+        "duration": 24,
+        "kmLimit": 250,
+        "price": 30000
+      }
+    ],
+    "securityOptions": [
+      {
+        "id": "sec-std",
+        "label": "Standard (Driver only)",
+        "carCount": 1,
+        "bodyguardCount": 0,
+        "price": 0
+      },
+      {
+        "id": "sec-plus",
+        "label": "Executive Protection",
+        "carCount": 2,
+        "bodyguardCount": 2,
+        "price": 15000
+      }
+    ],
+    "paymentPolicy": {
+      "advancePercentage": 10,
+      "arrivalPercentage": 90
+    }
+  },
+  {
+    "id": "bmw-x6-2013-1771154130605-505194",
+    "brand": "BMW",
+    "model": "X6 (2013)",
+    "type": "SUV",
+    "category": "Chauffeur Driven",
+    "fleetTier": "Diamond",
+    "seats": 5,
+    "image": "/uploads/sales-bmw-suv.jpg",
+    "images": [
+      "/uploads/sales-bmw-suv.jpg"
+    ],
+    "pricePerHour": 2500,
+    "description": "2013 BMW X6 (HR Reg) ✦ CERTIFIED. The ultimate driving machine, combining dynamic performance with premium luxury.",
+    "features": [
+      "iDrive System",
+      "Harman Kardon Audio",
+      "M Sport Package",
+      "Leather Interior"
+    ],
+    "vipOptions": {
+      "bodyguard": true,
+      "personalConcierge": true,
+      "premiumRefreshments": true,
+      "customRoute": true
+    },
+    "packages": [
+      {
+        "duration": 6,
+        "kmLimit": 100,
+        "price": 15000
+      },
+      {
+        "duration": 10,
+        "kmLimit": 150,
+        "price": 20000
+      },
+      {
+        "duration": 24,
+        "kmLimit": 250,
+        "price": 30000
+      }
+    ],
+    "securityOptions": [
+      {
+        "id": "sec-std",
+        "label": "Standard (Driver only)",
+        "carCount": 1,
+        "bodyguardCount": 0,
+        "price": 0
+      },
+      {
+        "id": "sec-plus",
+        "label": "Executive Protection",
+        "carCount": 2,
+        "bodyguardCount": 2,
+        "price": 15000
+      }
+    ],
+    "paymentPolicy": {
+      "advancePercentage": 10,
+      "arrivalPercentage": 90
+    }
+  },
+  {
+    "id": "porsche-cayenne-2013-1771154130605-408326",
+    "brand": "Porsche",
+    "model": "Cayenne (2013)",
+    "type": "SUV",
+    "category": "Chauffeur Driven",
+    "fleetTier": "Diamond",
+    "seats": 5,
+    "image": "/uploads/cd-porsche-cayenne.jpg",
+    "images": [
+      "/uploads/cd-porsche-cayenne.jpg"
+    ],
+    "pricePerHour": 2500,
+    "description": "2013 Porsche Cayenne (UP Reg) ✦ CERTIFIED. Uncompromising performance and engineering perfection from Stuttgart.",
+    "features": [
+      "Sport Chrono Package",
+      "BOSE Audio",
+      "PASM Suspension",
+      "Full Leather"
+    ],
+    "vipOptions": {
+      "bodyguard": true,
+      "personalConcierge": true,
+      "premiumRefreshments": true,
+      "customRoute": true
+    },
+    "packages": [
+      {
+        "duration": 6,
+        "kmLimit": 100,
+        "price": 15000
+      },
+      {
+        "duration": 10,
+        "kmLimit": 150,
+        "price": 20000
+      },
+      {
+        "duration": 24,
+        "kmLimit": 250,
+        "price": 30000
+      }
+    ],
+    "securityOptions": [
+      {
+        "id": "sec-std",
+        "label": "Standard (Driver only)",
+        "carCount": 1,
+        "bodyguardCount": 0,
+        "price": 0
+      },
+      {
+        "id": "sec-plus",
+        "label": "Executive Protection",
+        "carCount": 2,
+        "bodyguardCount": 2,
+        "price": 15000
+      }
+    ],
+    "paymentPolicy": {
+      "advancePercentage": 10,
+      "arrivalPercentage": 90
+    }
+  },
+  {
+    "id": "audi-q7-2015-1771154130605-815465",
+    "brand": "Audi",
+    "model": "Q7 (2015)",
+    "type": "SUV",
+    "category": "Chauffeur Driven",
+    "fleetTier": "Diamond",
+    "seats": 5,
+    "image": "/uploads/sales-audi-suv.jpg",
+    "images": [
+      "/uploads/sales-audi-suv.jpg"
+    ],
+    "pricePerHour": 2500,
+    "description": "2015 Audi Q7 (UP Reg). Progressive luxury with Quattro all-wheel drive and cutting-edge technology.",
+    "features": [
+      "Quattro AWD",
+      "MMI Navigation",
+      "Bang & Olufsen Audio",
+      "S-Line Package"
+    ],
+    "vipOptions": {
+      "bodyguard": true,
+      "personalConcierge": true,
+      "premiumRefreshments": true,
+      "customRoute": true
+    },
+    "packages": [
+      {
+        "duration": 6,
+        "kmLimit": 100,
+        "price": 15000
+      },
+      {
+        "duration": 10,
+        "kmLimit": 150,
+        "price": 20000
+      },
+      {
+        "duration": 24,
+        "kmLimit": 250,
+        "price": 30000
+      }
+    ],
+    "securityOptions": [
+      {
+        "id": "sec-std",
+        "label": "Standard (Driver only)",
+        "carCount": 1,
+        "bodyguardCount": 0,
+        "price": 0
+      },
+      {
+        "id": "sec-plus",
+        "label": "Executive Protection",
+        "carCount": 2,
+        "bodyguardCount": 2,
+        "price": 15000
+      }
+    ],
+    "paymentPolicy": {
+      "advancePercentage": 10,
+      "arrivalPercentage": 90
+    }
+  },
+  {
+    "id": "bmw-730ld-2013-1771154130605-118128",
+    "brand": "BMW",
+    "model": "730LD (2013)",
+    "type": "Sedan",
+    "category": "Chauffeur Driven",
+    "fleetTier": "Diamond",
+    "seats": 4,
+    "image": "/uploads/cd-bmw-7series.jpg",
+    "images": [
+      "/uploads/cd-bmw-7series.jpg"
+    ],
+    "pricePerHour": 2500,
+    "description": "2013 BMW 730LD (WB Reg). The ultimate driving machine, combining dynamic performance with premium luxury.",
+    "features": [
+      "iDrive System",
+      "Harman Kardon Audio",
+      "M Sport Package",
+      "Leather Interior"
+    ],
+    "vipOptions": {
+      "bodyguard": true,
+      "personalConcierge": true,
+      "premiumRefreshments": true,
+      "customRoute": true
+    },
+    "packages": [
+      {
+        "duration": 6,
+        "kmLimit": 100,
+        "price": 15000
+      },
+      {
+        "duration": 10,
+        "kmLimit": 150,
+        "price": 20000
+      },
+      {
+        "duration": 24,
+        "kmLimit": 250,
+        "price": 30000
+      }
+    ],
+    "securityOptions": [
+      {
+        "id": "sec-std",
+        "label": "Standard (Driver only)",
+        "carCount": 1,
+        "bodyguardCount": 0,
+        "price": 0
+      },
+      {
+        "id": "sec-plus",
+        "label": "Executive Protection",
+        "carCount": 2,
+        "bodyguardCount": 2,
+        "price": 15000
+      }
+    ],
+    "paymentPolicy": {
+      "advancePercentage": 10,
+      "arrivalPercentage": 90
+    }
+  },
+  {
+    "id": "bmw-730ld-2009-1771154130606-343236",
+    "brand": "BMW",
+    "model": "730LD (2009)",
+    "type": "Sedan",
+    "category": "Chauffeur Driven",
+    "fleetTier": "Diamond",
+    "seats": 4,
+    "image": "/uploads/cd-bmw-7series.jpg",
+    "images": [
+      "/uploads/cd-bmw-7series.jpg"
+    ],
+    "pricePerHour": 2500,
+    "description": "2009 BMW 730LD (HR Reg). The ultimate driving machine, combining dynamic performance with premium luxury.",
+    "features": [
+      "iDrive System",
+      "Harman Kardon Audio",
+      "M Sport Package",
+      "Leather Interior"
+    ],
+    "vipOptions": {
+      "bodyguard": true,
+      "personalConcierge": true,
+      "premiumRefreshments": true,
+      "customRoute": true
+    },
+    "packages": [
+      {
+        "duration": 6,
+        "kmLimit": 100,
+        "price": 15000
+      },
+      {
+        "duration": 10,
+        "kmLimit": 150,
+        "price": 20000
+      },
+      {
+        "duration": 24,
+        "kmLimit": 250,
+        "price": 30000
+      }
+    ],
+    "securityOptions": [
+      {
+        "id": "sec-std",
+        "label": "Standard (Driver only)",
+        "carCount": 1,
+        "bodyguardCount": 0,
+        "price": 0
+      },
+      {
+        "id": "sec-plus",
+        "label": "Executive Protection",
+        "carCount": 2,
+        "bodyguardCount": 2,
+        "price": 15000
+      }
+    ],
+    "paymentPolicy": {
+      "advancePercentage": 10,
+      "arrivalPercentage": 90
+    }
+  },
+  {
+    "id": "mercedes-benz-gl350-2012-1771154130607-395858",
+    "brand": "Mercedes-Benz",
+    "model": "GL350 (2012)",
+    "type": "SUV",
+    "category": "Chauffeur Driven",
+    "fleetTier": "Diamond",
+    "seats": 5,
+    "image": "/uploads/cd-mercedes-luxury.jpg",
+    "images": [
+      "/uploads/cd-mercedes-luxury.jpg"
+    ],
+    "pricePerHour": 2500,
+    "description": "2012 Mercedes-Benz GL350 (HR Reg) - 5 Seater. The pinnacle of German automotive engineering, blending luxury with performance.",
+    "features": [
+      "COMAND System",
+      "Burmester Audio",
+      "Air Suspension",
+      "Leather Interior"
+    ],
+    "vipOptions": {
+      "bodyguard": true,
+      "personalConcierge": true,
+      "premiumRefreshments": true,
+      "customRoute": true
+    },
+    "packages": [
+      {
+        "duration": 6,
+        "kmLimit": 100,
+        "price": 15000
+      },
+      {
+        "duration": 10,
+        "kmLimit": 150,
+        "price": 20000
+      },
+      {
+        "duration": 24,
+        "kmLimit": 250,
+        "price": 30000
+      }
+    ],
+    "securityOptions": [
+      {
+        "id": "sec-std",
+        "label": "Standard (Driver only)",
+        "carCount": 1,
+        "bodyguardCount": 0,
+        "price": 0
+      },
+      {
+        "id": "sec-plus",
+        "label": "Executive Protection",
+        "carCount": 2,
+        "bodyguardCount": 2,
+        "price": 15000
+      }
+    ],
+    "paymentPolicy": {
+      "advancePercentage": 10,
+      "arrivalPercentage": 90
+    }
+  },
+  {
+    "id": "range-rover-evoque-2014-1771154130603-763121",
+    "brand": "Range Rover",
+    "model": "Evoque (2014)",
+    "type": "SUV",
+    "category": "Chauffeur Driven",
+    "fleetTier": "Platinum",
+    "seats": 5,
+    "image": "/uploads/sales-evoque.jpg",
+    "images": [
+      "/uploads/sales-evoque.jpg"
+    ],
+    "pricePerHour": 1833,
+    "description": "2014 Range Rover Evoque (UP Reg). Iconic British luxury SUV with commanding road presence and refined off-road capability.",
+    "features": [
+      "Terrain Response",
+      "Panoramic Roof",
+      "Meridian Audio",
+      "Leather Interior"
+    ],
+    "vipOptions": {
+      "bodyguard": true,
+      "personalConcierge": true,
+      "premiumRefreshments": true,
+      "customRoute": true
+    },
+    "packages": [
+      {
+        "duration": 6,
+        "kmLimit": 80,
+        "price": 11000
+      },
+      {
+        "duration": 10,
+        "kmLimit": 120,
+        "price": 15000
+      },
+      {
+        "duration": 24,
+        "kmLimit": 200,
+        "price": 25000
+      }
+    ],
+    "securityOptions": [
+      {
+        "id": "sec-std",
+        "label": "Standard (Driver only)",
+        "carCount": 1,
+        "bodyguardCount": 0,
+        "price": 0
+      },
+      {
+        "id": "sec-plus",
+        "label": "Executive Protection",
+        "carCount": 2,
+        "bodyguardCount": 2,
+        "price": 15000
+      }
+    ],
+    "paymentPolicy": {
+      "advancePercentage": 10,
+      "arrivalPercentage": 90
+    }
+  },
+  {
+    "id": "volvo-xc60-2015-1771154130603-852148",
+    "brand": "Volvo",
+    "model": "XC60 (2015)",
+    "type": "SUV",
+    "category": "Chauffeur Driven",
+    "fleetTier": "Platinum",
+    "seats": 5,
+    "image": "/uploads/sales-volvo-suv.jpg",
+    "images": [
+      "/uploads/sales-volvo-suv.jpg"
+    ],
+    "pricePerHour": 1833,
+    "description": "2015 Volvo XC60 (DL Reg). Swedish engineering excellence with industry-leading safety and Scandinavian luxury.",
+    "features": [
+      "City Safety",
+      "Sensus Navigation",
+      "Harman Kardon Audio",
+      "Leather Seats"
+    ],
+    "vipOptions": {
+      "bodyguard": true,
+      "personalConcierge": true,
+      "premiumRefreshments": true,
+      "customRoute": true
+    },
+    "packages": [
+      {
+        "duration": 6,
+        "kmLimit": 80,
+        "price": 11000
+      },
+      {
+        "duration": 10,
+        "kmLimit": 120,
+        "price": 15000
+      },
+      {
+        "duration": 24,
+        "kmLimit": 200,
+        "price": 25000
+      }
+    ],
+    "securityOptions": [
+      {
+        "id": "sec-std",
+        "label": "Standard (Driver only)",
+        "carCount": 1,
+        "bodyguardCount": 0,
+        "price": 0
+      },
+      {
+        "id": "sec-plus",
+        "label": "Executive Protection",
+        "carCount": 2,
+        "bodyguardCount": 2,
+        "price": 15000
+      }
+    ],
+    "paymentPolicy": {
+      "advancePercentage": 10,
+      "arrivalPercentage": 90
+    }
+  },
+  {
+    "id": "audi-a6-matrix-2015-1771154130604-40380",
+    "brand": "Audi",
+    "model": "A6 Matrix (2015)",
+    "type": "Sedan",
+    "category": "Chauffeur Driven",
+    "fleetTier": "Platinum",
+    "seats": 4,
+    "image": "/uploads/sales-audi-sedan.jpg",
+    "images": [
+      "/uploads/sales-audi-sedan.jpg"
+    ],
+    "pricePerHour": 1833,
+    "description": "2015 Audi A6 Matrix (DL Reg). Progressive luxury with Quattro all-wheel drive and cutting-edge technology.",
+    "features": [
+      "Quattro AWD",
+      "MMI Navigation",
+      "Bang & Olufsen Audio",
+      "S-Line Package"
+    ],
+    "vipOptions": {
+      "bodyguard": true,
+      "personalConcierge": true,
+      "premiumRefreshments": true,
+      "customRoute": true
+    },
+    "packages": [
+      {
+        "duration": 6,
+        "kmLimit": 80,
+        "price": 11000
+      },
+      {
+        "duration": 10,
+        "kmLimit": 120,
+        "price": 15000
+      },
+      {
+        "duration": 24,
+        "kmLimit": 200,
+        "price": 25000
+      }
+    ],
+    "securityOptions": [
+      {
+        "id": "sec-std",
+        "label": "Standard (Driver only)",
+        "carCount": 1,
+        "bodyguardCount": 0,
+        "price": 0
+      },
+      {
+        "id": "sec-plus",
+        "label": "Executive Protection",
+        "carCount": 2,
+        "bodyguardCount": 2,
+        "price": 15000
+      }
+    ],
+    "paymentPolicy": {
+      "advancePercentage": 10,
+      "arrivalPercentage": 90
+    }
+  },
+  {
+    "id": "jaguar-xfs-2011-1771154130604-832205",
+    "brand": "Jaguar",
+    "model": "XFS (2011)",
+    "type": "Sedan",
+    "category": "Chauffeur Driven",
+    "fleetTier": "Platinum",
+    "seats": 4,
+    "image": "/uploads/sales-jaguar-sedan.jpg",
+    "images": [
+      "/uploads/sales-jaguar-sedan.jpg"
+    ],
+    "pricePerHour": 1833,
+    "description": "2011 Jaguar XFS (DL Reg). British sporting elegance with a heritage of performance and refined craftsmanship.",
+    "features": [
+      "InControl Touch",
+      "Meridian Audio",
+      "Sport Suspension",
+      "Leather Interior"
+    ],
+    "vipOptions": {
+      "bodyguard": true,
+      "personalConcierge": true,
+      "premiumRefreshments": true,
+      "customRoute": true
+    },
+    "packages": [
+      {
+        "duration": 6,
+        "kmLimit": 80,
+        "price": 11000
+      },
+      {
+        "duration": 10,
+        "kmLimit": 120,
+        "price": 15000
+      },
+      {
+        "duration": 24,
+        "kmLimit": 200,
+        "price": 25000
+      }
+    ],
+    "securityOptions": [
+      {
+        "id": "sec-std",
+        "label": "Standard (Driver only)",
+        "carCount": 1,
+        "bodyguardCount": 0,
+        "price": 0
+      },
+      {
+        "id": "sec-plus",
+        "label": "Executive Protection",
+        "carCount": 2,
+        "bodyguardCount": 2,
+        "price": 15000
+      }
+    ],
+    "paymentPolicy": {
+      "advancePercentage": 10,
+      "arrivalPercentage": 90
+    }
+  },
+  {
+    "id": "jaguar-xfs-2011-1771154130604-916171",
+    "brand": "Jaguar",
+    "model": "XFS (2011)",
+    "type": "Sedan",
+    "category": "Chauffeur Driven",
+    "fleetTier": "Platinum",
+    "seats": 4,
+    "image": "/uploads/sales-jaguar-sedan.jpg",
+    "images": [
+      "/uploads/sales-jaguar-sedan.jpg"
+    ],
+    "pricePerHour": 1833,
+    "description": "2011 Jaguar XFS (KA Reg). British sporting elegance with a heritage of performance and refined craftsmanship.",
+    "features": [
+      "InControl Touch",
+      "Meridian Audio",
+      "Sport Suspension",
+      "Leather Interior"
+    ],
+    "vipOptions": {
+      "bodyguard": true,
+      "personalConcierge": true,
+      "premiumRefreshments": true,
+      "customRoute": true
+    },
+    "packages": [
+      {
+        "duration": 6,
+        "kmLimit": 80,
+        "price": 11000
+      },
+      {
+        "duration": 10,
+        "kmLimit": 120,
+        "price": 15000
+      },
+      {
+        "duration": 24,
+        "kmLimit": 200,
+        "price": 25000
+      }
+    ],
+    "securityOptions": [
+      {
+        "id": "sec-std",
+        "label": "Standard (Driver only)",
+        "carCount": 1,
+        "bodyguardCount": 0,
+        "price": 0
+      },
+      {
+        "id": "sec-plus",
+        "label": "Executive Protection",
+        "carCount": 2,
+        "bodyguardCount": 2,
+        "price": 15000
+      }
+    ],
+    "paymentPolicy": {
+      "advancePercentage": 10,
+      "arrivalPercentage": 90
+    }
+  },
+  {
+    "id": "range-rover-evoque-2014-1771154130605-466694",
+    "brand": "Range Rover",
+    "model": "Evoque (2014)",
+    "type": "SUV",
+    "category": "Chauffeur Driven",
+    "fleetTier": "Platinum",
+    "seats": 5,
+    "image": "/uploads/sales-evoque.jpg",
+    "images": [
+      "/uploads/sales-evoque.jpg"
+    ],
+    "pricePerHour": 1833,
+    "description": "2014 Range Rover Evoque (UP Reg). Iconic British luxury SUV with commanding road presence and refined off-road capability.",
+    "features": [
+      "Terrain Response",
+      "Panoramic Roof",
+      "Meridian Audio",
+      "Leather Interior"
+    ],
+    "vipOptions": {
+      "bodyguard": true,
+      "personalConcierge": true,
+      "premiumRefreshments": true,
+      "customRoute": true
+    },
+    "packages": [
+      {
+        "duration": 6,
+        "kmLimit": 80,
+        "price": 11000
+      },
+      {
+        "duration": 10,
+        "kmLimit": 120,
+        "price": 15000
+      },
+      {
+        "duration": 24,
+        "kmLimit": 200,
+        "price": 25000
+      }
+    ],
+    "securityOptions": [
+      {
+        "id": "sec-std",
+        "label": "Standard (Driver only)",
+        "carCount": 1,
+        "bodyguardCount": 0,
+        "price": 0
+      },
+      {
+        "id": "sec-plus",
+        "label": "Executive Protection",
+        "carCount": 2,
+        "bodyguardCount": 2,
+        "price": 15000
+      }
+    ],
+    "paymentPolicy": {
+      "advancePercentage": 10,
+      "arrivalPercentage": 90
+    }
+  },
+  {
+    "id": "jaguar-xfs-2011-1771154130606-650562",
+    "brand": "Jaguar",
+    "model": "XFS (2011)",
+    "type": "Sedan",
+    "category": "Chauffeur Driven",
+    "fleetTier": "Platinum",
+    "seats": 4,
+    "image": "/uploads/sales-jaguar-sedan.jpg",
+    "images": [
+      "/uploads/sales-jaguar-sedan.jpg"
+    ],
+    "pricePerHour": 1833,
+    "description": "2011 Jaguar XFS (DL Reg). British sporting elegance with a heritage of performance and refined craftsmanship.",
+    "features": [
+      "InControl Touch",
+      "Meridian Audio",
+      "Sport Suspension",
+      "Leather Interior"
+    ],
+    "vipOptions": {
+      "bodyguard": true,
+      "personalConcierge": true,
+      "premiumRefreshments": true,
+      "customRoute": true
+    },
+    "packages": [
+      {
+        "duration": 6,
+        "kmLimit": 80,
+        "price": 11000
+      },
+      {
+        "duration": 10,
+        "kmLimit": 120,
+        "price": 15000
+      },
+      {
+        "duration": 24,
+        "kmLimit": 200,
+        "price": 25000
+      }
+    ],
+    "securityOptions": [
+      {
+        "id": "sec-std",
+        "label": "Standard (Driver only)",
+        "carCount": 1,
+        "bodyguardCount": 0,
+        "price": 0
+      },
+      {
+        "id": "sec-plus",
+        "label": "Executive Protection",
+        "carCount": 2,
+        "bodyguardCount": 2,
+        "price": 15000
+      }
+    ],
+    "paymentPolicy": {
+      "advancePercentage": 10,
+      "arrivalPercentage": 90
+    }
+  },
+  {
+    "id": "bmw-520d-2012-1771154130606-3012",
+    "brand": "BMW",
+    "model": "520D (2012)",
+    "type": "Sedan",
+    "category": "Chauffeur Driven",
+    "fleetTier": "Platinum",
+    "seats": 4,
+    "image": "/uploads/sales-bmw-suv.jpg",
+    "images": [
+      "/uploads/sales-bmw-suv.jpg"
+    ],
+    "pricePerHour": 1833,
+    "description": "2012 BMW 520D (UK Reg). The ultimate driving machine, combining dynamic performance with premium luxury.",
+    "features": [
+      "iDrive System",
+      "Harman Kardon Audio",
+      "M Sport Package",
+      "Leather Interior"
+    ],
+    "vipOptions": {
+      "bodyguard": true,
+      "personalConcierge": true,
+      "premiumRefreshments": true,
+      "customRoute": true
+    },
+    "packages": [
+      {
+        "duration": 6,
+        "kmLimit": 80,
+        "price": 11000
+      },
+      {
+        "duration": 10,
+        "kmLimit": 120,
+        "price": 15000
+      },
+      {
+        "duration": 24,
+        "kmLimit": 200,
+        "price": 25000
+      }
+    ],
+    "securityOptions": [
+      {
+        "id": "sec-std",
+        "label": "Standard (Driver only)",
+        "carCount": 1,
+        "bodyguardCount": 0,
+        "price": 0
+      },
+      {
+        "id": "sec-plus",
+        "label": "Executive Protection",
+        "carCount": 2,
+        "bodyguardCount": 2,
+        "price": 15000
+      }
+    ],
+    "paymentPolicy": {
+      "advancePercentage": 10,
+      "arrivalPercentage": 90
+    }
+  },
+  {
+    "id": "bmw-530d-2011-1771154130606-780732",
+    "brand": "BMW",
+    "model": "530D (2011)",
+    "type": "Sedan",
+    "category": "Chauffeur Driven",
+    "fleetTier": "Platinum",
+    "seats": 4,
+    "image": "/uploads/sales-bmw-suv.jpg",
+    "images": [
+      "/uploads/sales-bmw-suv.jpg"
+    ],
+    "pricePerHour": 1833,
+    "description": "2011 BMW 530D (HR Reg) ✦ CERTIFIED. The ultimate driving machine, combining dynamic performance with premium luxury.",
+    "features": [
+      "iDrive System",
+      "Harman Kardon Audio",
+      "M Sport Package",
+      "Leather Interior"
+    ],
+    "vipOptions": {
+      "bodyguard": true,
+      "personalConcierge": true,
+      "premiumRefreshments": true,
+      "customRoute": true
+    },
+    "packages": [
+      {
+        "duration": 6,
+        "kmLimit": 80,
+        "price": 11000
+      },
+      {
+        "duration": 10,
+        "kmLimit": 120,
+        "price": 15000
+      },
+      {
+        "duration": 24,
+        "kmLimit": 200,
+        "price": 25000
+      }
+    ],
+    "securityOptions": [
+      {
+        "id": "sec-std",
+        "label": "Standard (Driver only)",
+        "carCount": 1,
+        "bodyguardCount": 0,
+        "price": 0
+      },
+      {
+        "id": "sec-plus",
+        "label": "Executive Protection",
+        "carCount": 2,
+        "bodyguardCount": 2,
+        "price": 15000
+      }
+    ],
+    "paymentPolicy": {
+      "advancePercentage": 10,
+      "arrivalPercentage": 90
+    }
+  },
+  {
+    "id": "bmw-530d-2010-1771154130606-590688",
+    "brand": "BMW",
+    "model": "530D (2010)",
+    "type": "Sedan",
+    "category": "Chauffeur Driven",
+    "fleetTier": "Platinum",
+    "seats": 4,
+    "image": "/uploads/sales-bmw-suv.jpg",
+    "images": [
+      "/uploads/sales-bmw-suv.jpg"
+    ],
+    "pricePerHour": 1833,
+    "description": "2010 BMW 530D (DL Reg) ✦ CERTIFIED. The ultimate driving machine, combining dynamic performance with premium luxury.",
+    "features": [
+      "iDrive System",
+      "Harman Kardon Audio",
+      "M Sport Package",
+      "Leather Interior"
+    ],
+    "vipOptions": {
+      "bodyguard": true,
+      "personalConcierge": true,
+      "premiumRefreshments": true,
+      "customRoute": true
+    },
+    "packages": [
+      {
+        "duration": 6,
+        "kmLimit": 80,
+        "price": 11000
+      },
+      {
+        "duration": 10,
+        "kmLimit": 120,
+        "price": 15000
+      },
+      {
+        "duration": 24,
+        "kmLimit": 200,
+        "price": 25000
+      }
+    ],
+    "securityOptions": [
+      {
+        "id": "sec-std",
+        "label": "Standard (Driver only)",
+        "carCount": 1,
+        "bodyguardCount": 0,
+        "price": 0
+      },
+      {
+        "id": "sec-plus",
+        "label": "Executive Protection",
+        "carCount": 2,
+        "bodyguardCount": 2,
+        "price": 15000
+      }
+    ],
+    "paymentPolicy": {
+      "advancePercentage": 10,
+      "arrivalPercentage": 90
+    }
+  },
+  {
+    "id": "audi-s6-2012-1771154130606-756594",
+    "brand": "Audi",
+    "model": "S6 (2012)",
+    "type": "Sedan",
+    "category": "Chauffeur Driven",
+    "fleetTier": "Platinum",
+    "seats": 4,
+    "image": "/uploads/sales-audi-sedan.jpg",
+    "images": [
+      "/uploads/sales-audi-sedan.jpg"
+    ],
+    "pricePerHour": 1833,
+    "description": "2012 Audi S6 (UK Reg) ✦ CERTIFIED. Progressive luxury with Quattro all-wheel drive and cutting-edge technology.",
+    "features": [
+      "Quattro AWD",
+      "MMI Navigation",
+      "Bang & Olufsen Audio",
+      "S-Line Package"
+    ],
+    "vipOptions": {
+      "bodyguard": true,
+      "personalConcierge": true,
+      "premiumRefreshments": true,
+      "customRoute": true
+    },
+    "packages": [
+      {
+        "duration": 6,
+        "kmLimit": 80,
+        "price": 11000
+      },
+      {
+        "duration": 10,
+        "kmLimit": 120,
+        "price": 15000
+      },
+      {
+        "duration": 24,
+        "kmLimit": 200,
+        "price": 25000
+      }
+    ],
+    "securityOptions": [
+      {
+        "id": "sec-std",
+        "label": "Standard (Driver only)",
+        "carCount": 1,
+        "bodyguardCount": 0,
+        "price": 0
+      },
+      {
+        "id": "sec-plus",
+        "label": "Executive Protection",
+        "carCount": 2,
+        "bodyguardCount": 2,
+        "price": 15000
+      }
+    ],
+    "paymentPolicy": {
+      "advancePercentage": 10,
+      "arrivalPercentage": 90
+    }
+  },
+  {
+    "id": "bmw-x3-2012-1771154130606-585990",
+    "brand": "BMW",
+    "model": "X3 (2012)",
+    "type": "SUV",
+    "category": "Chauffeur Driven",
+    "fleetTier": "Platinum",
+    "seats": 5,
+    "image": "/uploads/sales-bmw-suv.jpg",
+    "images": [
+      "/uploads/sales-bmw-suv.jpg"
+    ],
+    "pricePerHour": 1833,
+    "description": "2012 BMW X3 (DL Reg) ✦ CERTIFIED. The ultimate driving machine, combining dynamic performance with premium luxury.",
+    "features": [
+      "iDrive System",
+      "Harman Kardon Audio",
+      "M Sport Package",
+      "Leather Interior"
+    ],
+    "vipOptions": {
+      "bodyguard": true,
+      "personalConcierge": true,
+      "premiumRefreshments": true,
+      "customRoute": true
+    },
+    "packages": [
+      {
+        "duration": 6,
+        "kmLimit": 80,
+        "price": 11000
+      },
+      {
+        "duration": 10,
+        "kmLimit": 120,
+        "price": 15000
+      },
+      {
+        "duration": 24,
+        "kmLimit": 200,
+        "price": 25000
+      }
+    ],
+    "securityOptions": [
+      {
+        "id": "sec-std",
+        "label": "Standard (Driver only)",
+        "carCount": 1,
+        "bodyguardCount": 0,
+        "price": 0
+      },
+      {
+        "id": "sec-plus",
+        "label": "Executive Protection",
+        "carCount": 2,
+        "bodyguardCount": 2,
+        "price": 15000
+      }
+    ],
+    "paymentPolicy": {
+      "advancePercentage": 10,
+      "arrivalPercentage": 90
+    }
+  },
+  {
+    "id": "range-rover-evoque-2014-1771154130607-631886",
+    "brand": "Range Rover",
+    "model": "Evoque (2014)",
+    "type": "SUV",
+    "category": "Chauffeur Driven",
+    "fleetTier": "Platinum",
+    "seats": 5,
+    "image": "/uploads/sales-evoque.jpg",
+    "images": [
+      "/uploads/sales-evoque.jpg"
+    ],
+    "pricePerHour": 1833,
+    "description": "2014 Range Rover Evoque (HR Reg). Iconic British luxury SUV with commanding road presence and refined off-road capability.",
+    "features": [
+      "Terrain Response",
+      "Panoramic Roof",
+      "Meridian Audio",
+      "Leather Interior"
+    ],
+    "vipOptions": {
+      "bodyguard": true,
+      "personalConcierge": true,
+      "premiumRefreshments": true,
+      "customRoute": true
+    },
+    "packages": [
+      {
+        "duration": 6,
+        "kmLimit": 80,
+        "price": 11000
+      },
+      {
+        "duration": 10,
+        "kmLimit": 120,
+        "price": 15000
+      },
+      {
+        "duration": 24,
+        "kmLimit": 200,
+        "price": 25000
+      }
+    ],
+    "securityOptions": [
+      {
+        "id": "sec-std",
+        "label": "Standard (Driver only)",
+        "carCount": 1,
+        "bodyguardCount": 0,
+        "price": 0
+      },
+      {
+        "id": "sec-plus",
+        "label": "Executive Protection",
+        "carCount": 2,
+        "bodyguardCount": 2,
+        "price": 15000
+      }
+    ],
+    "paymentPolicy": {
+      "advancePercentage": 10,
+      "arrivalPercentage": 90
+    }
+  },
+  {
+    "id": "bmw-520d-2011-1771154130607-724713",
+    "brand": "BMW",
+    "model": "520D (2011)",
+    "type": "Sedan",
+    "category": "Chauffeur Driven",
+    "fleetTier": "Platinum",
+    "seats": 4,
+    "image": "/uploads/sales-bmw-suv.jpg",
+    "images": [
+      "/uploads/sales-bmw-suv.jpg"
+    ],
+    "pricePerHour": 1833,
+    "description": "2011 BMW 520D (DL Reg). The ultimate driving machine, combining dynamic performance with premium luxury.",
+    "features": [
+      "iDrive System",
+      "Harman Kardon Audio",
+      "M Sport Package",
+      "Leather Interior"
+    ],
+    "vipOptions": {
+      "bodyguard": true,
+      "personalConcierge": true,
+      "premiumRefreshments": true,
+      "customRoute": true
+    },
+    "packages": [
+      {
+        "duration": 6,
+        "kmLimit": 80,
+        "price": 11000
+      },
+      {
+        "duration": 10,
+        "kmLimit": 120,
+        "price": 15000
+      },
+      {
+        "duration": 24,
+        "kmLimit": 200,
+        "price": 25000
+      }
+    ],
+    "securityOptions": [
+      {
+        "id": "sec-std",
+        "label": "Standard (Driver only)",
+        "carCount": 1,
+        "bodyguardCount": 0,
+        "price": 0
+      },
+      {
+        "id": "sec-plus",
+        "label": "Executive Protection",
+        "carCount": 2,
+        "bodyguardCount": 2,
+        "price": 15000
+      }
+    ],
+    "paymentPolicy": {
+      "advancePercentage": 10,
+      "arrivalPercentage": 90
+    }
+  },
+  {
+    "id": "bmw-520d-2012-1771154130607-943367",
+    "brand": "BMW",
+    "model": "520D (2012)",
+    "type": "Sedan",
+    "category": "Chauffeur Driven",
+    "fleetTier": "Platinum",
+    "seats": 4,
+    "image": "/uploads/sales-bmw-suv.jpg",
+    "images": [
+      "/uploads/sales-bmw-suv.jpg"
+    ],
+    "pricePerHour": 1833,
+    "description": "2012 BMW 520D (DL Reg) ✦ CERTIFIED. The ultimate driving machine, combining dynamic performance with premium luxury.",
+    "features": [
+      "iDrive System",
+      "Harman Kardon Audio",
+      "M Sport Package",
+      "Leather Interior"
+    ],
+    "vipOptions": {
+      "bodyguard": true,
+      "personalConcierge": true,
+      "premiumRefreshments": true,
+      "customRoute": true
+    },
+    "packages": [
+      {
+        "duration": 6,
+        "kmLimit": 80,
+        "price": 11000
+      },
+      {
+        "duration": 10,
+        "kmLimit": 120,
+        "price": 15000
+      },
+      {
+        "duration": 24,
+        "kmLimit": 200,
+        "price": 25000
+      }
+    ],
+    "securityOptions": [
+      {
+        "id": "sec-std",
+        "label": "Standard (Driver only)",
+        "carCount": 1,
+        "bodyguardCount": 0,
+        "price": 0
+      },
+      {
+        "id": "sec-plus",
+        "label": "Executive Protection",
+        "carCount": 2,
+        "bodyguardCount": 2,
+        "price": 15000
+      }
+    ],
+    "paymentPolicy": {
+      "advancePercentage": 10,
+      "arrivalPercentage": 90
+    }
+  },
+  {
+    "id": "range-rover-evoque-2015-1771154130607-820156",
+    "brand": "Range Rover",
+    "model": "Evoque (2015)",
+    "type": "SUV",
+    "category": "Chauffeur Driven",
+    "fleetTier": "Platinum",
+    "seats": 5,
+    "image": "/uploads/sales-evoque.jpg",
+    "images": [
+      "/uploads/sales-evoque.jpg"
+    ],
+    "pricePerHour": 1833,
+    "description": "2015 Range Rover Evoque (DL Reg) ✦ CERTIFIED. Iconic British luxury SUV with commanding road presence and refined off-road capability.",
+    "features": [
+      "Terrain Response",
+      "Panoramic Roof",
+      "Meridian Audio",
+      "Leather Interior"
+    ],
+    "vipOptions": {
+      "bodyguard": true,
+      "personalConcierge": true,
+      "premiumRefreshments": true,
+      "customRoute": true
+    },
+    "packages": [
+      {
+        "duration": 6,
+        "kmLimit": 80,
+        "price": 11000
+      },
+      {
+        "duration": 10,
+        "kmLimit": 120,
+        "price": 15000
+      },
+      {
+        "duration": 24,
+        "kmLimit": 200,
+        "price": 25000
+      }
+    ],
+    "securityOptions": [
+      {
+        "id": "sec-std",
+        "label": "Standard (Driver only)",
+        "carCount": 1,
+        "bodyguardCount": 0,
+        "price": 0
+      },
+      {
+        "id": "sec-plus",
+        "label": "Executive Protection",
+        "carCount": 2,
+        "bodyguardCount": 2,
+        "price": 15000
+      }
+    ],
+    "paymentPolicy": {
+      "advancePercentage": 10,
+      "arrivalPercentage": 90
+    }
+  },
+  {
+    "id": "bmw-x3-2012-1771154130607-883890",
+    "brand": "BMW",
+    "model": "X3 (2012)",
+    "type": "SUV",
+    "category": "Chauffeur Driven",
+    "fleetTier": "Platinum",
+    "seats": 5,
+    "image": "/uploads/sales-bmw-suv.jpg",
+    "images": [
+      "/uploads/sales-bmw-suv.jpg"
+    ],
+    "pricePerHour": 1833,
+    "description": "2012 BMW X3 (DL Reg) ✦ CERTIFIED. The ultimate driving machine, combining dynamic performance with premium luxury.",
+    "features": [
+      "iDrive System",
+      "Harman Kardon Audio",
+      "M Sport Package",
+      "Leather Interior"
+    ],
+    "vipOptions": {
+      "bodyguard": true,
+      "personalConcierge": true,
+      "premiumRefreshments": true,
+      "customRoute": true
+    },
+    "packages": [
+      {
+        "duration": 6,
+        "kmLimit": 80,
+        "price": 11000
+      },
+      {
+        "duration": 10,
+        "kmLimit": 120,
+        "price": 15000
+      },
+      {
+        "duration": 24,
+        "kmLimit": 200,
+        "price": 25000
+      }
+    ],
+    "securityOptions": [
+      {
+        "id": "sec-std",
+        "label": "Standard (Driver only)",
+        "carCount": 1,
+        "bodyguardCount": 0,
+        "price": 0
+      },
+      {
+        "id": "sec-plus",
+        "label": "Executive Protection",
+        "carCount": 2,
+        "bodyguardCount": 2,
+        "price": 15000
+      }
+    ],
+    "paymentPolicy": {
+      "advancePercentage": 10,
+      "arrivalPercentage": 90
+    }
+  },
+  {
+    "id": "mercedes-benz-gla-2018-1771154130603-283918",
+    "brand": "Mercedes-Benz",
+    "model": "GLA (2018)",
+    "type": "SUV",
+    "category": "Chauffeur Driven",
+    "fleetTier": "Gold",
+    "seats": 5,
+    "image": "/uploads/sales-mercedes-sedan.jpg",
+    "images": [
+      "/uploads/sales-mercedes-sedan.jpg"
+    ],
+    "pricePerHour": 1333,
+    "description": "2018 Mercedes-Benz GLA (GL Reg). The pinnacle of German automotive engineering, blending luxury with performance.",
+    "features": [
+      "COMAND System",
+      "Burmester Audio",
+      "Air Suspension",
+      "Leather Interior"
+    ],
+    "vipOptions": {
+      "bodyguard": true,
+      "personalConcierge": true,
+      "premiumRefreshments": true,
+      "customRoute": true
+    },
+    "packages": [
+      {
+        "duration": 6,
+        "kmLimit": 80,
+        "price": 8000
+      },
+      {
+        "duration": 10,
+        "kmLimit": 120,
+        "price": 12000
+      },
+      {
+        "duration": 24,
+        "kmLimit": 200,
+        "price": 20000
+      }
+    ],
+    "securityOptions": [
+      {
+        "id": "sec-std",
+        "label": "Standard (Driver only)",
+        "carCount": 1,
+        "bodyguardCount": 0,
+        "price": 0
+      },
+      {
+        "id": "sec-plus",
+        "label": "Executive Protection",
+        "carCount": 2,
+        "bodyguardCount": 2,
+        "price": 15000
+      }
+    ],
+    "paymentPolicy": {
+      "advancePercentage": 10,
+      "arrivalPercentage": 90
+    }
+  },
+  {
+    "id": "mercedes-benz-c200-2012-1771154130604-299635",
+    "brand": "Mercedes-Benz",
+    "model": "C200 (2012)",
+    "type": "Sedan",
+    "category": "Chauffeur Driven",
+    "fleetTier": "Gold",
+    "seats": 4,
+    "image": "/uploads/sales-mercedes-sedan.jpg",
+    "images": [
+      "/uploads/sales-mercedes-sedan.jpg"
+    ],
+    "pricePerHour": 1333,
+    "description": "2012 Mercedes-Benz C200 (MH Reg) ✦ CERTIFIED. The pinnacle of German automotive engineering, blending luxury with performance.",
+    "features": [
+      "COMAND System",
+      "Burmester Audio",
+      "Air Suspension",
+      "Leather Interior"
+    ],
+    "vipOptions": {
+      "bodyguard": true,
+      "personalConcierge": true,
+      "premiumRefreshments": true,
+      "customRoute": true
+    },
+    "packages": [
+      {
+        "duration": 6,
+        "kmLimit": 80,
+        "price": 8000
+      },
+      {
+        "duration": 10,
+        "kmLimit": 120,
+        "price": 12000
+      },
+      {
+        "duration": 24,
+        "kmLimit": 200,
+        "price": 20000
+      }
+    ],
+    "securityOptions": [
+      {
+        "id": "sec-std",
+        "label": "Standard (Driver only)",
+        "carCount": 1,
+        "bodyguardCount": 0,
+        "price": 0
+      },
+      {
+        "id": "sec-plus",
+        "label": "Executive Protection",
+        "carCount": 2,
+        "bodyguardCount": 2,
+        "price": 15000
+      }
+    ],
+    "paymentPolicy": {
+      "advancePercentage": 10,
+      "arrivalPercentage": 90
+    }
+  },
+  {
+    "id": "audi-a4-2012-1771154130604-492605",
+    "brand": "Audi",
+    "model": "A4 (2012)",
+    "type": "Sedan",
+    "category": "Chauffeur Driven",
+    "fleetTier": "Gold",
+    "seats": 4,
+    "image": "/uploads/sales-audi-sedan.jpg",
+    "images": [
+      "/uploads/sales-audi-sedan.jpg"
+    ],
+    "pricePerHour": 1333,
+    "description": "2012 Audi A4 (HR Reg). Progressive luxury with Quattro all-wheel drive and cutting-edge technology.",
+    "features": [
+      "Quattro AWD",
+      "MMI Navigation",
+      "Bang & Olufsen Audio",
+      "S-Line Package"
+    ],
+    "vipOptions": {
+      "bodyguard": true,
+      "personalConcierge": true,
+      "premiumRefreshments": true,
+      "customRoute": true
+    },
+    "packages": [
+      {
+        "duration": 6,
+        "kmLimit": 80,
+        "price": 8000
+      },
+      {
+        "duration": 10,
+        "kmLimit": 120,
+        "price": 12000
+      },
+      {
+        "duration": 24,
+        "kmLimit": 200,
+        "price": 20000
+      }
+    ],
+    "securityOptions": [
+      {
+        "id": "sec-std",
+        "label": "Standard (Driver only)",
+        "carCount": 1,
+        "bodyguardCount": 0,
+        "price": 0
+      },
+      {
+        "id": "sec-plus",
+        "label": "Executive Protection",
+        "carCount": 2,
+        "bodyguardCount": 2,
+        "price": 15000
+      }
+    ],
+    "paymentPolicy": {
+      "advancePercentage": 10,
+      "arrivalPercentage": 90
+    }
+  },
+  {
+    "id": "land-rover-freelander-2-2013-1771154130605-728105",
+    "brand": "Land Rover",
+    "model": "Freelander 2 (2013)",
+    "type": "SUV",
+    "category": "Chauffeur Driven",
+    "fleetTier": "Gold",
+    "seats": 5,
+    "image": "/uploads/sales-landrover-suv.jpg",
+    "images": [
+      "/uploads/sales-landrover-suv.jpg"
+    ],
+    "pricePerHour": 1333,
+    "description": "2013 Land Rover Freelander 2 (DL Reg) ✦ CERTIFIED. Legendary capability meets refined luxury for the ultimate adventure vehicle.",
+    "features": [
+      "Terrain Response",
+      "Panoramic Roof",
+      "Meridian Audio",
+      "All-Terrain"
+    ],
+    "vipOptions": {
+      "bodyguard": true,
+      "personalConcierge": true,
+      "premiumRefreshments": true,
+      "customRoute": true
+    },
+    "packages": [
+      {
+        "duration": 6,
+        "kmLimit": 80,
+        "price": 8000
+      },
+      {
+        "duration": 10,
+        "kmLimit": 120,
+        "price": 12000
+      },
+      {
+        "duration": 24,
+        "kmLimit": 200,
+        "price": 20000
+      }
+    ],
+    "securityOptions": [
+      {
+        "id": "sec-std",
+        "label": "Standard (Driver only)",
+        "carCount": 1,
+        "bodyguardCount": 0,
+        "price": 0
+      },
+      {
+        "id": "sec-plus",
+        "label": "Executive Protection",
+        "carCount": 2,
+        "bodyguardCount": 2,
+        "price": 15000
+      }
+    ],
+    "paymentPolicy": {
+      "advancePercentage": 10,
+      "arrivalPercentage": 90
+    }
+  },
+  {
+    "id": "audi-q3-2012-1771154130607-951844",
+    "brand": "Audi",
+    "model": "Q3 (2012)",
+    "type": "SUV",
+    "category": "Chauffeur Driven",
+    "fleetTier": "Gold",
+    "seats": 5,
+    "image": "/uploads/sales-audi-suv.jpg",
+    "images": [
+      "/uploads/sales-audi-suv.jpg"
+    ],
+    "pricePerHour": 1333,
+    "description": "2012 Audi Q3 (DL Reg) ✦ CERTIFIED. Progressive luxury with Quattro all-wheel drive and cutting-edge technology.",
+    "features": [
+      "Quattro AWD",
+      "MMI Navigation",
+      "Bang & Olufsen Audio",
+      "S-Line Package"
+    ],
+    "vipOptions": {
+      "bodyguard": true,
+      "personalConcierge": true,
+      "premiumRefreshments": true,
+      "customRoute": true
+    },
+    "packages": [
+      {
+        "duration": 6,
+        "kmLimit": 80,
+        "price": 8000
+      },
+      {
+        "duration": 10,
+        "kmLimit": 120,
+        "price": 12000
+      },
+      {
+        "duration": 24,
+        "kmLimit": 200,
+        "price": 20000
+      }
+    ],
+    "securityOptions": [
+      {
+        "id": "sec-std",
+        "label": "Standard (Driver only)",
+        "carCount": 1,
+        "bodyguardCount": 0,
+        "price": 0
+      },
+      {
+        "id": "sec-plus",
+        "label": "Executive Protection",
+        "carCount": 2,
+        "bodyguardCount": 2,
+        "price": 15000
+      }
+    ],
+    "paymentPolicy": {
+      "advancePercentage": 10,
+      "arrivalPercentage": 90
+    }
+  },
+  {
+    "id": "mercedes-benz-c200-petrol-2012-1771154130607-607551",
+    "brand": "Mercedes-Benz",
+    "model": "C200 Petrol (2012)",
+    "type": "Sedan",
+    "category": "Chauffeur Driven",
+    "fleetTier": "Gold",
+    "seats": 4,
+    "image": "/uploads/sales-mercedes-sedan.jpg",
+    "images": [
+      "/uploads/sales-mercedes-sedan.jpg"
+    ],
+    "pricePerHour": 1333,
+    "description": "2012 Mercedes-Benz C200 Petrol (MH Reg). The pinnacle of German automotive engineering, blending luxury with performance.",
+    "features": [
+      "COMAND System",
+      "Burmester Audio",
+      "Air Suspension",
+      "Leather Interior"
+    ],
+    "vipOptions": {
+      "bodyguard": true,
+      "personalConcierge": true,
+      "premiumRefreshments": true,
+      "customRoute": true
+    },
+    "packages": [
+      {
+        "duration": 6,
+        "kmLimit": 80,
+        "price": 8000
+      },
+      {
+        "duration": 10,
+        "kmLimit": 120,
+        "price": 12000
+      },
+      {
+        "duration": 24,
+        "kmLimit": 200,
+        "price": 20000
+      }
+    ],
+    "securityOptions": [
+      {
+        "id": "sec-std",
+        "label": "Standard (Driver only)",
+        "carCount": 1,
+        "bodyguardCount": 0,
+        "price": 0
+      },
+      {
+        "id": "sec-plus",
+        "label": "Executive Protection",
+        "carCount": 2,
+        "bodyguardCount": 2,
+        "price": 15000
+      }
+    ],
+    "paymentPolicy": {
+      "advancePercentage": 10,
+      "arrivalPercentage": 90
+    }
+  }
+]

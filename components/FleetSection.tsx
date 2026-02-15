@@ -106,15 +106,15 @@ const FleetSection: React.FC<FleetSectionProps> = ({ onBook }) => {
   }, []);
 
   const filteredFleet = fleet.filter((car) => {
-    const typeMatch = filter === "All" || car.type === filter;
-    const tierMatch = tierFilter === "All" || car.fleetTier === tierFilter;
+    const typeMatch = filter === "All" || car.type === filter || !car.type;
+    const tierMatch = tierFilter === "All" || car.fleetTier === tierFilter || !car.fleetTier;
     return typeMatch && tierMatch;
   });
 
   return (
     <section className="pt-32 pb-24 bg-luxora-dark" id="fleet">
       <div className="container mx-auto px-6 sm:px-12 md:px-16 lg:px-24 xl:px-48">
-        <div className="text-center mb-16 reveal">
+        <div className="text-center mb-16">
           <span className="text-luxora-gold font-serif text-[10px] md:text-xs mb-4 tracking-[0.6em] block uppercase">
             Curated Excellence
           </span>
@@ -157,7 +157,7 @@ const FleetSection: React.FC<FleetSectionProps> = ({ onBook }) => {
                 Fleet Tier
               </p>
               <div className="flex flex-wrap justify-center gap-3">
-                {["All", "Normal", "Elite", "Platinum", "VIP"].map((tier) => (
+                {["All", "Normal", "Elite", "Platinum", "VIP", "Gold", "Diamond"].map((tier) => (
                   <button
                     key={tier}
                     onClick={() => setTierFilter(tier as any)}
@@ -193,7 +193,7 @@ const FleetSection: React.FC<FleetSectionProps> = ({ onBook }) => {
               return (
                 <div
                   key={car.id}
-                  className="group relative bg-gradient-to-b from-luxora-charcoal to-black/60 overflow-hidden border border-white/10 hover:border-luxora-gold/50 transition-all duration-500 rounded-lg flex flex-col h-full shadow-2xl hover:shadow-luxora-gold/20 reveal gold-aura-hover"
+                  className="group relative bg-gradient-to-b from-luxora-charcoal to-black/60 overflow-hidden border border-white/10 hover:border-luxora-gold/50 transition-all duration-500 rounded-lg flex flex-col h-full shadow-2xl hover:shadow-luxora-gold/20 gold-aura-hover"
                 >
                   {/* Image Section */}
                   <div className="aspect-[16/10] overflow-hidden relative">
@@ -214,11 +214,15 @@ const FleetSection: React.FC<FleetSectionProps> = ({ onBook }) => {
                         className={`text-[10px] uppercase tracking-widest px-3 py-1.5 border rounded-sm font-bold backdrop-blur-md transition-all ${
                           car.fleetTier === "VIP"
                             ? "bg-red-600/80 text-red-100 border-red-400/60"
-                            : car.fleetTier === "Platinum"
-                              ? "bg-blue-600/80 text-blue-100 border-blue-400/60"
-                              : car.fleetTier === "Elite"
-                                ? "bg-amber-600/80 text-amber-100 border-amber-400/60"
-                                : "bg-white/20 text-white border-white/40"
+                            : car.fleetTier === "Diamond"
+                              ? "bg-purple-600/80 text-purple-100 border-purple-400/60"
+                              : car.fleetTier === "Gold"
+                                ? "bg-amber-500 text-luxora-dark border-amber-300"
+                                : car.fleetTier === "Platinum"
+                                  ? "bg-blue-600/80 text-blue-100 border-blue-400/60"
+                                  : car.fleetTier === "Elite"
+                                    ? "bg-amber-600/80 text-amber-100 border-amber-400/60"
+                                    : "bg-white/20 text-white border-white/40"
                         }`}
                       >
                         {car.fleetTier} Tier
@@ -239,12 +243,26 @@ const FleetSection: React.FC<FleetSectionProps> = ({ onBook }) => {
                         </h3>
                       </div>
                       <div className="text-right flex-shrink-0 bg-luxora-charcoal/80 rounded-lg p-3 border border-luxora-gold/20">
-                        <span className="text-luxora-gold font-bold text-xl md:text-2xl block">
-                          ₹{car.pricePerHour.toLocaleString("en-IN")}
-                        </span>
-                        <span className="text-white/40 text-[9px] uppercase tracking-widest block mt-1">
-                          / hour
-                        </span>
+                        {car.packages && car.packages.length > 0 ? (
+                          <>
+                            <span className="text-white/40 text-[7px] uppercase tracking-widest block mb-1">Starting from</span>
+                            <span className="text-luxora-gold font-bold text-xl md:text-2xl block">
+                              ₹{Math.min(...car.packages.map(p => p.price)).toLocaleString("en-IN")}
+                            </span>
+                            <span className="text-white/30 text-[8px] uppercase tracking-widest block mt-1">
+                              {car.packages[0].duration}h Package
+                            </span>
+                          </>
+                        ) : (
+                          <>
+                            <span className="text-luxora-gold font-bold text-xl md:text-2xl block">
+                              ₹{car.pricePerHour.toLocaleString("en-IN")}
+                            </span>
+                            <span className="text-white/40 text-[9px] uppercase tracking-widest block mt-1">
+                              / hour
+                            </span>
+                          </>
+                        )}
                       </div>
                     </div>
 

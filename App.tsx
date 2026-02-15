@@ -48,6 +48,12 @@ const App: React.FC = () => {
     return (saved as Page) || Page.Home;
   });
   const [isLoading, setIsLoading] = useState(true);
+  const [selectedCarId, setSelectedCarId] = useState<string | undefined>(undefined);
+
+  const handleBook = (carId: string) => {
+    setSelectedCarId(carId);
+    setActivePage(Page.Booking);
+  };
 
   // Persist page changes
   useEffect(() => {
@@ -142,15 +148,15 @@ const App: React.FC = () => {
             <Hero onExplore={setActivePage} />
             <ServicesSection onNavigate={setActivePage} />
             <AboutSection />
-            <FleetSection onBook={() => setActivePage(Page.Booking)} />
+            <FleetSection onBook={handleBook} />
           </>
         );
       case Page.Fleet:
-        return <FleetSection onBook={() => setActivePage(Page.Booking)} />;
+        return <FleetSection onBook={handleBook} />;
       case Page.Services:
         return <ServicesSection onNavigate={setActivePage} />;
       case Page.Booking:
-        return <BookingForm />;
+        return <BookingForm selectedCarId={selectedCarId} />;
       case Page.Properties:
         return (
           <section className="relative pt-32 pb-48 bg-luxora-dark min-h-screen flex flex-col items-center justify-center px-6 overflow-hidden">

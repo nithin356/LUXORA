@@ -179,15 +179,31 @@ async function initServer() {
       res.json(enquiries);
     });
 
-    app.post('/api/enquiries', async (req, res) => {
+    app.post('/api/enquiries', upload.single('idProof'), async (req, res) => {
       try {
         const enquiries = await safeReadJson(ENQUIRIES_FILE);
+        
+        let idProofUrl = '';
+        if (req.file) {
+          idProofUrl = `/uploads/${req.file.filename}`;
+        }
+
+        // If simple JSON body (no file), req.body is direct. 
+        // If multipart (file), req.body is null-prototype object, we need to handle it.
+        // But express.json() + multer covers both if we are careful.
+        // Enquiries are usually sent as JSON, but now we switch to FormData.
+        // We need to parse data from req.body if it came via FormData
+        
+        const enquiryData = req.body;
+        
         const newEnquiry = {
-          ...req.body,
+          ...enquiryData,
+          idProof: idProofUrl, // Specific field for the image
           id: `enq-${Date.now()}`,
           status: 'pending',
           timestamp: Date.now()
         };
+        
         enquiries.push(newEnquiry);
         await safeWriteJson(ENQUIRIES_FILE, enquiries);
         res.status(201).json(newEnquiry);

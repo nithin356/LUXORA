@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { fleetService } from "../services/fleetService";
 import { bookingService, BookingEnquiry } from "../services/bookingService";
-import { Car, CarCategory, FleetTier } from "../types";
+import { Car, CarCategory, FleetTier, RentalPackage } from "../types";
 
 type MainCategory =
   | "Cars"
@@ -61,6 +61,16 @@ const AdminPage: React.FC = () => {
       premiumRefreshments: false,
       customRoute: false,
     },
+    packages: [],
+    securityOptions: [
+      { id: 'sec-1-1', carCount: 1, bodyguardCount: 1, label: '1 Car / 1 Bodyguard', price: 0 },
+      { id: 'sec-1-2', carCount: 1, bodyguardCount: 2, label: '1 Car / 2 Bodyguards', price: 0 },
+      { id: 'sec-2-4', carCount: 2, bodyguardCount: 4, label: '2 Cars / 4 Bodyguards', price: 0 },
+    ],
+    paymentPolicy: {
+      advancePercentage: 10,
+      arrivalPercentage: 90
+    }
   });
 
   const [featureInput, setFeatureInput] = useState("");
@@ -100,7 +110,7 @@ const AdminPage: React.FC = () => {
     setFormData((prev) => ({
       ...prev,
       [name]:
-        name === "seats" || name === "pricePerHour" ? Number(value) : value,
+        name === "seats" || name === "pricePerHour" || name === "kmLimit" || name === "price" ? Number(value) : value,
     }));
     // Clear error when field is edited
     if (errors[name]) {
@@ -141,6 +151,28 @@ const AdminPage: React.FC = () => {
         ...prev.vipOptions,
         [option]: !prev.vipOptions?.[option],
       },
+    }));
+  };
+
+  const handlePackageChange = (index: number, field: keyof RentalPackage, value: number) => {
+    setFormData(prev => {
+      const newPackages = [...(prev.packages || [])];
+      newPackages[index] = { ...newPackages[index], [field]: value };
+      return { ...prev, packages: newPackages };
+    });
+  };
+
+  const addPackage = () => {
+    setFormData(prev => ({
+      ...prev,
+      packages: [...(prev.packages || []), { duration: 4, kmLimit: 40, price: 0 }]
+    }));
+  };
+
+  const removePackage = (index: number) => {
+    setFormData(prev => ({
+      ...prev,
+      packages: prev.packages?.filter((_, i) => i !== index)
     }));
   };
 
@@ -282,6 +314,16 @@ const AdminPage: React.FC = () => {
         premiumRefreshments: false,
         customRoute: false,
       },
+      packages: [],
+      securityOptions: [
+        { id: 'sec-1-1', carCount: 1, bodyguardCount: 1, label: '1 Car / 1 Bodyguard', price: 0 },
+        { id: 'sec-1-2', carCount: 1, bodyguardCount: 2, label: '1 Car / 2 Bodyguards', price: 0 },
+        { id: 'sec-2-4', carCount: 2, bodyguardCount: 4, label: '2 Cars / 4 Bodyguards', price: 0 },
+      ],
+      paymentPolicy: {
+        advancePercentage: 10,
+        arrivalPercentage: 90
+      }
     });
     setSelectedFiles([]);
     setPreviews([]);
@@ -703,44 +745,117 @@ const AdminPage: React.FC = () => {
                             <option value="Elite">Elite</option>
                             <option value="Platinum">Platinum</option>
                             <option value="VIP">VIP</option>
+                            <option value="Gold">Gold</option>
+                            <option value="Diamond">Diamond</option>
                           </select>
                         </div>
                       </div>
                     </div>
                   )}
 
-                  {/* STEP 1: SPECS & VIP */}
+                   {/* STEP 1: COMMERCIALS & ADD-ONS */}
                   {activeStep === 1 && (
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                      <div className="space-y-6">
-                        <div>
-                          <label className={`block text-[10px] uppercase tracking-widest mb-2 font-bold ${errors.pricePerHour ? "text-red-500" : "text-white/40"}`}>Pricing (₹)</label>
-                          <div className="relative">
-                            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-white/20">₹</span>
-                            <input required type="number" name="pricePerHour" value={formData.pricePerHour} onChange={handleInputChange} className={`w-full bg-luxora-dark border ${errors.pricePerHour ? "border-red-500/50" : "border-white/10"} p-3 pl-8 text-white focus:border-luxora-gold outline-none transition-all`} />
+                      <div className="space-y-8">
+                        {activeCarSubCategory === "Sales" ? (
+                          <div className="bg-luxora-dark/30 p-6 rounded-sm border border-white/5">
+                            <label className={`block text-luxora-gold text-[10px] uppercase tracking-widest mb-4 font-bold ${errors.pricePerHour ? "text-red-500" : ""}`}>Acquisition Price (₹)</label>
+                            <div className="relative">
+                              <span className="absolute left-3 top-1/2 -translate-y-1/2 text-white/20">₹</span>
+                              <input required type="number" name="pricePerHour" value={formData.pricePerHour} onChange={handleInputChange} className={`w-full bg-luxora-dark border ${errors.pricePerHour ? "border-red-500/50" : "border-white/10"} p-3 pl-8 text-white focus:border-luxora-gold outline-none transition-all`} />
+                            </div>
+                            <p className="mt-2 text-[8px] text-white/20 uppercase tracking-widest font-bold">Set the total dealership price for this asset.</p>
                           </div>
-                          {errors.pricePerHour && <p className="text-red-500 text-[8px] mt-1 uppercase tracking-widest">{errors.pricePerHour}</p>}
-                          <p className="mt-1 text-[8px] text-white/20 uppercase tracking-widest">{activeCarSubCategory === "Sales" ? "Total Price" : "Rate Per Period"}</p>
-                        </div>
-                        <div>
-                          <label className="block text-white/40 text-[10px] uppercase tracking-widest mb-2 font-bold">Seating Capacity</label>
+                        ) : (
+                          <div className="bg-luxora-dark/30 p-6 rounded-sm border border-white/5 space-y-6">
+                            <div>
+                              <label className="block text-luxora-gold text-[10px] uppercase tracking-widest mb-4 font-bold font-black tracking-widest">Base Hourly Rate (₹)</label>
+                              <div className="relative">
+                                <span className="absolute left-3 top-1/2 -translate-y-1/2 text-white/20">₹</span>
+                                <input required type="number" name="pricePerHour" value={formData.pricePerHour} onChange={handleInputChange} className="w-full bg-luxora-dark border border-white/10 p-3 pl-8 text-white focus:border-luxora-gold outline-none transition-all" />
+                              </div>
+                              <p className="mt-2 text-[8px] text-white/20 uppercase tracking-widest">Used as fallback if no packages are selected.</p>
+                            </div>
+                            
+                            <div className="pt-6 border-t border-white/5">
+                              <label className="block text-luxora-gold text-[10px] uppercase tracking-widest mb-4 font-bold font-black tracking-widest">Tiered Packages (Time/KM)</label>
+                              <div className="space-y-4">
+                                {formData.packages?.map((pkg, idx) => (
+                                  <div key={idx} className="flex flex-wrap gap-2 items-center bg-black/40 p-3 rounded-sm border border-luxora-gold/10">
+                                    <div className="flex-1 min-w-[60px]">
+                                      <label className="text-[7px] text-white/40 block mb-1 uppercase font-bold">Hours</label>
+                                      <select 
+                                        value={pkg.duration} 
+                                        onChange={(e) => handlePackageChange(idx, 'duration', Number(e.target.value))}
+                                        className="w-full bg-luxora-dark border border-white/10 p-1.5 text-xs text-white outline-none focus:border-luxora-gold"
+                                      >
+                                        <option value={4}>4h</option>
+                                        <option value={6}>6h</option>
+                                        <option value={10}>10h</option>
+                                        <option value={12}>12h</option>
+                                        <option value={24}>24h</option>
+                                      </select>
+                                    </div>
+                                    <div className="flex-1 min-w-[60px]">
+                                      <label className="text-[7px] text-white/40 block mb-1 uppercase font-bold">Limit (KM)</label>
+                                      <input 
+                                        type="number" 
+                                        value={pkg.kmLimit} 
+                                        onChange={(e) => handlePackageChange(idx, 'kmLimit', Number(e.target.value))}
+                                        className="w-full bg-luxora-dark border border-white/10 p-1.5 text-xs text-white outline-none focus:border-luxora-gold"
+                                      />
+                                    </div>
+                                    <div className="flex-1 min-w-[80px]">
+                                      <label className="text-[7px] text-white/40 block mb-1 uppercase font-bold">Package ₹</label>
+                                      <input 
+                                        type="number" 
+                                        value={pkg.price} 
+                                        onChange={(e) => handlePackageChange(idx, 'price', Number(e.target.value))}
+                                        className="w-full bg-luxora-dark border border-white/10 p-1.5 text-xs text-white outline-none focus:border-luxora-gold"
+                                      />
+                                    </div>
+                                    <button type="button" onClick={() => removePackage(idx)} className="text-red-500 hover:text-red-400 p-1 text-xl leading-none">×</button>
+                                  </div>
+                                ))}
+                                <button type="button" onClick={addPackage} className="w-full py-2.5 border border-dashed border-luxora-gold/30 text-luxora-gold text-[9px] uppercase tracking-widest font-black hover:bg-luxora-gold/5 transition-all">+ Initialize New Package Tier</button>
+                              </div>
+                            </div>
+                          </div>
+                        )}
+                        
+                        <div className="bg-luxora-dark/30 p-6 rounded-sm border border-white/5">
+                          <label className="block text-white/40 text-[10px] uppercase tracking-widest mb-3 font-bold">Passenger Capacity</label>
                           <input required type="number" name="seats" value={formData.seats} onChange={handleInputChange} className="w-full bg-luxora-dark border border-white/10 p-3 text-white focus:border-luxora-gold outline-none transition-all" />
                         </div>
                       </div>
-                      <div className="bg-luxora-dark/30 p-6 rounded-sm border border-white/5 h-full">
-                        <label className="block text-luxora-gold text-[10px] uppercase tracking-widest mb-4 font-bold">VIP Package Options</label>
-                        {formData.fleetTier === "VIP" ? (
-                          <div className="space-y-3">
-                            {["bodyguard", "personalConcierge", "premiumRefreshments", "customRoute"].map((opt) => (
-                              <label key={opt} className="flex items-center gap-3 cursor-pointer hover:text-luxora-gold transition-colors">
-                                <input type="checkbox" checked={formData.vipOptions?.[opt as keyof typeof formData.vipOptions] || false} onChange={() => handleVipOptionChange(opt as any)} className="w-4 h-4 accent-luxora-gold" />
-                                <span className="text-white/80 text-[10px] uppercase tracking-widest font-bold">{opt.replace(/([A-Z])/g, ' $1')}</span>
-                              </label>
-                            ))}
-                          </div>
-                        ) : (
-                          <p className="text-white/20 text-[10px] uppercase tracking-widest italic pt-4">VIP options are available for the VIP Tier only.</p>
-                        )}
+
+                      <div className="space-y-6">
+                        <div className="bg-luxora-dark/30 p-6 rounded-sm border border-white/5 h-full">
+                          <label className="block text-luxora-gold text-[10px] uppercase tracking-widest mb-4 font-bold font-black tracking-widest">Bespoke Options & Security</label>
+                          {formData.fleetTier === "VIP" || formData.fleetTier === "Diamond" || formData.fleetTier === "Gold" || formData.fleetTier === "Platinum" ? (
+                            <div className="space-y-4">
+                              {["bodyguard", "personalConcierge", "premiumRefreshments", "customRoute"].map((opt) => (
+                                <label key={opt} className="flex items-center gap-4 cursor-pointer group">
+                                  <div className="relative">
+                                    <input type="checkbox" checked={formData.vipOptions?.[opt as keyof typeof formData.vipOptions] || false} onChange={() => handleVipOptionChange(opt as any)} className="sr-only peer" />
+                                    <div className="w-10 h-5 bg-white/5 border border-white/10 rounded-full peer peer-checked:bg-luxora-gold/20 peer-checked:border-luxora-gold transition-all"></div>
+                                    <div className="absolute left-1 top-1 w-3 h-3 bg-white/20 rounded-full peer-checked:left-6 peer-checked:bg-luxora-gold transition-all"></div>
+                                  </div>
+                                  <span className="text-white/60 text-[10px] uppercase tracking-widest font-bold group-hover:text-white transition-colors">{opt.replace(/([A-Z])/g, ' $1')}</span>
+                                </label>
+                              ))}
+                              
+                              <div className="mt-8 pt-8 border-t border-white/5">
+                                <p className="text-white/20 text-[9px] uppercase tracking-[0.3em] leading-relaxed">Security options for these tiers follow the standard 1/1, 1/2, and 2/4 protocols for personnel/vehicle splitting.</p>
+                              </div>
+                            </div>
+                          ) : (
+                            <div className="py-12 text-center">
+                              <div className="text-luxora-gold/20 text-3xl mb-4">✦</div>
+                              <p className="text-white/20 text-[10px] uppercase tracking-widest italic px-8">Advanced VIP and specialized security protocols are reserved for Premium Fleet Tiers (Gold and Above).</p>
+                            </div>
+                          )}
+                        </div>
                       </div>
                     </div>
                   )}
@@ -914,15 +1029,29 @@ const AdminPage: React.FC = () => {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 gap-4">
+            <div className="grid grid-cols-1 gap-6">
               {enquiries.length > 0 ? (
-                enquiries.map((enq) => (
-                  <div
-                    key={enq.id}
-                    className="bg-luxora-charcoal border border-white/5 p-6 rounded-sm hover:border-luxora-gold/20 transition-all"
-                  >
-                    <div className="flex flex-col md:flex-row justify-between gap-6">
-                      <div className="flex-grow space-y-4">
+                enquiries.map((enq) => {
+                  // Parse the formatted message to extract details
+                  const parts = enq.message.split('\n\n');
+                  const detailsLine = parts[0] || "";
+                  const userMessage = parts[1] || "";
+                  
+                  const detailsMap: Record<string, string> = {};
+                  detailsLine.split('|').forEach(part => {
+                    const [key, val] = part.split(':').map(s => s.trim());
+                    if (key && val) detailsMap[key] = val;
+                  });
+
+                  return (
+                    <div
+                      key={enq.id}
+                      className="bg-luxora-charcoal border border-white/5 p-6 rounded-sm hover:border-luxora-gold/20 transition-all relative group"
+                    >
+                      <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-luxora-gold/50 to-transparent opacity-50"></div>
+                      
+                      {/* Header */}
+                      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6 border-b border-white/5 pb-4">
                         <div className="flex items-center gap-4">
                           <h4 className="text-xl font-serif text-white">
                             {enq.customerName}
@@ -939,98 +1068,166 @@ const AdminPage: React.FC = () => {
                             {enq.status}
                           </span>
                         </div>
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
-                          <div className="flex items-center gap-2 text-white/60">
-                            <span className="text-luxora-gold">📱</span>{" "}
-                            {enq.customerPhone}
-                          </div>
-                          <div className="flex items-center gap-2 text-white/60">
-                            <span className="text-luxora-gold">✉️</span>{" "}
-                            {enq.customerEmail}
-                          </div>
-                          <div className="flex items-center gap-2 text-white/60">
-                            <span className="text-luxora-gold">🏎️</span>{" "}
-                            {enq.carModel}
-                          </div>
+                        <div className="text-[9px] text-white/30 uppercase tracking-widest">
+                          {new Date(enq.timestamp).toLocaleString()}
                         </div>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
-                          <div className="flex items-center gap-2 text-white/60">
-                            <span className="text-luxora-gold">📅</span> Pickup:{" "}
-                            {enq.pickupDate}
-                          </div>
-                          <div className="flex items-center gap-2 text-white/60">
-                            <span className="text-luxora-gold">⏱️</span>{" "}
-                            {enq.duration}
-                          </div>
-                        </div>
-                        {enq.message && (
-                          <div className="bg-luxora-dark/50 p-4 border-l-2 border-luxora-gold/30 italic text-white/40 text-sm">
-                            {enq.message}
-                          </div>
-                        )}
                       </div>
-                      <div className="flex flex-row md:flex-col gap-2 flex-shrink-0">
+
+                      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                        {/* Column 1: Contact & Car */}
+                        <div className="space-y-3">
+                           <p className="text-luxora-gold text-[9px] uppercase tracking-widest font-bold mb-2">Client Details</p>
+                           <div className="space-y-2">
+                             <div className="flex items-center gap-2 text-white/70 text-xs">
+                               <span className="text-white/30 w-4">📱</span> {enq.customerPhone}
+                             </div>
+                             <div className="flex items-center gap-2 text-white/70 text-xs">
+                               <span className="text-white/30 w-4">✉️</span> {enq.customerEmail}
+                             </div>
+                             <div className="flex items-center gap-2 text-white/70 text-xs">
+                               <span className="text-white/30 w-4">🏎️</span> {enq.carModel}
+                             </div>
+                             <div className="flex items-center gap-2 text-white/70 text-xs">
+                               <span className="text-white/30 w-4">📅</span> {enq.pickupDate} ({enq.duration})
+                             </div>
+                           </div>
+                        </div>
+
+                        {/* Column 2: Booking Details parsed from message */}
+                        <div className="space-y-3">
+                           <p className="text-luxora-gold text-[9px] uppercase tracking-widest font-bold mb-2">Reservation Info</p>
+                           <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-xs">
+                              {Object.entries(detailsMap).map(([key, val]) => (
+                                key !== "Total" && key !== "Advance (10%)" && key !== "On Arrival (90%)" && (
+                                  <div key={key} className="col-span-2 sm:col-span-1">
+                                    <span className="text-white/30 text-[9px] block uppercase tracking-wider">{key}</span>
+                                    <span className="text-white/80">{val}</span>
+                                  </div>
+                                )
+                              ))}
+                           </div>
+                        </div>
+
+                        {/* Column 3: Financials & ID */}
+                        <div className="space-y-3">
+                           <p className="text-luxora-gold text-[9px] uppercase tracking-widest font-bold mb-2">Payment & Verification</p>
+                           <div className="bg-luxora-dark/40 p-3 rounded-sm border border-white/5 space-y-2">
+                              <div className="flex justify-between text-xs">
+                                <span className="text-white/40">Total</span>
+                                <span className="text-luxora-gold font-bold">{detailsMap["Total"]}</span>
+                              </div>
+                              <div className="flex justify-between text-xs">
+                                <span className="text-white/40">Advance</span>
+                                <span className="text-white">{detailsMap["Advance (10%)"]}</span>
+                              </div>
+                              <div className="flex justify-between text-xs">
+                                <span className="text-white/40">Balance</span>
+                                <span className="text-white">{detailsMap["On Arrival (90%)"]}</span>
+                              </div>
+                           </div>
+
+                           {/* ID Proof Display */}
+                           {enq.idProof ? (
+                             <div className="mt-2">
+                               <span className="text-white/30 text-[9px] uppercase tracking-widest block mb-1">ID Proof</span>
+                               <a href={enq.idProof} target="_blank" rel="noreferrer" className="flex items-center gap-2 text-luxora-gold text-xs hover:underline cursor-pointer bg-luxora-gold/10 p-2 rounded-sm border border-luxora-gold/20">
+                                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
+                                 View Driving License
+                               </a>
+                             </div>
+                           ) : (
+                             <div className="mt-2 text-white/20 text-[9px] uppercase tracking-widest">
+                               No ID Uploaded
+                             </div>
+                           )}
+                        </div>
+                      </div>
+
+                      {/* Message Body */}
+                      {userMessage && (
+                        <div className="mt-6 pt-4 border-t border-white/5">
+                           <p className="text-white/30 text-[9px] uppercase tracking-widest mb-2 font-bold">Additional Notes</p>
+                           <p className="text-white/70 text-sm italic bg-black/20 p-3 rounded-sm border border-white/5">
+                             "{userMessage.trim()}"
+                           </p>
+                        </div>
+                      )}
+
+                      {/* Actions */}
+                      <div className="mt-6 flex flex-wrap gap-3 justify-end">
                         {enq.status === "pending" && (
                           <button
                             onClick={async () => {
-                              const success = await bookingService.updateStatus(
-                                enq.id,
-                                "viewed",
-                              );
+                              const success = await bookingService.updateStatus(enq.id, "viewed");
                               if (success) {
-                                // Add a small delay to ensure file is written
-                                await new Promise((resolve) =>
-                                  setTimeout(resolve, 300),
-                                );
+                                await new Promise((resolve) => setTimeout(resolve, 300));
                                 await refreshFleet();
-                              } else {
-                                alert(
-                                  "Failed to update status. Please try again.",
-                                );
                               }
                             }}
-                            className="px-4 py-2 border border-white/10 text-white/40 text-[10px] uppercase tracking-widest hover:text-white hover:border-white/30 transition-all font-bold"
+                            className="px-4 py-2 border border-blue-500/30 text-blue-400 text-[10px] uppercase tracking-widest hover:bg-blue-500/10 transition-all font-bold"
                           >
-                            Mark as Viewed
+                            Mark Viewed
                           </button>
                         )}
-                        <button
-                          onClick={async () => {
-                            const success = await bookingService.updateStatus(
-                              enq.id,
-                              "contacted",
-                            );
-                            if (success) {
-                              // Add a small delay to ensure file is written
-                              await new Promise((resolve) =>
-                                setTimeout(resolve, 300),
-                              );
-                              await refreshFleet();
-                            } else {
-                              alert(
-                                "Failed to update status. Please try again.",
-                              );
-                            }
-                          }}
-                          className="px-4 py-2 border border-luxora-gold/30 text-luxora-gold text-[10px] uppercase tracking-widest hover:bg-luxora-gold hover:text-luxora-dark transition-all font-bold"
-                        >
-                          Mark Contacted
-                        </button>
+                        
+                        {enq.status !== "contacted" && (
+                          <button
+                            onClick={async () => {
+                              // Ensure we are passing the string "contacted" correctly
+                              const success = await bookingService.updateStatus(enq.id, "contacted");
+                              if (success) {
+                                await new Promise((resolve) => setTimeout(resolve, 300));
+                                await refreshFleet();
+                              } else {
+                                console.error("Failed to update status to contacted");
+                              }
+                            }}
+                            className="px-4 py-2 border border-luxora-gold/30 text-luxora-gold text-[10px] uppercase tracking-widest hover:bg-luxora-gold hover:text-luxora-dark transition-all font-bold"
+                          >
+                            Mark Contacted
+                          </button>
+                        )}
+
+                        {/* Approve Booking - Locks the car */}
+                        {enq.status !== 'confirmed' && (
+                          <button
+                            onClick={async () => {
+                              if (window.confirm(`Confirm booking for ${enq.customerName}? This will mark the ${enq.carModel} as BOOKED and unavailable.`)) {
+                                // 1. Mark Enquiry as Confirmed (using a new status or reusing 'contacted' if 'confirmed' isn't supported yet - let's stick to 'contacted' or add 'confirmed' support)
+                                // The User asked for "Admin gives or says car is given". 
+                                // We'll assume 'contacted' is enough for the enquiry, but we need to update the CAR.
+                                
+                                // Update Car Status
+                                const car = fleet.find(c => c.id === enq.carId);
+                                if (car) {
+                                  const formData = new FormData();
+                                  const updatedCar = { ...car, status: 'Booked' };
+                                  formData.append("carData", JSON.stringify(updatedCar));
+                                  // Update car status
+                                  await fleetService.updateCar(car.id, formData);
+                                }
+                                
+                                // Update Enquiry Status
+                                await bookingService.updateStatus(enq.id, "contacted");
+                                
+                                await new Promise((resolve) => setTimeout(resolve, 500));
+                                await refreshFleet();
+                                alert("Booking Confirmed. Car is now marked as BOOKED.");
+                              }
+                            }}
+                            className="px-4 py-2 bg-luxora-gold text-luxora-dark text-[10px] uppercase tracking-widest hover:bg-white transition-all font-bold"
+                          >
+                            Approve & Book Car
+                          </button>
+                        )}
+
                         <button
                           onClick={async () => {
                             if (window.confirm("Delete enquiry?")) {
-                              const success =
-                                await bookingService.deleteEnquiry(enq.id);
+                              const success = await bookingService.deleteEnquiry(enq.id);
                               if (success) {
-                                // Add a small delay to ensure file is written
-                                await new Promise((resolve) =>
-                                  setTimeout(resolve, 300),
-                                );
+                                await new Promise((resolve) => setTimeout(resolve, 300));
                                 await refreshFleet();
-                              } else {
-                                alert(
-                                  "Failed to delete enquiry. Please try again.",
-                                );
                               }
                             }
                           }}
@@ -1040,11 +1237,8 @@ const AdminPage: React.FC = () => {
                         </button>
                       </div>
                     </div>
-                    <div className="mt-3 sm:mt-4 text-[7px] sm:text-[8px] text-white/10 uppercase tracking-[0.4em] text-left sm:text-right">
-                      Received: {new Date(enq.timestamp).toLocaleString()}
-                    </div>
-                  </div>
-                ))
+                  );
+                })
               ) : (
                 <div className="py-24 text-center bg-luxora-charcoal/30 border border-dashed border-white/5 rounded-sm">
                   <p className="text-white/20 uppercase tracking-[0.5em] text-xs">

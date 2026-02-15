@@ -39,12 +39,13 @@ export class BookingService {
     }
   }
 
-  public async addEnquiry(data: Omit<BookingEnquiry, 'id' | 'status' | 'timestamp'>): Promise<BookingEnquiry | null> {
+  public async addEnquiry(data: Omit<BookingEnquiry, 'id' | 'status' | 'timestamp'> | FormData): Promise<BookingEnquiry | null> {
     try {
+      const isFormData = data instanceof FormData;
       const response = await fetch(`${API_BASE}/enquiries`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
+        headers: isFormData ? undefined : { 'Content-Type': 'application/json' },
+        body: isFormData ? data : JSON.stringify(data)
       });
       if (!response.ok) throw new Error('Failed to add enquiry');
       return await response.json();

@@ -1,5 +1,19 @@
 export type CarCategory = "Chauffeur Driven" | "Monthly Rental" | "Sales";
-export type FleetTier = "Normal" | "Elite" | "Platinum" | "VIP";
+export type FleetTier = "Normal" | "Elite" | "Platinum" | "VIP" | "Gold" | "Diamond";
+
+export interface RentalPackage {
+  duration: number; // in hours (4, 6, 12, 24)
+  kmLimit: number;
+  price: number;
+}
+
+export interface SecurityOption {
+  id: string;
+  carCount: number;
+  bodyguardCount: number;
+  label: string;
+  price?: number; // Optional if dynamic
+}
 
 export interface Car {
   id: string;
@@ -14,6 +28,12 @@ export interface Car {
   pricePerHour: number;
   description: string;
   features: string[];
+  packages?: RentalPackage[];
+  securityOptions?: SecurityOption[];
+  paymentPolicy?: {
+    advancePercentage: number; // 10
+    arrivalPercentage: number; // 90
+  };
   vipOptions?: {
     bodyguard?: boolean;
     personalConcierge?: boolean;
