@@ -7,6 +7,17 @@ interface HeroProps {
 }
 
 const slides = [
+  // Cars
+  {
+    image: "/images/fleet/cars/forhome.png",
+    fallback: "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&q=80&w=2000",
+    tag: "Premier Car Service",
+    title: "Refining the Art of",
+    highlight: "Travel",
+    desc: "Elite chauffeur-driven experiences across Bengaluru's most prestigious routes.",
+    target: Page.Fleet,
+    button: "Our Fleet"
+  },
   {
     image: "/images/fleet/cars/1_first.jpg",
     fallback: "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&q=80&w=2000",
@@ -18,16 +29,29 @@ const slides = [
     button: "Our Fleet"
   },
   {
-    image: "/images/fleet/jets/1.jpg",
-    tag: "Private Aviation",
-    title: "High-Altitude",
-    highlight: "Excellence",
-    desc: "Bespoke chartered flights tailored for the requirements of the global traveler.",
-    target: Page.CharteredFlights,
-    button: "Aviation"
+    image: "/images/fleet/cars/2.jpg",
+    fallback: "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&q=80&w=2000",
+    tag: "Premier Car Service",
+    title: "Luxury",
+    highlight: "Performance",
+    desc: "Experience the thrill of driving our premium fleet.",
+    target: Page.Fleet,
+    button: "Our Fleet"
   },
   {
+    image: "/images/fleet/cars/3.jpg",
+    fallback: "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&q=80&w=2000",
+    tag: "Premier Car Service",
+    title: "Elegant",
+    highlight: "Journeys",
+    desc: "Arrive in style with our chauffeur services.",
+    target: Page.Fleet,
+    button: "Our Fleet"
+  },
+  // Helicopters
+  {
     image: "/images/fleet/helicopter/1.webp",
+    fallback: "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&q=80&w=2000",
     tag: "AERIAL MOBILITY",
     title: "Swift Urban",
     highlight: "Transfers",
@@ -36,16 +60,60 @@ const slides = [
     button: "Book Chopper"
   },
   {
-    image: "/images/fleet/jets/3.jpg",
-    tag: "The VIP Elite",
-    title: "Catering to",
-    highlight: "Global Icons",
-    desc: "Discretion and world-class concierge for high-net-worth individuals.",
-    target: Page.Booking,
-    button: "VIP Concierge"
+    image: "/images/fleet/helicopter/2.jpg",
+    fallback: "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&q=80&w=2000",
+    tag: "AERIAL MOBILITY",
+    title: "Sky High",
+    highlight: "Excellence",
+    desc: "Experience the city from a new perspective.",
+    target: Page.CharteredFlights,
+    button: "Book Chopper"
   },
   {
+    image: "/images/fleet/helicopter/3.jpg",
+    fallback: "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&q=80&w=2000",
+    tag: "AERIAL MOBILITY",
+    title: "Urban",
+    highlight: "Freedom",
+    desc: "Avoid the traffic and travel in comfort.",
+    target: Page.CharteredFlights,
+    button: "Book Chopper"
+  },
+  // Jets
+  {
+    image: "/images/fleet/jets/1.png",
+    fallback: "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&q=80&w=2000",
+    tag: "Private Aviation",
+    title: "High-Altitude",
+    highlight: "Excellence",
+    desc: "Bespoke chartered flights tailored for the requirements of the global traveler.",
+    target: Page.CharteredFlights,
+    button: "Aviation"
+  },
+  {
+    image: "/images/fleet/jets/2.jpg",
+    fallback: "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&q=80&w=2000",
+    tag: "Private Aviation",
+    title: "Global",
+    highlight: "Access",
+    desc: "Fly to your destination on your own schedule.",
+    target: Page.CharteredFlights,
+    button: "Aviation"
+  },
+  {
+    image: "/images/fleet/jets/3.jpg",
+    fallback: "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&q=80&w=2000",
+    tag: "Private Aviation",
+    title: "Ultimate",
+    highlight: "Comfort",
+    desc: "Redefining the standards of private air travel.",
+    target: Page.CharteredFlights,
+    button: "Aviation"
+  },
+  // Yacht
+  {
     image: "/images/fleet/yacht/1.jpg",
+    fallback: "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&q=80&w=2000",
     tag: "Maritime Excellence",
     title: "Master the Waves with",
     highlight: "Luxora",
@@ -54,7 +122,29 @@ const slides = [
     button: "Yachts"
   },
   {
+    image: "/images/fleet/yacht/2.jpg",
+    fallback: "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&q=80&w=2000",
+    tag: "Maritime Excellence",
+    title: "Ocean",
+    highlight: "Voyages",
+    desc: "Explore the seas in unparalleled luxury.",
+    target: Page.YachtService,
+    button: "Yachts"
+  },
+  {
+    image: "/images/fleet/yacht/3.jpg",
+    fallback: "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&q=80&w=2000",
+    tag: "Maritime Excellence",
+    title: "Serene",
+    highlight: "Waters",
+    desc: "Relax and unwind on our private yachts.",
+    target: Page.YachtService,
+    button: "Yachts"
+  },
+  // Properties
+  {
     image: "/images/fleet/properties/1.jpg",
+    fallback: "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&q=80&w=2000",
     tag: "Elite ESTATES",
     title: "Portfolios of",
     highlight: "Majestic Real Estate",
@@ -63,11 +153,53 @@ const slides = [
     button: "Estates"
   },
   {
-    image: "/images/fleet/cars/3.jpg",
+    image: "/images/fleet/properties/2.jpg",
+    fallback: "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&q=80&w=2000",
+    tag: "Elite ESTATES",
+    title: "Luxury",
+    highlight: "Living",
+    desc: "Find your dream home with Luxora.",
+    target: Page.Properties,
+    button: "Estates"
+  },
+  {
+    image: "/images/fleet/properties/3.jpg",
+    fallback: "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&q=80&w=2000",
+    tag: "Elite ESTATES",
+    title: "Exclusive",
+    highlight: "Residences",
+    desc: "Properties that define elegance and sophistication.",
+    target: Page.Properties,
+    button: "Estates"
+  },
+  // Luxury Goods
+  {
+    image: "/images/fleet/luxury-goods/1.png",
+    fallback: "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&q=80&w=2000",
     tag: "Iconic Rarities",
     title: "Curated Market for",
     highlight: "Premium Pieces",
     desc: "Designer collections and rare horological pieces from the world's finest maisons.",
+    target: Page.LuxuryProducts,
+    button: "Luxury Market"
+  },
+  {
+    image: "/images/fleet/luxury-goods/2.png",
+    fallback: "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&q=80&w=2000",
+    tag: "Iconic Rarities",
+    title: "Timeless",
+    highlight: "Classics",
+    desc: "Invest in pieces that last a lifetime.",
+    target: Page.LuxuryProducts,
+    button: "Luxury Market"
+  },
+  {
+    image: "/images/fleet/luxury-goods/3.png",
+    fallback: "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&q=80&w=2000",
+    tag: "Iconic Rarities",
+    title: "Exquisite",
+    highlight: "Craftsmanship",
+    desc: "Discover the art of luxury.",
     target: Page.LuxuryProducts,
     button: "Luxury Market"
   }
@@ -92,7 +224,7 @@ const Hero: React.FC<HeroProps> = ({ onExplore }) => {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrent((prev) => (prev + 1) % slides.length);
-    }, 6000);
+    }, 2000);
     return () => clearInterval(timer);
   }, []);
 
@@ -110,10 +242,10 @@ const Hero: React.FC<HeroProps> = ({ onExplore }) => {
           <img 
             src={slide.image} 
             alt={slide.tag} 
-            className={`w-full h-full object-cover transition-transform duration-[6000ms] ease-linear ${idx === current ? 'scale-110' : 'scale-100'}`}
+            className={`w-full h-full object-cover transition-transform duration-[2000ms] ease-linear ${idx === current ? 'scale-110' : 'scale-100'}`}
             style={{ 
               transform: `translateY(${scrollY * 0.4}px) scale(${idx === current ? 1.1 : 1})`,
-              transition: idx === current ? 'transform 6000ms linear, opacity 1000ms ease-in-out' : 'opacity 1000ms ease-in-out'
+              transition: idx === current ? 'transform 2000ms linear, opacity 1000ms ease-in-out' : 'opacity 1000ms ease-in-out'
             }}
             onError={(e) => {
               if (slide.fallback) {
