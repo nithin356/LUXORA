@@ -10,8 +10,14 @@
   "orientation": "portrait",
   "icons": [
     {
-      "src": "/logo_Lg.png",
+      "src": "/fav.png",
       "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/fav.png",
+      "sizes": "150x150",
       "type": "image/png",
       "purpose": "any maskable"
     }

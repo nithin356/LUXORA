@@ -38,7 +38,7 @@ const AboutSection: React.FC = () => {
               </div>
 
               {/* Air */}
-              <div className="relative group overflow-hidden rounded-sm border border-white/5">
+              {/* <div className="relative group overflow-hidden rounded-sm border border-white/5">
                 <img 
                   src="https://images.unsplash.com/photo-1540962351504-03099e0a754b?auto=format&fit=crop&q=95&w=1200" 
                   alt="Private Aviation" 
@@ -46,10 +46,10 @@ const AboutSection: React.FC = () => {
                 />
                 <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
                 <div className="absolute top-4 left-4 text-[7px] uppercase tracking-[0.3em] text-white/60 font-bold px-2 py-1 border border-white/10 bg-black/40 backdrop-blur-sm">Air</div>
-              </div>
+              </div> */}
 
               {/* Sea */}
-              <div className="relative group overflow-hidden rounded-sm border border-white/5">
+              {/* <div className="relative group overflow-hidden rounded-sm border border-white/5">
                 <img 
                   src="https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?auto=format&fit=crop&q=95&w=1200" 
                   alt="Elite Yachts" 
@@ -57,7 +57,7 @@ const AboutSection: React.FC = () => {
                 />
                 <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
                 <div className="absolute top-4 left-4 text-[7px] uppercase tracking-[0.3em] text-white/60 font-bold px-2 py-1 border border-white/10 bg-black/40 backdrop-blur-sm">Sea</div>
-              </div>
+              </div> */}
 
               {/* Estates */}
               <div className="relative group overflow-hidden rounded-sm border border-white/5">
@@ -78,7 +78,7 @@ const AboutSection: React.FC = () => {
               <span className="text-luxora-gold font-futuristic text-[9px] md:text-[10px] mb-4 tracking-[0.5em] block uppercase font-black">Our Heritage</span>
               
               <h2 className="text-2xl md:text-3xl lg:text-4xl font-serif font-bold text-white mb-8 leading-tight uppercase tracking-tight">
-                Bengaluru’s <span className="gold-text">Premier</span><br />
+                Bengaluru’s <span className="text-white/90">Premier</span><br />
                 Luxury Ecosystem
               </h2>
 
@@ -87,17 +87,17 @@ const AboutSection: React.FC = () => {
                   Luxora is Bengaluru’s premier gateway to an elite lifestyle, delivering multi-vertical luxury experiences through a curated ecosystem of world-class assets.
                 </p>
                 <p>
-                  From high-protocol corporate travel to bespoke private celebrations, we manage the logistics of the extraordinary, serving as a singular partner for prestigious services across land, air, and sea.
+                  From high-protocol corporate travel to bespoke private celebrations, we manage the logistics of the extraordinary, serving as a singular partner for prestigious services across land and estates.
                 </p>
               </div>
               
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-12 border-t border-white/5 pt-10">
                 <div>
-                  <h4 className="text-luxora-gold font-serif text-xl sm:text-2xl md:text-3xl font-black mb-1 uppercase tracking-tight">Tailored</h4>
+                  <h4 className="text-white font-serif text-xl sm:text-2xl md:text-3xl font-black mb-1 uppercase tracking-tight">Tailored</h4>
                   <p className="text-white/20 text-[9px] uppercase tracking-[0.3em] font-bold">Bespoke Excellence</p>
                 </div>
                 <div>
-                  <h4 className="text-luxora-gold font-serif text-xl sm:text-2xl md:text-3xl font-black mb-1 uppercase tracking-tight">Protocol</h4>
+                  <h4 className="text-white font-serif text-xl sm:text-2xl md:text-3xl font-black mb-1 uppercase tracking-tight">Protocol</h4>
                   <p className="text-white/20 text-[9px] uppercase tracking-[0.3em] font-bold">Elite Certified</p>
                 </div>
               </div>

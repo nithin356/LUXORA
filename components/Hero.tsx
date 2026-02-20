@@ -203,7 +203,7 @@ const slides = [
     target: Page.LuxuryProducts,
     button: "Luxury Market"
   }
-];
+].filter(slide => ![Page.CharteredFlights, Page.HelicopterService, Page.YachtService, Page.LuxuryProducts].includes(slide.target));
 
 const Hero: React.FC<HeroProps> = ({ onExplore }) => {
   const [current, setCurrent] = useState(0);
@@ -231,7 +231,7 @@ const Hero: React.FC<HeroProps> = ({ onExplore }) => {
   return (
     <section 
       ref={heroRef}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-luxora-dark"
+      className="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden bg-luxora-dark"
     >
       {/* Background Slides */}
       {slides.map((slide, idx) => (
@@ -242,9 +242,9 @@ const Hero: React.FC<HeroProps> = ({ onExplore }) => {
           <img 
             src={slide.image} 
             alt={slide.tag} 
-            className={`w-full h-full object-cover transition-transform duration-[2000ms] ease-linear ${idx === current ? 'scale-110' : 'scale-100'}`}
+            className={`w-full h-full object-cover sm:object-center object-top transition-transform duration-[2000ms] ease-linear ${idx === current ? 'scale-110' : 'scale-100'}`}
             style={{ 
-              transform: `translateY(${scrollY * 0.4}px) scale(${idx === current ? 1.1 : 1})`,
+              transform: `translateY(${scrollY * 0.4}px) scale(${idx === current ? 1.05 : 1})`,
               transition: idx === current ? 'transform 2000ms linear, opacity 1000ms ease-in-out' : 'opacity 1000ms ease-in-out'
             }}
             onError={(e) => {
@@ -271,7 +271,7 @@ const Hero: React.FC<HeroProps> = ({ onExplore }) => {
             >
               <span className="text-luxora-gold font-serif text-[10px] md:text-xs mb-3 tracking-[0.4em] block uppercase font-bold opacity-70">{slide.tag}</span>
               <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-extrabold text-white mb-6 leading-[1.1] uppercase tracking-[-0.03em] drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]">
-                {slide.title} <span className="gold-text block sm:inline">{slide.highlight}</span>
+                {slide.title} <span className="text-white block sm:inline">{slide.highlight}</span>
               </h1>
               <p className="text-[10px] md:text-xs text-white/50 mb-10 max-w-sm mx-auto md:mx-0 font-medium leading-relaxed border-l-[1px] border-luxora-gold/20 pl-6 uppercase tracking-[0.2em] opacity-80">
                 {slide.desc}

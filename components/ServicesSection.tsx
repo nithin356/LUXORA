@@ -12,7 +12,7 @@ const ServicesSection: React.FC<ServiceCategoryProps> = ({ onNavigate }) => {
       id: "cars",
       title: "Luxury Cars",
       subtitle: "Elite Fleet",
-      icon: "🏎️",
+      icon: "",
       description:
         "Curated collection of premium vehicles with expert chauffeurs.",
       image: "/images/fleet/cars/1.jpg",
@@ -20,49 +20,13 @@ const ServicesSection: React.FC<ServiceCategoryProps> = ({ onNavigate }) => {
       highlight: true,
     },
     {
-      id: "flights",
-      title: "Chartered Flights",
-      subtitle: "Private Aviation",
-      icon: "✈️",
-      description: "Bespoke air travel in state-of-the-art jets.",
-      image: "/images/fleet/jets/1.jpg",
-      page: Page.CharteredFlights,
-    },
-    {
-      id: "helicopters",
-      title: "Helicopter Service",
-      subtitle: "Aerial Mobility",
-      icon: "🚁",
-      description: "Point-to-point urban luxury transfers.",
-      image: "/images/fleet/helicopter/1.webp",
-      page: Page.HelicopterService,
-    },
-    {
-      id: "yachts",
-      title: "Yacht Service",
-      subtitle: "Maritime Excellence",
-      icon: "⛵",
-      description: "Exclusive yacht charters and maritime experiences.",
-      image: "/images/fleet/yacht/1.jpg",
-      page: Page.YachtService,
-    },
-    {
       id: "properties",
       title: "Majestic Estates",
       subtitle: "Exclusive Properties",
-      icon: "🏰",
+      icon: "",
       description: "Portfolio of prestigious real estate & management.",
       image: "/images/fleet/properties/1.jpg",
       page: Page.Properties,
-    },
-    {
-      id: "luxury",
-      title: "Luxury Goods",
-      subtitle: "Premium Marketplace",
-      icon: "💎",
-      description: "Designer collections and rare horological pieces.",
-      image: "/images/fleet/luxury-goods/1.png",
-      page: Page.LuxuryProducts,
     },
   ];
 
@@ -95,7 +59,7 @@ const ServicesSection: React.FC<ServiceCategoryProps> = ({ onNavigate }) => {
             <div
               key={category.id}
               onClick={() => onNavigate?.(category.page)}
-              className={`group relative h-64 md:h-72 overflow-hidden rounded-lg cursor-pointer transition-all duration-500 ${
+              className={`group relative h-64 md:h-72 overflow-hidden rounded-lg cursor-pointer transition-all duration-500 border border-white/10 hover:border-white/30 ${
                 category.highlight ? "md:col-span-2" : ""
               }`}
             >
@@ -115,19 +79,16 @@ const ServicesSection: React.FC<ServiceCategoryProps> = ({ onNavigate }) => {
 
               {/* Content */}
               <div className="absolute inset-0 flex flex-col justify-end p-4 md:p-6 z-10">
-                <div className="text-3xl md:text-4xl mb-2 md:mb-3">
-                  {category.icon}
-                </div>
-                <span className="text-luxora-gold text-xs md:text-sm uppercase tracking-[0.2em] font-bold mb-1 md:mb-2 opacity-80">
+                <span className="text-white/70 text-xs md:text-sm uppercase tracking-[0.2em] font-bold mb-1 md:mb-2 opacity-80">
                   {category.subtitle}
                 </span>
-                <h3 className="text-lg md:text-2xl lg:text-3xl font-serif font-bold text-white mb-2 md:mb-3 group-hover:text-luxora-gold transition-colors">
+                <h3 className="text-lg md:text-2xl lg:text-3xl font-serif font-bold text-white mb-2 md:mb-3 group-hover:text-white/90 transition-colors">
                   {category.title}
                 </h3>
                 <p className="text-white/60 text-xs md:text-sm leading-relaxed mb-3 md:mb-4 line-clamp-2">
                   {category.description}
                 </p>
-                <div className="inline-flex items-center text-luxora-gold text-xs md:text-sm uppercase tracking-[0.2em] font-bold group-hover:gap-2 transition-all gap-1">
+                <div className="inline-flex items-center text-white/80 text-xs md:text-sm uppercase tracking-[0.2em] font-bold group-hover:gap-2 transition-all gap-1">
                   Explore{" "}
                   <span className="group-hover:translate-x-1 transition-transform">
                     →
@@ -140,15 +101,12 @@ const ServicesSection: React.FC<ServiceCategoryProps> = ({ onNavigate }) => {
 
         {/* Quick Services */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 border-t border-white/5 pt-12 md:pt-16">
-          {SERVICES.map((service) => (
+          {SERVICES.filter(s => ["Elite Fleet", "Security", "Corporate", "Concierge"].includes(s.title) || s.id.includes("cars") || s.id.includes("prop")).map((service) => (
             <div
               key={service.id}
-              className="group p-6 md:p-8 bg-luxora-charcoal/50 border border-white/5 hover:border-luxora-gold/30 transition-all duration-500 flex flex-col items-start text-left rounded-lg"
+              className="group p-6 md:p-8 bg-luxora-charcoal/50 border border-white/10 hover:border-white/30 transition-all duration-500 flex flex-col items-start text-left rounded-lg"
             >
-              <div className="text-3xl md:text-4xl mb-4 transform group-hover:scale-110 transition-transform duration-500">
-                {service.icon}
-              </div>
-              <h3 className="text-base md:text-lg font-serif font-bold text-white mb-2 md:mb-3 group-hover:text-luxora-gold transition-colors">
+              <h3 className="text-base md:text-lg font-serif font-bold text-white mb-2 md:mb-3 group-hover:text-white/90 transition-colors">
                 {service.title}
               </h3>
               <p className="text-white/40 text-xs md:text-sm leading-relaxed font-light">

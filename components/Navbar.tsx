@@ -19,11 +19,7 @@ const Navbar: React.FC<NavbarProps> = ({ activePage, setPage }) => {
   const navItems = [
     { label: "Home", value: Page.Home },
     { label: "Fleet", value: Page.Fleet },
-    { label: "Flights", value: Page.CharteredFlights },
-    { label: "Helicopters", value: Page.HelicopterService },
-    { label: "Yachts", value: Page.YachtService },
     { label: "Properties", value: Page.Properties },
-    { label: "Luxury Goods", value: Page.LuxuryProducts },
   ];
 
   const handleNavClick = (page: Page) => {
